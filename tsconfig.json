@@ -2,7 +2,15 @@
     "compilerOptions": {
         "module": "commonjs",
         "moduleResolution": "node",
-        "target": "es5"
+        "target": "es5",
+        "experimentalDecorators": true,
+        "baseUrl": "./src",
+        "noEmitOnError": true,
+        "lib": [
+            "dom",
+            "es6"
+        ]
+
     },
     "exclude": [
         "node_modules",
