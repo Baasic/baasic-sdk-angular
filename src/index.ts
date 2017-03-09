@@ -1,1 +1,1 @@
-export * from './baasic-sdk-angular.module';
+export * from './baasicApp.module';
