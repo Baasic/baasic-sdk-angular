@@ -7,7 +7,7 @@
     "ws:setup": "npm install npm-workspace && npm run link-dependencies && npm run build:dependencies && npm run install-peer-dependencies",
     "ws:clean": "npm-workspace clean",
     "install-peer-dependencies": "npm install @angular/core @angular/http rxjs",
-    "build:dependencies": "cd ./dependencies/baasic-sdk-core && npm install && npm run build:prod",
+    "build:dependencies": "cd ./dependencies/baasic-sdk-javascript && npm install && npm run build:prod",
     "link-dependencies": "npm-workspace install",
     "start": "npm run watch",
     "watch": "run-p watch:*",
@@ -36,6 +36,6 @@
     "rxjs": "^5.2.0"
   },
   "dependencies": {
-    "baasic-sdk-core": "*"
+    "baasic-sdk-javascript": "*"
   }
 }

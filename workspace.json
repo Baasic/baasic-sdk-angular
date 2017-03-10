@@ -1,5 +1,5 @@
 {
     "links": {
-        "baasic-sdk-core": "dependencies/baasic-sdk-core"
+        "baasic-sdk-javascript": "dependencies/baasic-sdk-javascript"
     }
 }
