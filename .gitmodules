@@ -1,4 +1,4 @@
-[submodule "dependencies/baasic-sdk-core"]
+[submodule "dependencies/baasic-sdk-javascript"]
 	path = dependencies/baasic-sdk-javascript
 	url = git@gits:baasic/baasic-sdk-javascript.git
 	branch = develop
