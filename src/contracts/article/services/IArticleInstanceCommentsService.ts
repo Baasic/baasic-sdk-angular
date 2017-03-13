@@ -1,0 +1,20 @@
+import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
+import { IArticleComment, IArticleInstanceRepliesService, INotificationConfiguration } from 'contracts/article';
+
+export interface IArticleInstanceCommentsService {
+    approve(data: IArticleComment, options: INotificationConfiguration): PromiseLike<IHttpResponse<void>>;
+    unapprove(data: IArticleComment): PromiseLike<IHttpResponse<void>>;
+    create(data: IArticleComment): PromiseLike<IHttpResponse<IArticleComment>>;
+    find(articleId: string, options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleComment>>>;
+    flag(data: IArticleComment): PromiseLike<IHttpResponse<void>>;
+    unflag(data: IArticleComment): PromiseLike<IHttpResponse<void>>;
+    get(articleId: string, commentId: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticleComment>>;
+    remove(data: IArticleComment): PromiseLike<IHttpResponse<void>>;
+    removeAll(data: IArticle): PromiseLike<IHttpResponse<void>>;
+    report(data: IArticleComment, options: INotificationConfiguration): PromiseLike<IHttpResponse<void>>;
+    unreport(data: IArticleComment): PromiseLike<IHttpResponse<void>>;
+    update(data: IArticleComment): PromiseLike<IHttpResponse<void>>;
+    spam(data: IArticleComment): PromiseLike<IHttpResponse<void>>;
+    unspam(data: IArticleComment): PromiseLike<IHttpResponse<void>>;
+    replies: IArticleInstanceRepliesService;
+}
