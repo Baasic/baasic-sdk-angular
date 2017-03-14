@@ -8,3 +8,4 @@ export * from './IHttpHeaders';
 export * from './IHttpRequest';
 export * from './IHttpResponse';
 export * from './ACL';
+export * from './IUserInfo';
