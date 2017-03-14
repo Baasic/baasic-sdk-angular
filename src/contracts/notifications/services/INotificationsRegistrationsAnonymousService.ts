@@ -1,0 +1,11 @@
+import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
+import { IAnonymousRegistration, INotificationsRegistrationsAnonymousBatchService } from 'contracts/notifications';
+
+export interface INotificationsRegistrationsAnonymousService {
+    create(data: IAnonymousRegistration): PromiseLike<IHttpResponse<IAnonymousRegistration>>;
+    find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IAnonymousRegistration>>>;
+    get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IAnonymousRegistration>>;
+    remove(data: IAnonymousRegistration): PromiseLike<IHttpResponse<void>>;
+    update(data: IAnonymousRegistration): PromiseLike<IHttpResponse<void>>;
+    batch: INotificationsRegistrationsAnonymousBatchService;
+}

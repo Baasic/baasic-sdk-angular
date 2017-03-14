@@ -7,3 +7,4 @@ export * from './media-vault.service';
 export * from './membership.service';
 export * from './metering.service';
 export * from './templating.service';
+export * from './notifications.service';
