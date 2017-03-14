@@ -4,3 +4,4 @@ export * from './dynamic-resource.service';
 export * from './article.service';
 export * from './files.service';
 export * from './media-vault.service';
+export * from './membership.service';

@@ -35,6 +35,7 @@ export class ArticleService {
     constructor(private baasicApp: BaasicApp) { }
 
     get articles(): IArticleInstanceService {
+        let baasicApp = this.baasicApp;
         return {
             /**                 
             * Returns a promise that is resolved once the find action has been performed. Success response returns a list of article resources matching the given criteria.                 
@@ -56,7 +57,7 @@ export class ArticleService {
                        });                   
            **/
             find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticle>>> {
-                return this.baasicApp.articleModule.articles.find(options);
+                return baasicApp.articleModule.articles.find(options);
             },
 
             /**                 
@@ -74,7 +75,7 @@ export class ArticleService {
                             });                
             **/
             get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticle>> {
-                return this.baasicApp.articleModule.articles.get(id, options);
+                return baasicApp.articleModule.articles.get(id, options);
             },
 
             /**                 
@@ -98,7 +99,7 @@ export class ArticleService {
                         });                 
             **/
             create(data: IArticle): PromiseLike<IHttpResponse<IArticle>> {
-                return this.baasicApp.articleModule.articles.create(data);
+                return baasicApp.articleModule.articles.create(data);
             },
 
             /**                 
@@ -121,7 +122,7 @@ export class ArticleService {
                                 });                
             **/
             update(data: IArticle): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.articles.update(data);
+                return baasicApp.articleModule.articles.update(data);
             },
 
             /**                 
@@ -139,7 +140,7 @@ export class ArticleService {
                                     });                
             **/
             saveDraft(data: IArticle): PromiseLike<IHttpResponse<any>> {
-                return this.baasicApp.articleModule.articles.saveDraft(data);
+                return baasicApp.articleModule.articles.saveDraft(data);
             },
 
             /**                 
@@ -161,7 +162,7 @@ export class ArticleService {
                                 });		               
             **/
             remove(data: IArticle): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.articles.remove(data);
+                return baasicApp.articleModule.articles.remove(data);
             },
 
             /**                 
@@ -184,7 +185,7 @@ export class ArticleService {
                                 });		               
              **/
             archive(data: IArticle, options: IArticleOptions): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.articles.archive(data);
+                return baasicApp.articleModule.articles.archive(data);
             },
 
             /**                 
@@ -206,7 +207,7 @@ export class ArticleService {
                                     });		               
              **/
             restore(data: IArticle): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.articles.restore(data);
+                return baasicApp.articleModule.articles.restore(data);
             },
 
             /**                 
@@ -228,7 +229,7 @@ export class ArticleService {
                                     });		               
              **/
             unpublish(data: IArticle): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.articles.unpublish(data);
+                return baasicApp.articleModule.articles.unpublish(data);
             },
 
             /**                 
@@ -246,7 +247,7 @@ export class ArticleService {
                             });		               
              **/
             publish(data: IArticle, articleOptions: IArticleOptions): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.articles.publish(data, articleOptions);
+                return baasicApp.articleModule.articles.publish(data, articleOptions);
             },
 
             /**                 
@@ -261,7 +262,7 @@ export class ArticleService {
                             });		               
              **/
             purge(options: Object): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.articles.purge(options);
+                return baasicApp.articleModule.articles.purge(options);
             },
 
             comments: {
@@ -285,7 +286,7 @@ export class ArticleService {
                                     });
                 **/
                 approve(data: IArticleComment, options: INotificationConfiguration): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.comments.approve(data, options);
+                    return baasicApp.articleModule.articles.comments.approve(data, options);
                 },
 
                 /**
@@ -307,7 +308,7 @@ export class ArticleService {
                                     });
                 **/
                 unapprove(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.comments.unapprove(data);
+                    return baasicApp.articleModule.articles.comments.unapprove(data);
                 },
 
                 /**
@@ -327,7 +328,7 @@ export class ArticleService {
                                 });
                 **/
                 create(data: IArticleComment): PromiseLike<IHttpResponse<IArticleComment>> {
-                    return this.baasicApp.articleModule.articles.comments.create(data);
+                    return baasicApp.articleModule.articles.comments.create(data);
                 },
 
                 /**
@@ -351,7 +352,7 @@ export class ArticleService {
                             });
                 **/
                 find(articleId: string, options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleComment>>> {
-                    return this.baasicApp.articleModule.articles.comments.find(articleId, options);
+                    return baasicApp.articleModule.articles.comments.find(articleId, options);
                 },
 
                 /**
@@ -373,7 +374,7 @@ export class ArticleService {
                                     });		                
                 **/
                 flag(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.comments.flag(data);
+                    return baasicApp.articleModule.articles.comments.flag(data);
                 },
 
                 /**
@@ -395,7 +396,7 @@ export class ArticleService {
                                     });
                 **/
                 unflag(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.comments.unflag(data);
+                    return baasicApp.articleModule.articles.comments.unflag(data);
                 },
 
                 /**
@@ -414,7 +415,7 @@ export class ArticleService {
                             });
                 **/
                 get(articleId: string, commentId: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticleComment>> {
-                    return this.baasicApp.articleModule.articles.comments.get(articleId, commentId, options);
+                    return baasicApp.articleModule.articles.comments.get(articleId, commentId, options);
                 },
 
                 /**
@@ -436,7 +437,7 @@ export class ArticleService {
                                     });
                 **/
                 remove(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.comments.remove(data);
+                    return baasicApp.articleModule.articles.comments.remove(data);
                 },
 
                 /**                     
@@ -458,7 +459,7 @@ export class ArticleService {
                                     });						    
                 **/
                 removeAll(data: IArticle): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.comments.removeAll(data);
+                    return baasicApp.articleModule.articles.comments.removeAll(data);
                 },
 
                 /** 
@@ -481,7 +482,7 @@ export class ArticleService {
                                     });
                 **/
                 report(data: IArticleComment, options: INotificationConfiguration): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.comments.report(data, options);
+                    return baasicApp.articleModule.articles.comments.report(data, options);
                 },
 
                 /**
@@ -503,7 +504,7 @@ export class ArticleService {
                                     });
                 **/
                 unreport(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.comments.unreport(data);
+                    return baasicApp.articleModule.articles.comments.unreport(data);
                 },
 
                 /**                 
@@ -525,7 +526,7 @@ export class ArticleService {
                                     });		                
                 **/
                 update(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.comments.update(data);
+                    return baasicApp.articleModule.articles.comments.update(data);
                 },
 
                 /**                     
@@ -547,7 +548,7 @@ export class ArticleService {
                                     });						    
                 **/
                 spam(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.comments.spam(data);
+                    return baasicApp.articleModule.articles.comments.spam(data);
                 },
 
                 /**                     
@@ -569,7 +570,7 @@ export class ArticleService {
                                         });						    
                 **/
                 unspam(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.comments.unspam();
+                    return baasicApp.articleModule.articles.comments.unspam();
                 },
 
                 replies: {
@@ -592,7 +593,7 @@ export class ArticleService {
                                        });
                    **/
                     approve(data: IArticleCommentReply, options: IOptions): PromiseLike<IHttpResponse<void>> {
-                        return this.baasicApp.articleModule.articles.comments.replies.approve(data, options);
+                        return baasicApp.articleModule.articles.comments.replies.approve(data, options);
                     },
 
                     /**
@@ -614,7 +615,7 @@ export class ArticleService {
                                         });
                     **/
                     unapprove(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                        return this.baasicApp.articleModule.articles.comments.replies.unapprove(data);
+                        return baasicApp.articleModule.articles.comments.replies.unapprove(data);
                     },
 
                     /**
@@ -635,7 +636,7 @@ export class ArticleService {
                                 });
                     **/
                     create(articleId: string, data: IArticleCommentReply): PromiseLike<IHttpResponse<IArticleCommentReply>> {
-                        return this.baasicApp.articleModule.articles.comments.replies.create(articleId, data);
+                        return baasicApp.articleModule.articles.comments.replies.create(articleId, data);
                     },
 
                     /**
@@ -660,7 +661,7 @@ export class ArticleService {
                                 });
                     **/
                     find(articleId: string, commentId: string, options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleCommentReply>>> {
-                        return this.baasicApp.articleModule.articles.comments.replies.find(articleId, commentId, options);
+                        return baasicApp.articleModule.articles.comments.replies.find(articleId, commentId, options);
                     },
 
                     /**
@@ -682,7 +683,7 @@ export class ArticleService {
                                             });
                     **/
                     flag(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                        return this.baasicApp.articleModule.articles.comments.replies.flag(data);
+                        return baasicApp.articleModule.articles.comments.replies.flag(data);
                     },
 
                     /**
@@ -703,7 +704,7 @@ export class ArticleService {
                                         });
                     **/
                     unflag(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                        return this.baasicApp.articleModule.articles.comments.replies.unflag(data);
+                        return baasicApp.articleModule.articles.comments.replies.unflag(data);
                     },
 
                     /**
@@ -723,7 +724,7 @@ export class ArticleService {
                                     });
                     **/
                     get(articleId: string, commentId: string, replyId: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticleCommentReply>> {
-                        return this.baasicApp.articleModule.articles.comments.replies.get(articleId, commentId, replyId, options);
+                        return baasicApp.articleModule.articles.comments.replies.get(articleId, commentId, replyId, options);
                     },
 
                     /**
@@ -745,7 +746,7 @@ export class ArticleService {
                                         });
                     **/
                     remove(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                        return this.baasicApp.articleModule.articles.comments.replies.remove(data);
+                        return baasicApp.articleModule.articles.comments.replies.remove(data);
                     },
 
                     /**                         
@@ -767,7 +768,7 @@ export class ArticleService {
                                         });		                        
                     **/
                     removeAll(data: IArticle): PromiseLike<IHttpResponse<void>> {
-                        return this.baasicApp.articleModule.articles.comments.replies.removeAll(data);
+                        return baasicApp.articleModule.articles.comments.replies.removeAll(data);
                     },
 
                     /**
@@ -790,7 +791,7 @@ export class ArticleService {
                                         });
                     **/
                     report(data: IArticleCommentReply, options?: INotificationConfiguration): PromiseLike<IHttpResponse<void>> {
-                        return this.baasicApp.articleModule.articles.comments.replies.report(data, options);
+                        return baasicApp.articleModule.articles.comments.replies.report(data, options);
                     },
 
                     /**
@@ -812,7 +813,7 @@ export class ArticleService {
                                         });
                     **/
                     unreport(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                        return this.baasicApp.articleModule.articles.comments.replies.unreport(data);
+                        return baasicApp.articleModule.articles.comments.replies.unreport(data);
                     },
 
                     /**
@@ -834,7 +835,7 @@ export class ArticleService {
                                         });
                     **/
                     spam(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                        return this.baasicApp.articleModule.articles.comments.replies.spam(data);
+                        return baasicApp.articleModule.articles.comments.replies.spam(data);
                     },
 
                     /**
@@ -856,7 +857,7 @@ export class ArticleService {
                                         });
                     **/
                     unspam(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                        return this.baasicApp.articleModule.articles.comments.replies.unspam(data);
+                        return baasicApp.articleModule.articles.comments.replies.unspam(data);
                     }
                 }
             },
@@ -880,7 +881,7 @@ export class ArticleService {
                             });
                 **/
                 find(articleId: string, options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleFile>>> {
-                    return this.baasicApp.articleModule.articles.files.find(articleId, options);
+                    return baasicApp.articleModule.articles.files.find(articleId, options);
                 },
 
                 /**                 
@@ -895,7 +896,7 @@ export class ArticleService {
                             });                 
                 **/
                 get(articleId: string, id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticleFile>> {
-                    return this.baasicApp.articleModule.articles.files.get(articleId, id, options);
+                    return baasicApp.articleModule.articles.files.get(articleId, id, options);
                 },
 
                 /**                  
@@ -915,7 +916,7 @@ export class ArticleService {
                                     }); 				
                 **/
                 unlink(articleId: string, data: any, options: Object): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.files.unlink(articleId, data, options);
+                    return baasicApp.articleModule.articles.files.unlink(articleId, data, options);
                 },
 
                 /**                      
@@ -935,7 +936,7 @@ export class ArticleService {
                                     });                     
                 **/
                 unlinkByArticle(articleId: string, data: any, options: Object): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.files.unlinkByArticle(articleId, data, options);
+                    return baasicApp.articleModule.articles.files.unlinkByArticle(articleId, data, options);
                 },
 
                 /**                  
@@ -956,7 +957,7 @@ export class ArticleService {
                                 }); 				
                 **/
                 update(articleId: string, data: IArticleFile): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.files.update(articleId, data);
+                    return baasicApp.articleModule.articles.files.update(articleId, data);
                 },
 
                 /** 
@@ -971,7 +972,7 @@ export class ArticleService {
                                 });                 
                 **/
                 link(articleId: string, data: IArticleFile): PromiseLike<IHttpResponse<IArticleFile>> {
-                    return this.baasicApp.articleModule.articles.files.link(articleId, data);
+                    return baasicApp.articleModule.articles.files.link(articleId, data);
                 },
 
                 batch: {
@@ -996,7 +997,7 @@ export class ArticleService {
                                     });		                    
                     **/
                     unlink(articleId: string, data: IArticleFile[]): PromiseLike<IHttpResponse<void>> {
-                        return this.baasicApp.articleModule.articles.files.batch.unlink(articleId, data);
+                        return baasicApp.articleModule.articles.files.batch.unlink(articleId, data);
                     },
 
                     /**                   
@@ -1011,7 +1012,7 @@ export class ArticleService {
                                     });                   
                     **/
                     update(articleId: string, data: IArticleFile[]): PromiseLike<IHttpResponse<void>> {
-                        return this.baasicApp.articleModule.articles.files.batch.update(articleId, data);
+                        return baasicApp.articleModule.articles.files.batch.update(articleId, data);
                     },
 
                     /**                   
@@ -1026,7 +1027,7 @@ export class ArticleService {
                                     });                   
                     **/
                     link(articleId: string, data: IArticleFile[]): PromiseLike<IHttpResponse<any>> {
-                        return this.baasicApp.articleModule.articles.files.batch.link(articleId, data);
+                        return baasicApp.articleModule.articles.files.batch.link(articleId, data);
                     }
                 },
 
@@ -1053,7 +1054,7 @@ export class ArticleService {
                                             });                     
                     **/
                     get(articleId: string, data: any): PromiseLike<IHttpResponse<any>> {
-                        return this.baasicApp.articleModule.articles.files.streams.get(articleId, data);
+                        return baasicApp.articleModule.articles.files.streams.get(articleId, data);
                     },
 
                     /**                     
@@ -1082,7 +1083,7 @@ export class ArticleService {
                                     });                     
                      **/
                     getBlob(articleId: string, data: any): PromiseLike<IHttpResponse<any>> {
-                        return this.baasicApp.articleModule.articles.files.streams.getBlob(articleId, data);
+                        return baasicApp.articleModule.articles.files.streams.getBlob(articleId, data);
                     },
 
                     /**                      
@@ -1106,7 +1107,7 @@ export class ArticleService {
                                         });                     
                     **/
                     update(articleId: string, data: any, stream: any): PromiseLike<IHttpResponse<any>> {
-                        return this.baasicApp.articleModule.articles.files.streams.update(articleId, data, stream);
+                        return baasicApp.articleModule.articles.files.streams.update(articleId, data, stream);
                     },
 
                     /**                      
@@ -1121,7 +1122,7 @@ export class ArticleService {
                                 });                     
                     **/
                     create(articleId: string, data: IArticleFile, stream: any): PromiseLike<IHttpResponse<any>> {
-                        return this.baasicApp.articleModule.articles.files.streams.create(articleId, data, stream);
+                        return baasicApp.articleModule.articles.files.streams.create(articleId, data, stream);
                     }
                 }
             },
@@ -1139,7 +1140,7 @@ export class ArticleService {
                                 });                   
                 **/
                 create(data: IRating): PromiseLike<IHttpResponse<IRating>> {
-                    return this.baasicApp.articleModule.articles.ratings.create(data);
+                    return baasicApp.articleModule.articles.ratings.create(data);
                 },
 
                 /**                  
@@ -1160,7 +1161,7 @@ export class ArticleService {
                             });                     
                 **/
                 find(articleId: string, options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IRating>>> {
-                    return this.baasicApp.articleModule.articles.ratings.find(articleId, options);
+                    return baasicApp.articleModule.articles.ratings.find(articleId, options);
                 },
 
                 /**                  
@@ -1180,7 +1181,7 @@ export class ArticleService {
                             });                     
                 **/
                 findByUser(articleId: string, username: string, options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IRating>>> {
-                    return this.baasicApp.articleModule.articles.ratings.findByUser(articleId, username, options);
+                    return baasicApp.articleModule.articles.ratings.findByUser(articleId, username, options);
                 },
 
                 /**                  
@@ -1195,7 +1196,7 @@ export class ArticleService {
                                 });                 
                 **/
                 get(articleId: string, id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IRating>> {
-                    return this.baasicApp.articleModule.articles.ratings.get(articleId, id, options);
+                    return baasicApp.articleModule.articles.ratings.get(articleId, id, options);
                 },
 
                 /**                  
@@ -1216,7 +1217,7 @@ export class ArticleService {
                                     }); 				
                 **/
                 update(data: IRating): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.ratings.update(data);
+                    return baasicApp.articleModule.articles.ratings.update(data);
                 },
 
                 /**                 
@@ -1236,7 +1237,7 @@ export class ArticleService {
                                     });						
                 **/
                 remove(data: IRating): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.ratings.remove(data);
+                    return baasicApp.articleModule.articles.ratings.remove(data);
                 },
 
                 /**                     
@@ -1256,7 +1257,7 @@ export class ArticleService {
                                     });						    
                 **/
                 removeAll(data: IArticle): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.ratings.removeAll(data);
+                    return baasicApp.articleModule.articles.ratings.removeAll(data);
                 }
             },
 
@@ -1274,7 +1275,7 @@ export class ArticleService {
                                     });                         
                     **/
                     subscribe(data: IArticleSubscription): PromiseLike<IHttpResponse<any>> {
-                        return this.baasicApp.articleModule.articles.subscriptions.commentReported.subscribe(data);
+                        return baasicApp.articleModule.articles.subscriptions.commentReported.subscribe(data);
                     },
 
                     /**                         
@@ -1289,7 +1290,7 @@ export class ArticleService {
                                     });                          
                     **/
                     isSubscribed(data: IArticleSubscription): PromiseLike<IHttpResponse<any>> {
-                        return this.baasicApp.articleModule.articles.subscriptions.commentReported.isSubscribed(data);
+                        return baasicApp.articleModule.articles.subscriptions.commentReported.isSubscribed(data);
                     },
 
                     /**                         
@@ -1304,7 +1305,7 @@ export class ArticleService {
                                     });                           
                     **/
                     unSubscribe(data: IArticleSubscription): PromiseLike<IHttpResponse<void>> {
-                        return this.baasicApp.articleModule.articles.subscriptions.commentReported.unSubscribe(data);
+                        return baasicApp.articleModule.articles.subscriptions.commentReported.unSubscribe(data);
                     }
                 },
 
@@ -1321,7 +1322,7 @@ export class ArticleService {
                                     });                         
                     **/
                     subscribe(article: IArticle, data: IArticleSubscription): PromiseLike<IHttpResponse<any>> {
-                        return this.baasicApp.articleModule.articles.subscriptions.article.subscribe(article, data);
+                        return baasicApp.articleModule.articles.subscriptions.article.subscribe(article, data);
                     },
 
                     /**                         
@@ -1336,7 +1337,7 @@ export class ArticleService {
                                     });                          
                     **/
                     isSubscribed(article: IArticle, data: IArticleSubscription): PromiseLike<IHttpResponse<any>> {
-                        return this.baasicApp.articleModule.articles.subscriptions.article.isSubscribed(article, data);
+                        return baasicApp.articleModule.articles.subscriptions.article.isSubscribed(article, data);
                     },
 
                     /**                         
@@ -1351,7 +1352,7 @@ export class ArticleService {
                                     });                         
                     **/
                     unSubscribe(article: IArticle, data: IArticleSubscription): PromiseLike<IHttpResponse<void>> {
-                        return this.baasicApp.articleModule.articles.subscriptions.article.unSubscribe(article, data);
+                        return baasicApp.articleModule.articles.subscriptions.article.unSubscribe(article, data);
                     }
                 },
 
@@ -1368,7 +1369,7 @@ export class ArticleService {
                                     });                         
                     **/
                     subscribe(data: IArticleSubscription): PromiseLike<IHttpResponse<any>> {
-                        return this.baasicApp.articleModule.articles.subscriptions.commentRequiresModeration.subscribe(data);
+                        return baasicApp.articleModule.articles.subscriptions.commentRequiresModeration.subscribe(data);
                     },
 
                     /**                         
@@ -1383,7 +1384,7 @@ export class ArticleService {
                                     });                         
                     **/
                     isSubscribed(data: IArticleSubscription): PromiseLike<IHttpResponse<any>> {
-                        return this.baasicApp.articleModule.articles.subscriptions.commentRequiresModeration.isSubscribed(data);
+                        return baasicApp.articleModule.articles.subscriptions.commentRequiresModeration.isSubscribed(data);
                     },
 
                     /**                         
@@ -1398,7 +1399,7 @@ export class ArticleService {
                                     });                        
                     **/
                     unSubscribed(data: IArticleSubscription): PromiseLike<IHttpResponse<void>> {
-                        return this.baasicApp.articleModule.articles.subscriptions.commentRequiresModeration.unSubscribe(data);
+                        return baasicApp.articleModule.articles.subscriptions.commentRequiresModeration.unSubscribe(data);
                     }
                 }
             },
@@ -1422,7 +1423,7 @@ export class ArticleService {
                             });                    
                 **/
                 find(articleId: string, options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleTag>>> {
-                    return this.baasicApp.articleModule.articles.tags.find(articleId, options);
+                    return baasicApp.articleModule.articles.tags.find(articleId, options);
                 },
 
                 /**                 
@@ -1439,7 +1440,7 @@ export class ArticleService {
                             });                
                 **/
                 get(articleId: string, id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticleTag>> {
-                    return this.baasicApp.articleModule.articles.tags.find(articleId, id, options);
+                    return baasicApp.articleModule.articles.tags.find(articleId, id, options);
                 },
 
                 /**                     
@@ -1461,7 +1462,7 @@ export class ArticleService {
                             });                     
                 **/
                 create(data: IArticleTag): PromiseLike<IHttpResponse<IArticleTag>> {
-                    return this.baasicApp.articleModule.articles.tags.create(data);
+                    return baasicApp.articleModule.articles.tags.create(data);
                 },
 
                 /**                 
@@ -1481,7 +1482,7 @@ export class ArticleService {
                                     });						
                 **/
                 remove(data: IArticleTag): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.tags.remove(data);
+                    return baasicApp.articleModule.articles.tags.remove(data);
                 },
 
                 /**                     
@@ -1501,20 +1502,21 @@ export class ArticleService {
                                     });						    
                 **/
                 removeAll(data: IArticle): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.articles.tags.removeAll(data);
+                    return baasicApp.articleModule.articles.tags.removeAll(data);
                 }
             }
         };
     }
 
     get comments(): IArticleCommentService {
+        let baasicApp = this.baasicApp;
         return {
             /**
             * Contains a reference to valid list of article comment states. It returns an object containing all article comment states.
             * @method
             * @example ArticleService.comments.statuses.approved;
             **/
-            statuses: this.baasicApp.articleModule.comments.statuses,
+            statuses: baasicApp.articleModule.comments.statuses,
 
             /**
              * Returns a promise that is resolved once the approve article comment action has been performed. This action sets the state of an article comment to "approved". This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
@@ -1536,7 +1538,7 @@ export class ArticleService {
                                 });
             **/
             approve(data: IArticleComment, options: INotificationConfiguration): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.comments.approve(data, options);
+                return baasicApp.articleModule.comments.approve(data, options);
             },
 
             /**
@@ -1558,7 +1560,7 @@ export class ArticleService {
                                 });
             **/
             unapprove(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.comments.unapprove(data);
+                return baasicApp.articleModule.comments.unapprove(data);
             },
 
             /**
@@ -1578,7 +1580,7 @@ export class ArticleService {
                             });
             **/
             create(data: IArticleComment): PromiseLike<IHttpResponse<IArticleComment>> {
-                return this.baasicApp.articleModule.comments.create(data);
+                return baasicApp.articleModule.comments.create(data);
             },
 
             /**
@@ -1601,7 +1603,7 @@ export class ArticleService {
                         });
             **/
             find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleComment>>> {
-                return this.baasicApp.articleModule.comments.find(options);
+                return baasicApp.articleModule.comments.find(options);
             },
 
             /**
@@ -1623,7 +1625,7 @@ export class ArticleService {
                                 });		                
             **/
             flag(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.comments.flag(data);
+                return baasicApp.articleModule.comments.flag(data);
             },
 
             /**
@@ -1645,7 +1647,7 @@ export class ArticleService {
                                 });
             **/
             unflag(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.comments.unflag(data);
+                return baasicApp.articleModule.comments.unflag(data);
             },
 
             /**
@@ -1663,7 +1665,7 @@ export class ArticleService {
                         });
             **/
             get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticleComment>> {
-                return this.baasicApp.articleModule.comments.get(id, options);
+                return baasicApp.articleModule.comments.get(id, options);
             },
 
             /**
@@ -1685,7 +1687,7 @@ export class ArticleService {
                                 });
             **/
             remove(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.comments.remove(data);
+                return baasicApp.articleModule.comments.remove(data);
             },
 
             /** 
@@ -1708,7 +1710,7 @@ export class ArticleService {
                                 });
             **/
             report(data: IArticleComment, options: INotificationConfiguration): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.comments.report(data, options);
+                return baasicApp.articleModule.comments.report(data, options);
             },
 
             /**
@@ -1730,7 +1732,7 @@ export class ArticleService {
                                 });
             **/
             unreport(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.comments.unreport(data);
+                return baasicApp.articleModule.comments.unreport(data);
             },
 
             /**                 
@@ -1752,11 +1754,11 @@ export class ArticleService {
                                 });		                
             **/
             update(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.comments.update(data);
+                return baasicApp.articleModule.comments.update(data);
             },
 
             commentReplies: {
-                statuses: this.baasicApp.articleModule.comments.replies.statuses,
+                statuses: baasicApp.articleModule.comments.replies.statuses,
 
                 /**
                  * Returns a promise that is resolved once the approve article comment reply action has been performed. This action sets the state of an article comment reply to "approved". This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicArticleCommentRepliesRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
@@ -1778,7 +1780,7 @@ export class ArticleService {
                                     });
                 **/
                 approve(data: IArticleCommentReply, options: INotificationConfiguration): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.comments.commentReplies.approve(data, options);
+                    return baasicApp.articleModule.comments.commentReplies.approve(data, options);
                 },
 
                 /**
@@ -1800,7 +1802,7 @@ export class ArticleService {
                                     });
                 **/
                 unapprove(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.comments.commentReplies.unapprove(data);
+                    return baasicApp.articleModule.comments.commentReplies.unapprove(data);
                 },
 
                 /**
@@ -1820,7 +1822,7 @@ export class ArticleService {
                             });
                 **/
                 create(data: IArticleCommentReply): PromiseLike<IHttpResponse<IArticleCommentReply>> {
-                    return this.baasicApp.articleModule.comments.commentReplies.create(data);
+                    return baasicApp.articleModule.comments.commentReplies.create(data);
                 },
 
                 /**
@@ -1843,7 +1845,7 @@ export class ArticleService {
                             });
                 **/
                 find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleCommentReply>>> {
-                    return this.baasicApp.articleModule.comments.commentReplies.find(options);
+                    return baasicApp.articleModule.comments.commentReplies.find(options);
                 },
 
                 /**
@@ -1865,7 +1867,7 @@ export class ArticleService {
                                         });
                 **/
                 flag(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.comments.commentReplies.flag(data);
+                    return baasicApp.articleModule.comments.commentReplies.flag(data);
                 },
 
                 /**
@@ -1886,7 +1888,7 @@ export class ArticleService {
                                     });
                 **/
                 unflag(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.comments.commentReplies.unflag(data);
+                    return baasicApp.articleModule.comments.commentReplies.unflag(data);
                 },
 
                 /**
@@ -1904,7 +1906,7 @@ export class ArticleService {
                                 });
                 **/
                 get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticleCommentReply>> {
-                    return this.baasicApp.articleModule.comments.commentReplies.get(id, options);
+                    return baasicApp.articleModule.comments.commentReplies.get(id, options);
                 },
 
                 /**
@@ -1926,7 +1928,7 @@ export class ArticleService {
                                     });
                 **/
                 remove(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.comments.commentReplies.remove(data);
+                    return baasicApp.articleModule.comments.commentReplies.remove(data);
                 },
 
                 /**
@@ -1949,7 +1951,7 @@ export class ArticleService {
                                     });
                 **/
                 report(data: IArticleCommentReply, options?: INotificationConfiguration): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.comments.commentReplies.report(data, options);
+                    return baasicApp.articleModule.comments.commentReplies.report(data, options);
                 },
 
                 /**
@@ -1971,7 +1973,7 @@ export class ArticleService {
                                     });
                 **/
                 unreport(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.comments.commentReplies.unreport(data);
+                    return baasicApp.articleModule.comments.commentReplies.unreport(data);
                 },
 
                 /**
@@ -1993,7 +1995,7 @@ export class ArticleService {
                                     });
                 **/
                 spam(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.comments.commentReplies.spam(data);
+                    return baasicApp.articleModule.comments.commentReplies.spam(data);
                 },
 
                 /**
@@ -2015,7 +2017,7 @@ export class ArticleService {
                                     });
                 **/
                 unspam(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.comments.commentReplies.unspam(data);
+                    return baasicApp.articleModule.comments.commentReplies.unspam(data);
                 },
 
                 /**
@@ -2037,13 +2039,14 @@ export class ArticleService {
                                     });
                 **/
                 update(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.comments.commentReplies.update(data);
+                    return baasicApp.articleModule.comments.commentReplies.update(data);
                 }
             }
         };
     }
 
     get files(): IArticleFilesService {
+        let baasicApp = this.baasicApp;
         return {
             /**                  
             * Returns a promise that is resolved once the find action has been performed. Success response returns a list of file resources matching the given criteria.                  
@@ -2065,7 +2068,7 @@ export class ArticleService {
                        });
            **/
             find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleFile>>> {
-                return this.baasicApp.articleModule.files.find(options);
+                return baasicApp.articleModule.files.find(options);
             },
 
             /**                 
@@ -2083,7 +2086,7 @@ export class ArticleService {
                         });                 
             **/
             get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticleFile>> {
-                return this.baasicApp.articleModule.files.get(id, options);
+                return baasicApp.articleModule.files.get(id, options);
             },
 
             /**                  
@@ -2106,7 +2109,7 @@ export class ArticleService {
                                 }); 				
             **/
             unlink(data: IArticleFile, options: Object): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.files.unlink(data, options);
+                return baasicApp.articleModule.files.unlink(data, options);
             },
 
             /**                  
@@ -2129,7 +2132,7 @@ export class ArticleService {
                             }); 				
             **/
             update(data: IArticleFile): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.files.update(data);
+                return baasicApp.articleModule.files.update(data);
             },
 
             /** 
@@ -2146,7 +2149,7 @@ export class ArticleService {
                             });                 
             **/
             link(data: IArticleFile): PromiseLike<IHttpResponse<IArticleFile>> {
-                return this.baasicApp.articleModule.files.link(data);
+                return baasicApp.articleModule.files.link(data);
             },
 
             batch: {
@@ -2171,7 +2174,7 @@ export class ArticleService {
                                 });		                    
                 **/
                 unlink(data: Object[]): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.files.batch.unlink(data);
+                    return baasicApp.articleModule.files.batch.unlink(data);
                 },
 
                 /**                   
@@ -2186,7 +2189,7 @@ export class ArticleService {
                                 });                   
                 **/
                 update(data: IArticleFile[]): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.files.batch.update(data);
+                    return baasicApp.articleModule.files.batch.update(data);
                 },
 
                 /**                   
@@ -2201,7 +2204,7 @@ export class ArticleService {
                                 });                   
                 **/
                 link(data: IArticleFile[]): PromiseLike<IHttpResponse<any>> {
-                    return this.baasicApp.articleModule.files.batch.link(data);
+                    return baasicApp.articleModule.files.batch.link(data);
                 }
             },
 
@@ -2228,7 +2231,7 @@ export class ArticleService {
                                         });                     
                 **/
                 get(data: any): PromiseLike<IHttpResponse<any>> {
-                    return this.baasicApp.articleModule.files.streams.get(data);
+                    return baasicApp.articleModule.files.streams.get(data);
                 },
 
                 /**                     
@@ -2257,7 +2260,7 @@ export class ArticleService {
                                     });                     
                 **/
                 getBlob(data: any): PromiseLike<IHttpResponse<any>> {
-                    return this.baasicApp.articleModule.files.streams.getBlob(data);
+                    return baasicApp.articleModule.files.streams.getBlob(data);
                 },
 
                 /**                      
@@ -2281,7 +2284,7 @@ export class ArticleService {
                                     });                     
                 **/
                 update(data: any, stream: any): PromiseLike<IHttpResponse<any>> {
-                    return this.baasicApp.articleModule.files.streams.update(data, stream);
+                    return baasicApp.articleModule.files.streams.update(data, stream);
                 },
 
                 /**                      
@@ -2296,13 +2299,14 @@ export class ArticleService {
                             });                     
                 **/
                 create(data: IArticleFile, stream: any): PromiseLike<IHttpResponse<any>> {
-                    return this.baasicApp.articleModule.files.streams.create(data);
+                    return baasicApp.articleModule.files.streams.create(data);
                 }
             }
         };
     }
 
     get ratings(): IArticleRatingsService {
+        let baasicApp = this.baasicApp;
         return {
             /**       
              * Returns a promise that is resolved once the create article rating action has been performed; this action creates a new rating for an article.                   
@@ -2322,7 +2326,7 @@ export class ArticleService {
                         });                   
             **/
             create(data: IRating): PromiseLike<IHttpResponse<IRating>> {
-                return this.baasicApp.articleModule.ratings.create(data);
+                return baasicApp.articleModule.ratings.create(data);
             },
 
             /**                  
@@ -2345,7 +2349,7 @@ export class ArticleService {
                         });                     
             **/
             find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IRating>>> {
-                return this.baasicApp.articleModule.ratings.find(options);
+                return baasicApp.articleModule.ratings.find(options);
             },
 
             /**                  
@@ -2368,7 +2372,7 @@ export class ArticleService {
                         });                     
             **/
             findByUser(username: string, options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IRating>>> {
-                return this.baasicApp.articleModule.ratings.findByUser(username, options);
+                return baasicApp.articleModule.ratings.findByUser(username, options);
             },
 
             /**                  
@@ -2386,7 +2390,7 @@ export class ArticleService {
                             });                 
             **/
             get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IRating>> {
-                return this.baasicApp.articleModule.ratings.get(id, options);
+                return baasicApp.articleModule.ratings.get(id, options);
             },
 
             /**                  
@@ -2409,7 +2413,7 @@ export class ArticleService {
                                 }); 				
             **/
             update(data: IRating): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.ratings.update(data);
+                return baasicApp.articleModule.ratings.update(data);
             },
 
             /**                 
@@ -2431,12 +2435,13 @@ export class ArticleService {
                                 });						
             **/
             remove(data: IRating): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.ratings.remove(data);
+                return baasicApp.articleModule.ratings.remove(data);
             }
         };
     }
 
     get subscriptions(): IArticleSubscriptionsService {
+        let baasicApp = this.baasicApp;
         return {
             /**                         
              * Returns a promise that is resolved once the subscribe action has been performed. This action subscribes an user to the article module.                         
@@ -2450,7 +2455,7 @@ export class ArticleService {
                         });                         
             **/
             subscribe(data: IArticleSubscription): PromiseLike<IHttpResponse<any>> {
-                return this.baasicApp.articleModule.subscriptions.subscribe(data);
+                return baasicApp.articleModule.subscriptions.subscribe(data);
             },
 
             /**                         
@@ -2465,7 +2470,7 @@ export class ArticleService {
                         });                         
             **/
             isSubscribed(data: IArticleSubscription): PromiseLike<IHttpResponse<any>> {
-                return this.baasicApp.articleModule.subscriptions.isSubscribed(data);
+                return baasicApp.articleModule.subscriptions.isSubscribed(data);
             },
 
             /**                         
@@ -2479,12 +2484,13 @@ export class ArticleService {
                                 // perform error handling here 
                         });                          **/
             unSubscribe(data: IArticleSubscription): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.subscriptions.unSubscribe(data);
+                return baasicApp.articleModule.subscriptions.unSubscribe(data);
             }
         };
     }
 
     get tags(): IArticleTagsService {
+        let baasicApp = this.baasicApp;
         return {
             /**                 
              * Returns a promise that is resolved once the find action has been performed. Success response returns a list of article tag resources matching the given criteria.                 
@@ -2506,7 +2512,7 @@ export class ArticleService {
                         });                    
             **/
             find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleTag>>> {
-                return this.baasicApp.articleModule.tags.find(options);
+                return baasicApp.articleModule.tags.find(options);
             },
 
             /**                 
@@ -2524,7 +2530,7 @@ export class ArticleService {
                         });                
             **/
             get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticleTag>> {
-                return this.baasicApp.articleModule.tags.get(id, options);
+                return baasicApp.articleModule.tags.get(id, options);
             },
 
             /**                 
@@ -2547,7 +2553,7 @@ export class ArticleService {
                                 });                
             **/
             update(data: IArticleTag): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.tags.update(data);
+                return baasicApp.articleModule.tags.update(data);
             },
 
             /**                 
@@ -2569,7 +2575,7 @@ export class ArticleService {
                                 });						
             **/
             remove(data: IArticleTag): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.tags.remove(data);
+                return baasicApp.articleModule.tags.remove(data);
             },
 
             subscriptions: {
@@ -2585,7 +2591,7 @@ export class ArticleService {
                                 });                     
                 **/
                 subscribe(tag: IArticleTag, data: any): PromiseLike<IHttpResponse<IArticleSubscription>> {
-                    return this.baasicApp.articleModule.tags.subscriptions.subscribe(tag, data);
+                    return baasicApp.articleModule.tags.subscriptions.subscribe(tag, data);
                 },
 
                 /**                    
@@ -2601,7 +2607,7 @@ export class ArticleService {
                                 });                     
                 **/
                 isSubscribed(tag: IArticleTag, data: any): PromiseLike<IHttpResponse<IArticleSubscription>> {
-                    return this.baasicApp.articleModule.tags.subscriptions.isSubscribed(tag, data);
+                    return baasicApp.articleModule.tags.subscriptions.isSubscribed(tag, data);
                 },
 
                 /**                     
@@ -2618,13 +2624,14 @@ export class ArticleService {
                             });                     
                 **/
                 unSubscribe(tag: IArticleTag, data: any): PromiseLike<IHttpResponse<void>> {
-                    return this.baasicApp.articleModule.tags.subscriptions.unSubscribe(tag, data);
+                    return baasicApp.articleModule.tags.subscriptions.unSubscribe(tag, data);
                 }
             }
         };
     }
 
     get settings(): IArticleSettingsService {
+        let baasicApp = this.baasicApp;
         return {
             /**                  
              * Returns a promise that is resolved once the get action has been performed. Success response returns the article settings. 
@@ -2641,7 +2648,7 @@ export class ArticleService {
                             });                 
             **/
             get(options?: IGetRequestOptions): PromiseLike<IHttpResponse<any>> {
-                return this.baasicApp.articleModule.settings.get(options);
+                return baasicApp.articleModule.settings.get(options);
             },
 
             /**                  
@@ -2664,7 +2671,7 @@ export class ArticleService {
                                 }); 				
             **/
             update(data: IArticleSettings): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.articleModule.settings.update(data);
+                return baasicApp.articleModule.settings.update(data);
             }
         };
     }

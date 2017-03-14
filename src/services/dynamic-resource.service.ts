@@ -150,6 +150,7 @@ export class DynamicResourceService {
     }
 
     get schema(): IDynamicResourceSchemaService {
+        let baasicApp = this.baasicApp;
         return {
             /**                  
              * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resource schemas matching the given criteria.                  
@@ -170,7 +171,7 @@ export class DynamicResourceService {
                         });                     
             **/
             find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IResourceSchema>>> {
-                return this.baasicApp.dynamicResourceModule.schema.find(options);
+                return baasicApp.dynamicResourceModule.schema.find(options);
             },
 
             /**                  
@@ -187,7 +188,7 @@ export class DynamicResourceService {
                             });                 
             **/
             get(name: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IResourceSchema>> {
-                return this.baasicApp.dynamicResourceModule.schema.get(name, options);
+                return baasicApp.dynamicResourceModule.schema.get(name, options);
             },
 
             /**                 
@@ -221,7 +222,7 @@ export class DynamicResourceService {
                         });                 
             **/
             create(data: IResourceSchema): PromiseLike<IHttpResponse<IResourceSchema>> {
-                return this.baasicApp.dynamicResourceModule.schema.create(data);
+                return baasicApp.dynamicResourceModule.schema.create(data);
             },
 
             /**                  
@@ -243,7 +244,7 @@ export class DynamicResourceService {
                                 }); 				
             **/
             update(data: IResourceSchema): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.dynamicResourceModule.schema.update(data);
+                return baasicApp.dynamicResourceModule.schema.update(data);
             },
 
             /**                 
@@ -264,7 +265,7 @@ export class DynamicResourceService {
                                 });						
             **/
             remove(data: IResourceSchema): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.dynamicResourceModule.schema.remove(data);
+                return baasicApp.dynamicResourceModule.schema.remove(data);
             },
 
             /**                 
@@ -283,12 +284,13 @@ export class DynamicResourceService {
                         });					    
             **/
             generate(data: any): PromiseLike<IHttpResponse<any>> {
-                return this.baasicApp.dynamicResourceModule.schema.generate(data);
+                return baasicApp.dynamicResourceModule.schema.generate(data);
             }
         };
     }
 
     get acl(): IDynamicResourceACLService {
+        let baasicApp = this.baasicApp;
         return {
             /**                     
              * Returns a promise that is resolved once the get action has been performed. Success response returns a list of ACL policies established for the specified dynamic resource.                     
@@ -303,7 +305,7 @@ export class DynamicResourceService {
                             });                     
             **/
             get(options: IDynamicACLOptions): PromiseLike<IHttpResponse<IACLPolicy[]>> {
-                return this.baasicApp.dynamicResourceModule.get(options);
+                return baasicApp.dynamicResourceModule.get(options);
             },
 
             /**                    
@@ -319,7 +321,7 @@ export class DynamicResourceService {
                             }); 				    
             **/
             update(options: IDynamicACLOptions): PromiseLike<IHttpResponse<IACLPolicy[]>> {
-                return this.baasicApp.dynamicResourceModule.update(options);
+                return baasicApp.dynamicResourceModule.update(options);
             },
 
             /**                     
@@ -343,7 +345,7 @@ export class DynamicResourceService {
                                 }); 				    
             **/
             removeByUser(action: string, user: string, data: IACLPolicy): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.dynamicResourceModule.removeByUser(action, user, data);
+                return baasicApp.dynamicResourceModule.removeByUser(action, user, data);
             },
 
             /**                     
@@ -367,7 +369,7 @@ export class DynamicResourceService {
                                 }); 				    
             **/
             removeByRole(action: string, role: string, data: IACLPolicy): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.dynamicResourceModule.removeByRole(action, role, data);
+                return baasicApp.dynamicResourceModule.removeByRole(action, role, data);
             }
         };
     }

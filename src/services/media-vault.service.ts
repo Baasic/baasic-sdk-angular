@@ -118,6 +118,7 @@ export class MediaVaultService {
     }
 
     get batch(): IMediaVaultBatchService {
+        let baasicApp = this.baasicApp;
         return {
             /**                   
              * Returns a promise that is resolved once the update action has been performed; this action updates specified media vault resources.                   
@@ -133,7 +134,7 @@ export class MediaVaultService {
                         });                   
             **/
             update(data: IMediaEntry[]): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.mediaVaultModule.batch.update(data);
+                return baasicApp.mediaVaultModule.batch.update(data);
             },
 
             /**                   
@@ -158,12 +159,13 @@ export class MediaVaultService {
                                     });	  	                  
             **/
             remove(data: any[]): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.mediaVaultModule.batch.remove(data);
+                return baasicApp.mediaVaultModule.batch.remove(data);
             }
         };
     }
 
     get streams(): IMediaVaultStreamsService {
+        let baasicApp = this.baasicApp;
         return {
             /**                     
              * Returns a promise that is resolved once the get action has been performed. Success response returns the media vault stream if successfully completed. If derived resource's format is passed, such as `width` and `height` for the image type of media vault resource, the operation will return a stream of the derived resource. Otherwise, stream of the original media vault resource will be retrieved.                     
@@ -186,7 +188,7 @@ export class MediaVaultService {
                                     });                     
             **/
             get(data: any): PromiseLike<IHttpResponse<any>> {
-                return this.baasicApp.mediaVaultModule.streams.get(data);
+                return baasicApp.mediaVaultModule.streams.get(data);
             },
 
             /**                     
@@ -210,7 +212,7 @@ export class MediaVaultService {
                                     });                     
             **/
             getBlob(data: any): PromiseLike<IHttpResponse<any>> {
-                return this.baasicApp.mediaVaultService.streams.getBlob(data);
+                return baasicApp.mediaVaultService.streams.getBlob(data);
             },
 
             /**                      
@@ -225,7 +227,7 @@ export class MediaVaultService {
                             });                     
             **/
             create(data: any, stream: any): PromiseLike<IHttpResponse<any>> {
-                return this.baasicApp.mediaVaultService.streams.create(data, stream);
+                return baasicApp.mediaVaultService.streams.create(data, stream);
             },
 
             /**                      
@@ -249,12 +251,13 @@ export class MediaVaultService {
                                 });                     
             **/
             update(data: any, stream: any): PromiseLike<IHttpResponse<any>> {
-                return this.baasicApp.mediaVaultService.streams.update(data, stream);
+                return baasicApp.mediaVaultService.streams.update(data, stream);
             }
         };
     }
 
     get settings(): IMediaVaultSettingsService {
+        let baasicApp = this.baasicApp;
         return {
             /**                     
             * Returns a promise that is resolved once the get action has been performed. Success response returns media vault settings resource.                     
@@ -269,7 +272,7 @@ export class MediaVaultService {
                            });                     
            **/
             get(): PromiseLike<IHttpResponse<IMediaVaultSettings>> {
-                return this.baasicApp.mediaVaultService.settings.get();
+                return baasicApp.mediaVaultService.settings.get();
             },
 
             /**                   
@@ -286,12 +289,13 @@ export class MediaVaultService {
                             });                   
             **/
             update(data: IMediaVaultSettings): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.mediaVaultService.settings.update(data);
+                return baasicApp.mediaVaultService.settings.update(data);
             }
         };
     }
 
     get processingProviderSettings(): IMediaVaultProcessingProviderSettingsService {
+        let baasicApp = this.baasicApp;
         return {
             /**                    
              * Returns a promise that is resolved once the find action has been performed. Success response returns a list of media vault processing providers matching the given criteria.                    
@@ -313,7 +317,7 @@ export class MediaVaultService {
                         });                      
             **/
             find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IPreprocessingProviderSettings>>> {
-                return this.baasicApp.mediaVaultService.processingProviderSettings.find(options);
+                return baasicApp.mediaVaultService.processingProviderSettings.find(options);
             },
 
             /**                   
@@ -331,7 +335,7 @@ export class MediaVaultService {
                             });                   
             **/
             get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IPreprocessingProviderSettings>> {
-                return this.baasicApp.mediaVaultService.processingProviderSettings.get(id, options);
+                return baasicApp.mediaVaultService.processingProviderSettings.get(id, options);
             },
 
             /**                   
@@ -354,7 +358,7 @@ export class MediaVaultService {
                                 }); 			
             **/
             update(data: IPreprocessingProviderSettings): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.mediaVaultService.processingProviderSettings.update(data);
+                return baasicApp.mediaVaultService.processingProviderSettings.update(data);
             }
         };
     }

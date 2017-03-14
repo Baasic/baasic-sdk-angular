@@ -127,6 +127,7 @@ export class FilesService {
     }
 
     get batch(): IFilesBatchService {
+        let baasicApp = this.baasicApp;
         return {
             /**                   
              * Returns a promise that is resolved once the update action has been performed; this action updates specified file resources.                   
@@ -142,7 +143,7 @@ export class FilesService {
                             });                   
             **/
             update(data: IFileEntry[]): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.fileModule.batch.update(data);
+                return baasicApp.fileModule.batch.update(data);
             },
 
             /**                   
@@ -159,7 +160,7 @@ export class FilesService {
                             });                   
             **/
             link(data: IFileEntry[]): PromiseLike<IHttpResponse<any>> {
-                return this.baasicApp.fileModule.batch.link(data);
+                return baasicApp.fileModule.batch.link(data);
             },
 
             /**                   
@@ -185,12 +186,13 @@ export class FilesService {
                                 });		                    
             **/
             unlink(data: Object[]): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.fileModule.batch.unlink(data);
+                return baasicApp.fileModule.batch.unlink(data);
             }
         };
     }
 
     get streams(): IFilesStreamsService {
+        let baasicApp = this.baasicApp;
         return {
             /**                     
              * Returns a promise that is resolved once the get action has been performed. Success response returns the file stream if successfully completed. If derived resource's format is passed, such as `width` and `height` for the image type of file resource, the operation will return a stream of the derived resource. Otherwise, stream of the original file resource will be retrieved.                     
@@ -215,7 +217,7 @@ export class FilesService {
                                 });                     
             **/
             get(data: any): PromiseLike<IHttpResponse<any>> {
-                return this.baasicApp.fileModule.streams.get(data);
+                return baasicApp.fileModule.streams.get(data);
             },
 
             /**                     
@@ -239,7 +241,7 @@ export class FilesService {
                                 });                     
             **/
             getBlob(data: any): PromiseLike<IHttpResponse<any>> {
-                return this.baasicApp.fileModule.streams.getBlob(data);
+                return baasicApp.fileModule.streams.getBlob(data);
             },
 
             /**                      
@@ -263,7 +265,7 @@ export class FilesService {
                                 });                     
             **/
             update(data: any, stream: any): PromiseLike<IHttpResponse<any>> {
-                return this.baasicApp.fileModule.streams.update(data, stream);
+                return baasicApp.fileModule.streams.update(data, stream);
             },
 
             /**                      
@@ -278,12 +280,13 @@ export class FilesService {
                         });                     
             **/
             create(data: any, stream: any): PromiseLike<IHttpResponse<any>> {
-                return this.baasicApp.fileModule.streams.create(data, stream);
+                return baasicApp.fileModule.streams.create(data, stream);
             }
         };
     }
 
     get acl(): IACLService {
+        let baasicApp = this.baasicApp;
         return {
             /**                     
              * Returns a promise that is resolved once the get action has been performed. Success response returns a list of ACL policies established for the specified file resource.                     
@@ -299,7 +302,7 @@ export class FilesService {
                             });                     
             **/
             get(options?: IACLOptions): PromiseLike<IHttpResponse<IACLPolicy[]>> {
-                return this.baasicApp.fileModule.acl.get(options);
+                return baasicApp.fileModule.acl.get(options);
             },
 
             /**                     
@@ -318,7 +321,7 @@ export class FilesService {
                             }); 				    
             **/
             update(options: IACLOptions[]): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.fileModule.acl.update(options);
+                return baasicApp.fileModule.acl.update(options);
             },
 
             /**                     
@@ -342,7 +345,7 @@ export class FilesService {
                             }); 				    
             **/
             removeByUser(id: string, action: string, user: string, data: IACLPolicy): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.fileModule.acl.removeByUser(id, action, user, data);
+                return baasicApp.fileModule.acl.removeByUser(id, action, user, data);
             },
 
             /**                     
@@ -357,7 +360,7 @@ export class FilesService {
                             }); 				    
             **/
             removeByRole(id: string, action: string, role: string, data: IACLPolicy): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.fileModule.acl.removeByRole(id, action, role, data);
+                return baasicApp.fileModule.acl.removeByRole(id, action, role, data);
             }
         };
     }

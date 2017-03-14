@@ -122,6 +122,7 @@ export class ValueSetService {
     }
 
     get items(): IValueSetItemService {
+        let baasicApp = this.baasicApp;
         return {
             /**
             * Returns a promise that is resolved once the find action has been performed. Success response returns a list of value set item resources matching given criteria.
@@ -143,7 +144,7 @@ export class ValueSetService {
                         });
             **/
             find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IValueSetItem>>> {
-                return this.baasicApp.valueSetModule.items.find(options);
+                return baasicApp.valueSetModule.items.find(options);
             },
 
             /**
@@ -162,7 +163,7 @@ export class ValueSetService {
                        });
            **/
             get(setName: string, id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IValueSetItem>> {
-                return this.baasicApp.valueSetModule.items.get(setName, id, options);
+                return baasicApp.valueSetModule.items.get(setName, id, options);
             },
 
             /**
@@ -182,7 +183,7 @@ export class ValueSetService {
                         });
             **/
             create(data: IValueSetItem): PromiseLike<IHttpResponse<IValueSetItem>> {
-                return this.baasicApp.valueSetModule.items.create(data);
+                return baasicApp.valueSetModule.items.create(data);
             },
 
             /**
@@ -205,7 +206,7 @@ export class ValueSetService {
                             });
             **/
             update(data: IValueSetItem): PromiseLike<IHttpResponse<IValueSetItem>> {
-                return this.baasicApp.valueSetModule.items.update(data);
+                return baasicApp.valueSetModule.items.update(data);
             },
 
             /**
@@ -227,7 +228,7 @@ export class ValueSetService {
                             });
             **/
             remove(data: IValueSetItem): PromiseLike<IHttpResponse<void>> {
-                return this.baasicApp.valueSetModule.items.remove(data);
+                return baasicApp.valueSetModule.items.remove(data);
             }
         };
     }
