@@ -12,14 +12,21 @@ import {
     IArticle,
     IArticleComment,
     IArticleCommentReply,
+    IArticleCommentService,
     IArticleFile,
-    IArticleInstanceCommentsService,
-    IArticleInstanceCommentsRepliesService,
-    IArticleInstanceFilesBatchService,
-    IArticleInstanceFilesStreamsService,
-    IArticleInstanceFilesService,
+    IArticleFilesService,
+    IArticleInstanceService,
+    IArticleRatingsService,
     IArticleOptions,
-    INotificationConfiguration
+    IArticleSettings,
+    IArticleSettingsService,
+    IArticleSubscription,
+    IArticleSubscriptionsService,
+    IArticleInstanceSubscriptionsService,
+    IArticleTag,
+    IArticleTagsService,
+    INotificationConfiguration,
+    IRating
 } from 'contracts/article';
 
 @Injectable()
@@ -257,7 +264,7 @@ export class ArticleService {
                 return this.baasicApp.articleModule.articles.purge(options);
             },
 
-            comments: IArticleInstanceCommentsService = {
+            comments: {
                 /**
                  * Returns a promise that is resolved once the approve article comment action has been performed. This action sets the state of an article comment to "approved". This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
                  * ``` 
@@ -565,7 +572,7 @@ export class ArticleService {
                     return this.baasicApp.articleModule.articles.comments.unspam();
                 },
 
-                replies: IArticleInstanceCommentsRepliesService = {
+                replies: {
                     /**
                     * Returns a promise that is resolved once the approve article comment reply action has been performed. This action sets the state of an article comment reply to "approved". This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicArticleCommentRepliesRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
                     * ``` 
@@ -854,7 +861,7 @@ export class ArticleService {
                 }
             },
 
-            files: IArticleInstanceFilesService = {
+            files: {
                 /**                  
                  * Returns a promise that is resolved once the find action has been performed. Success response returns a list of file resources matching the given criteria.                  
                  * @method                         
@@ -967,7 +974,7 @@ export class ArticleService {
                     return this.baasicApp.articleModule.articles.files.link(articleId, data);
                 },
 
-                batch: IArticleInstanceFilesBatchService = {
+                batch: {
                     /**                   
                      * Returns a promise that is resolved once the unlink action has been performed. This action will remove file resources from the system if successfully completed. If derived resource's format is passed, such as `width` and `height` for the image type of file resource, the operation will remove just derived resource. Otherwise, specified file and all its accompanying derived resources will be removed from the system.                   
                      * @method                         
@@ -1023,7 +1030,7 @@ export class ArticleService {
                     }
                 },
 
-                streams: IArticleInstanceFilesStreamsService = {
+                streams: {
                     /**                     
                      * Returns a promise that is resolved once the get action has been performed. Success response returns the file stream if successfully completed. If derived resource's format is passed, such as `width` and `height` for the image type of file resource, the operation will return a stream of the derived resource. Otherwise, stream of the original file resource will be retrieved.                     
                      * @method streams.get                            
@@ -1117,6 +1124,1547 @@ export class ArticleService {
                         return this.baasicApp.articleModule.articles.files.streams.create(articleId, data, stream);
                     }
                 }
+            },
+
+            ratings: {
+                /**       
+                 * Returns a promise that is resolved once the create article rating action has been performed; this action creates a new rating for an article.                   
+                 * @method                       
+                 * @example ArticleService.articles.ratings.create({ articleId : '<article-id>', rating : 5, userId : '<user-id>' })
+                                .then(function (data) { 
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) { 
+                                    // perform error handling here 
+                                });                   
+                **/
+                create(data: IRating): PromiseLike<IHttpResponse<IRating>> {
+                    return this.baasicApp.articleModule.articles.ratings.create(data);
+                },
+
+                /**                  
+                 * Returns a promise that is resolved once the find action has been performed. Success response returns a list of article rating resources matching the given criteria.                  
+                 * @method                         
+                 * @example ArticleService.articles.ratings.find({ 
+                                pageNumber : 1,   
+                                pageSize : 10,   
+                                orderBy : '<field>',   
+                                orderDirection : '<asc|desc>',   
+                                search : '<search-phrase>' 
+                            })
+                            .then(function (collection) {   
+                                // perform success action here 
+                            },
+                            function (response, status, headers, config) {   
+                                // perform error handling here 
+                            });                     
+                **/
+                find(articleId: string, options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IRating>>> {
+                    return this.baasicApp.articleModule.articles.ratings.find(articleId, options);
+                },
+
+                /**                  
+                 * Returns a promise that is resolved once the findByUser action has been performed. Success response returns a list of article rating resources filtered by username.                  
+                 * @method                         
+                 * @example ArticleService.articles.ratings.find('<username>', {   
+                                pageNumber : 1,   
+                                pageSize : 10,   
+                                orderBy : '<field>',   
+                                orderDirection : '<asc|desc>'
+                            })
+                            .then(function (collection) {   
+                                // perform success action here 
+                            },
+                            function (response, status, headers, config) {   
+                                // perform error handling here 
+                            });                     
+                **/
+                findByUser(articleId: string, username: string, options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IRating>>> {
+                    return this.baasicApp.articleModule.articles.ratings.findByUser(articleId, username, options);
+                },
+
+                /**                  
+                 * Returns a promise that is resolved once the get action has been performed. Success response returns the specified article rating resource.                  
+                 * @method                         
+                 * @example ArticleService.articles.ratings.get('<articleRating-id>')
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                });                 
+                **/
+                get(articleId: string, id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IRating>> {
+                    return this.baasicApp.articleModule.articles.ratings.get(articleId, id, options);
+                },
+
+                /**                  
+                 * Returns a promise that is resolved once the update article rating action has been performed; this action updates an article rating. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicArticleRatingsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+                 * ``` 
+                 * let params = modelMapper.removeParams(articleRating); 
+                 * let uri = params['model'].links('put').href; 
+                 * ```                  
+                 * @method                         
+                 * @example // articleRating is a resource previously fetched using get action. 
+                                articleRating.rating = 4; 
+                                ArticleService.articles.ratings.update(articleRating)
+                                    .then(function (data) {   
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) {   
+                                        // perform error handling here 
+                                    }); 				
+                **/
+                update(data: IRating): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.articles.ratings.update(data);
+                },
+
+                /**                 
+                 * Returns a promise that is resolved once the remove article rating action has been performed. If the action is successfully completed, the article rating resource will be permanently removed from the system. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicArticleRatingsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+                 * ``` 
+                 * let params = modelMapper.removeParams(articleRating); 
+                 * let uri = params['model'].links('delete').href; 
+                 * ```                 
+                 * @method                        
+                 * @example // articleRating is a resource previously fetched using get action.				 
+                                ArticleService.articles.ratings.remove(articleRating)
+                                    .then(function (data) {   
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) {   
+                                        // perform error handling here 
+                                    });						
+                **/
+                remove(data: IRating): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.articles.ratings.remove(data);
+                },
+
+                /**                     
+                 * Returns a promise that is resolved once the removeAll article rating action has been performed. If the action is successfully completed, the article rating resources will be permanently removed from the system for a specified article resource. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicArticleInstanceRouteClient` route template. Here is an example of how a route can be obtained from HAL enabled objects:
+                 *  ``` 
+                 * let params = modelMapper.removeParams(article); 
+                 * let uri = params['model'].links('delete-ratings-by-article').href; 
+                 * ```                     
+                 * @method                     
+                 * @example // article is a resource previously fetched using get action.					
+                                ArticleService.articles.ratings.removeAll(article)
+                                    .then(function (data) {   
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) {   
+                                        // perform error handling here 
+                                    });						    
+                **/
+                removeAll(data: IArticle): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.articles.ratings.removeAll(data);
+                }
+            },
+
+            subscriptions: {
+                commentReported: {
+                    /**                         
+                     * Returns a promise that is resolved once the subscribe action has been performed.                         
+                     * @method                        
+                     * @example ArticleService.articles.subscriptions.commentReported.subscribe(data)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });                         
+                    **/
+                    subscribe(data: IArticleSubscription): PromiseLike<IHttpResponse<any>> {
+                        return this.baasicApp.articleModule.articles.subscriptions.commentReported.subscribe(data);
+                    },
+
+                    /**                         
+                     * Returns a promise that is resolved once the isSubscribed action has been performed.                         
+                     * @method                        
+                     * @example ArticleService.articles.subscriptions.commentReported.isSubscribed(data)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });                          
+                    **/
+                    isSubscribed(data: IArticleSubscription): PromiseLike<IHttpResponse<any>> {
+                        return this.baasicApp.articleModule.articles.subscriptions.commentReported.isSubscribed(data);
+                    },
+
+                    /**                         
+                     * Returns a promise that is commentReported once the unSubscribe action has been performed.                         
+                     * @method                         
+                     * @example ArticleService.articles.subscriptions.commentReported.isSubscribed(data)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });                           
+                    **/
+                    unSubscribe(data: IArticleSubscription): PromiseLike<IHttpResponse<void>> {
+                        return this.baasicApp.articleModule.articles.subscriptions.commentReported.unSubscribe(data);
+                    }
+                },
+
+                article: {
+                    /**                         
+                     * Returns a promise that is resolved once the subscribe action has been performed. This action subscribes an user to the specified article.                         
+                     * @method                         
+                     * @example ArticleService.articles.subscriptions.article.subscribe(article, user)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });                         
+                    **/
+                    subscribe(article: IArticle, data: IArticleSubscription): PromiseLike<IHttpResponse<any>> {
+                        return this.baasicApp.articleModule.articles.subscriptions.article.subscribe(article, data);
+                    },
+
+                    /**                         
+                     * Returns a promise that is resolved once the isSubscribed action has been performed. This action checks if a user is subscribed to the specified article.                         
+                     * @method                       
+                     * @example ArticleService.articles.subscriptions.article.subscribe(article, user)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });                          
+                    **/
+                    isSubscribed(article: IArticle, data: IArticleSubscription): PromiseLike<IHttpResponse<any>> {
+                        return this.baasicApp.articleModule.articles.subscriptions.article.isSubscribed(article, data);
+                    },
+
+                    /**                         
+                     * Returns a promise that is resolved once the unSubscribe action has been performed. This action unsubscribes a user from the specified article.                         
+                     * @method                        
+                     * @example ArticleService.articles.subscriptions.article.subscribe(article, user)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });                         
+                    **/
+                    unSubscribe(article: IArticle, data: IArticleSubscription): PromiseLike<IHttpResponse<void>> {
+                        return this.baasicApp.articleModule.articles.subscriptions.article.unSubscribe(article, data);
+                    }
+                },
+
+                commentRequiresModeration: {
+                    /**                         
+                     * Returns a promise that is resolved once the subscribe action has been performed.                         
+                     * @method                         
+                     * @example ArticleService.articles.subscriptions.commentRequiresModeration.subscribe(data)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });                         
+                    **/
+                    subscribe(data: IArticleSubscription): PromiseLike<IHttpResponse<any>> {
+                        return this.baasicApp.articleModule.articles.subscriptions.commentRequiresModeration.subscribe(data);
+                    },
+
+                    /**                         
+                     * Returns a promise that is resolved once the isSubscribed action has been performed.                         
+                     * @method                         
+                     * @example ArticleService.articles.subscriptions.commentRequiresModeration.isSubscribed(data)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });                         
+                    **/
+                    isSubscribed(data: IArticleSubscription): PromiseLike<IHttpResponse<any>> {
+                        return this.baasicApp.articleModule.articles.subscriptions.commentRequiresModeration.isSubscribed(data);
+                    },
+
+                    /**                         
+                     * Returns a promise that is commentReported once the unSubscribe action has been performed.                         
+                     * @method                        
+                     * @example ArticleService.articles.subscriptions.commentRequiresModeration.unSubscribed(data)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });                        
+                    **/
+                    unSubscribed(data: IArticleSubscription): PromiseLike<IHttpResponse<void>> {
+                        return this.baasicApp.articleModule.articles.subscriptions.commentRequiresModeration.unSubscribe(data);
+                    }
+                }
+            },
+
+            tags: {
+                /**                 
+                 * Returns a promise that is resolved once the find action has been performed. Success response returns a list of article tag resources matching the given criteria.                 
+                 * @method                        
+                 * @example ArticleService.articles.tags.find({  
+                                pageNumber : 1,  
+                                pageSize : 10, 
+                                orderBy : '<field>',  
+                                orderDirection : '<asc|desc>',  
+                                search : '<search-phrase>' 
+                            })
+                            .then(function (collection) {  
+                                // perform success action here 
+                            },
+                            function (response, status, headers, config) {  
+                                // perform error handling here 
+                            });                    
+                **/
+                find(articleId: string, options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleTag>>> {
+                    return this.baasicApp.articleModule.articles.tags.find(articleId, options);
+                },
+
+                /**                 
+                 * Returns a promise that is resolved once the get action has been performed. Success response returns the specified article tag resource.  
+                 * @param id tag id
+                 * @param options options object               
+                 * @method                        
+                 * @example ArticleService.articles.tags.get('<articleTag-id>')
+                             .then(function (data) {  
+                                 // perform success action here 
+                             },
+                                function (response, status, headers, config) {  
+                                // perform error handling here 
+                            });                
+                **/
+                get(articleId: string, id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticleTag>> {
+                    return this.baasicApp.articleModule.articles.tags.find(articleId, id, options);
+                },
+
+                /**                     
+                 * Returns a promise that is resolved once the create article tag action has been performed; this action creates a new tag for an article.                     
+                 * @method                       
+                 * @example ArticleService.articles.tags.create({   
+                                articleId : '<article-id>',   
+                                tag : {     
+                                    slug : '<slug>',     
+                                    sortOrder : 1,    
+                                    tag : '<tag>'   
+                                } 
+                            })
+                            .then(function (data) {   
+                                // perform success action here 
+                            },
+                            function (response, status, headers, config) {   
+                                // perform error handling here 
+                            });                     
+                **/
+                create(data: IArticleTag): PromiseLike<IHttpResponse<IArticleTag>> {
+                    return this.baasicApp.articleModule.articles.tags.create(data);
+                },
+
+                /**                 
+                 * Returns a promise that is resolved once the remove article tag action has been performed. If the action is successfully completed, the article tag resource will be permanently removed from the system. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicArticleTagsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+                 * ``` 
+                 * let params = modelMapper.removeParams(articleTag); 
+                 * let uri = params['model'].links('delete').href; 
+                 * ```                 
+                 * @method                        
+                 * @example // articleTag is a resource previously fetched using get action.
+                                ArticleService.articles.tags.remove(articleTag)
+                                    .then(function (data) {   
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) {   
+                                        // perform error handling here 
+                                    });						
+                **/
+                remove(data: IArticleTag): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.articles.tags.remove(data);
+                },
+
+                /**                     
+                 * Returns a promise that is resolved once the removeAll article tag action has been performed. This action will remove all tags from an article if successfully completed. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicArticleRouteService` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+                 * ``` 
+                 * let params = modelMapper.removeParams(article); 
+                 * let uri = params['model'].links('delete-tags-by-article').href; 
+                 * ```                     
+                 * @method                     
+                 * @example // article is a resource previously fetched using get action.					
+                                ArticleService.articles.tags.removeAll(article)
+                                    .then(function (data) {   
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) {   
+                                        // perform error handling here 
+                                    });						    
+                **/
+                removeAll(data: IArticle): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.articles.tags.removeAll(data);
+                }
+            }
+        };
+    }
+
+    get comments(): IArticleCommentService {
+        return {
+            /**
+            * Contains a reference to valid list of article comment states. It returns an object containing all article comment states.
+            * @method
+            * @example ArticleService.comments.statuses.approved;
+            **/
+            statuses: this.baasicApp.articleModule.comments.statuses,
+
+            /**
+             * Returns a promise that is resolved once the approve article comment action has been performed. This action sets the state of an article comment to "approved". This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = modelMapper.updateParams(articleComment); 
+             * let uri = params['model'].links('comment-approve').href; 
+             * ```
+             * @method
+             * @param data Article Comment object.
+             * @param options Notification configuration used to control the article comment recourse access when managing notification distribution.
+             * @returns A promise that is resolved once the approve article comment action has been performed. 
+             * @example // articleComment is a resource previously fetched using get action. 
+                            ArticleService.comments.approve(articleComment, commentOptions)
+                                .then(function (data) { 
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) { 
+                                    // perform error handling here 
+                                });
+            **/
+            approve(data: IArticleComment, options: INotificationConfiguration): PromiseLike<IHttpResponse<void>> {
+                return this.baasicApp.articleModule.comments.approve(data, options);
+            },
+
+            /**
+             * Returns a promise that is resolved once the unapprove article comment action has been performed. This action sets the state of an article comment to "unapproved". This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = modelMapper.updateParams(articleComment); 
+             * let uri = params['model'].links('comment-unapprove').href; 
+             * ```
+             * @method 
+             * @param data Article Comment object.
+             * @returns A promise that is resolved once the unapprove article comment action has been performed.
+             * @example // articleComment is a resource previously fetched using get action. 
+                            ArticleService.comments.unapprove(articleComment)
+                                .then(function (data) { 
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) { 
+                                    // perform error handling here 
+                                });
+            **/
+            unapprove(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
+                return this.baasicApp.articleModule.comments.unapprove(data);
+            },
+
+            /**
+             * Returns a promise that is resolved once the create article comment action has been performed; this action creates a new comment for an article.
+             * @method
+             * @param data Article Comment object.
+             * @returns A promise that is resolved once the create article comment action has been performed.
+             * @example ArticleService.comments.create({ 
+                                articleId : '<article-id>', 
+                                comment : <comment>, 
+                                userId : '<user-id>' })
+                            .then(function (data) { 
+                                // perform success action here 
+                            },
+                            function (response, status, headers, config) { 
+                                // perform error handling here 
+                            });
+            **/
+            create(data: IArticleComment): PromiseLike<IHttpResponse<IArticleComment>> {
+                return this.baasicApp.articleModule.comments.create(data);
+            },
+
+            /**
+             * Returns a promise that is resolved once the find action has been performed. Success response returns a list of article comment resources matching the given criteria.
+             * @method
+             * @param options Query resource options object.
+             * @returns A promise that is resolved once the find action has been performed.  
+             * @example ArticleService.comments.find({ 
+                            pageNumber : 1, 
+                            pageSize : 10, 
+                            orderBy : '<field>', 
+                            orderDirection : '<asc|desc>', 
+                            search : '<search-phrase>' 
+                        })
+                        .success(function (collection) { 
+                            // perform success action here 
+                        })
+                        .error(function (response, status, headers, config) { 
+                            // perform error handling here 
+                        });
+            **/
+            find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleComment>>> {
+                return this.baasicApp.articleModule.comments.find(options);
+            },
+
+            /**
+             * Returns a promise that is resolved once the flag article comment action has been performed. This action sets the state of an article comment to "flagged". This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = modelMapper.updateParams(articleComment); 
+             * let uri = params['model'].links('comment-flag').href; 
+             * ```                     
+             * @method
+             * @param data Article Comment object.
+             * @returns A promise that is resolved once the flag article comment action has been performed. 
+             * @example // articleComment is a resource previously fetched using get action. 
+                            ArticleService.comments.flag(articleComment)
+                                .then(function (data) { 
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) { 
+                                    // perform error handling here 
+                                });		                
+            **/
+            flag(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
+                return this.baasicApp.articleModule.comments.flag(data);
+            },
+
+            /**
+             * Returns a promise that is resolved once the unflag article comment action has been performed. This action removes the "flagged" comment mark. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = modelMapper.updateParams(articleComment); 
+             * let uri = params['model'].links('comment-unflag').href; 
+             * ```
+             * @method
+             * @param data Article Comment object.
+             * @returns A promise that is resolved once the unflag article comment action has been performed. 
+             * @example // articleComment is a resource previously fetched using get action. 
+                            ArticleService.comments.unflag(articleComment)
+                                .then(function (data) { 
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) { 
+                                    // perform error handling here 
+                                });
+            **/
+            unflag(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
+                return this.baasicApp.articleModule.comments.unflag(data);
+            },
+
+            /**
+             * Returns a promise that is resolved once the get action has been performed. Success response returns the specified article comment resource.
+             * @method 
+             * @param id Id which uniquely identifies article comment resource that needs to be retrieved.
+             * @param options Options object that contains embed data.
+             * @returns A promise that is resolved once the get action has been performed. 
+             * @example ArticleService.comments.get('<article-id>', '<comment-id>')
+                         .then(function (data) { 
+                             // perform success action here 
+                         },
+                            function (response, status, headers, config) { 
+                            // perform error handling here 
+                        });
+            **/
+            get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticleComment>> {
+                return this.baasicApp.articleModule.comments.get(id, options);
+            },
+
+            /**
+             * Returns a promise that is resolved once the remove article comment action has been performed. If the action is successfully completed, the article comment resource and its replies will be permanently removed from the system. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicArticleCommentsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             ``` 
+             let params = modelMapper.removeParams(articleComment); 
+             let uri = params['model'].links('delete').href; 
+             ```
+             * @method
+             * @param data Article Comment object.
+             * @returns A promise that is resolved once the remove article comment action has been performed.  
+             * @example // articleComment is a resource previously fetched using get action. 
+                             ArticleService.comments.remove(articleComment)
+                                 .then(function (data) { 
+                                     // perform success action here 
+                                 }, 
+                                    function (response, status, headers, config) { 
+                                    // perform error handling here 
+                                });
+            **/
+            remove(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
+                return this.baasicApp.articleModule.comments.remove(data);
+            },
+
+            /** 
+             * Returns a promise that is resolved once the report article comment action has been performed. This action sets the state of an article comment to "reported". This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = modelMapper.updateParams(articleComment); 
+             * let uri = params['model'].links('comment-report').href; 
+             * ```
+             * @method
+             * @param data Article Comment object.
+             * @param options Notification configuration used to control the article comment recourse access when managing notification distribution.
+             * @returns A promise that is resolved once the report article comment action has been performed. 
+             * @example // articleComment is a resource previously fetched using get action.
+                            ArticleService.comments.report(articleComment, commentOptions)
+                                .success(function (data) { 
+                                    // perform success action here 
+                                })
+                                .error(function (response, status, headers, config) { 
+                                    // perform error handling here 
+                                });
+            **/
+            report(data: IArticleComment, options: INotificationConfiguration): PromiseLike<IHttpResponse<void>> {
+                return this.baasicApp.articleModule.comments.report(data, options);
+            },
+
+            /**
+             * Returns a promise that is resolved once the unreport article comment action has been performed. This action removes the "reported" comment mark. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = modelMapper.updateParams(articleComment); 
+             * let uri = params['model'].links('comment-unreport').href; 
+             * ```
+             * @method 
+             * @param data Article Comment object.
+             * @returns A promise that is resolved once the unreport article comment action has been performed. 
+             * @example // articleComment is a resource previously fetched using get action. 
+                            ArticleService.comments.unreport(articleComment)
+                                .then(function (data) { 
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) { 
+                                    // perform error handling here 
+                                });
+            **/
+            unreport(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
+                return this.baasicApp.articleModule.comments.unreport(data);
+            },
+
+            /**                 
+             * Returns a promise that is resolved once the update article comment action has been performed; this action updates an article comment resource. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = modelMapper.updateParams(articleComment); 
+             * let uri = params['model'].links('put').href; 
+             * ```                     
+             * @method 
+             * @param data Article Comment object.
+             * @returns A promise that is resolved once the update article comment action has been performed.                    
+             * @example // articleComment is a resource previously fetched using get action.				 
+                            ArticleService.comments.update(articleComment)
+                                .then(function (data) { 
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) { 
+                                    // perform error handling here 
+                                });		                
+            **/
+            update(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
+                return this.baasicApp.articleModule.comments.update(data);
+            },
+
+            commentReplies: {
+                statuses: this.baasicApp.articleModule.comments.replies.statuses,
+
+                /**
+                 * Returns a promise that is resolved once the approve article comment reply action has been performed. This action sets the state of an article comment reply to "approved". This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicArticleCommentRepliesRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+                 * ``` 
+                 * let params = modelMapper.updateParams(articleCommentReply); 
+                 * let uri = params['model'].links('comment-approve').href; 
+                 * ```
+                 * @method
+                 * @param data Article Comment Reply object.
+                 * @param options Notification configuration used to control the article comment recourse access when managing notification distribution.
+                 * @returns A promise that is resolved once the approve article comment reply action has been performed. 
+                 * @example // articleCommentReply is a resource previously fetched using get action. 
+                                ArticleService.comments.commentReplies.approve(articleCommentReply, commentOptions)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });
+                **/
+                approve(data: IArticleCommentReply, options: INotificationConfiguration): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.comments.commentReplies.approve(data, options);
+                },
+
+                /**
+                 * Returns a promise that is resolved once the unapprove article comment reply action has been performed. This action sets the state of an article comment reply to "unapproved". This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentRepliesRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+                 * ``` 
+                 * let params = modelMapper.updateParams(articleCommentReply); 
+                 * let uri = params['model'].links('comment-unapprove').href; 
+                 * ```
+                 * @method
+                 * @param data Article Comment Reply object.
+                 * @returns A promise that is resolved once the unapprove article comment reply action has been performed.  
+                 * @example // articleCommentReply is a resource previously fetched using get action.
+                                ArticleService.comments.commentReplies.unapprove(articleCommentReply)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });
+                **/
+                unapprove(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.comments.commentReplies.unapprove(data);
+                },
+
+                /**
+                 * Returns a promise that is resolved once the create article comment reply action has been performed; this action creates a new comment reply for an article.
+                 * @method
+                 * @param data An article comment reply object that needs to be inserted into the system.
+                 * @returns A promise that is resolved once the create article comment reply action has been performed. 
+                 * @example ArticleService.comments.commentReplies.create('<article-id>', { 
+                                commentId : '<comment-id>', 
+                                comment : <comment>, 
+                                userId : '<user-id>' })
+                            .then(function (data) { 
+                                // perform success action here 
+                            },
+                            function (response, status, headers, config) { 
+                                // perform error handling here 
+                            });
+                **/
+                create(data: IArticleCommentReply): PromiseLike<IHttpResponse<IArticleCommentReply>> {
+                    return this.baasicApp.articleModule.comments.commentReplies.create(data);
+                },
+
+                /**
+                 * Returns a promise that is resolved once the find action has been performed. Success response returns a list of article comment reply resources matching the given criteria.
+                 * @method
+                 * @param options Query resource options object.
+                 * @returns A promise that is resolved once the find action has been performed. 
+                 * @example ArticleService.comments.commentReplies.find({ 
+                                pageNumber : 1, 
+                                pageSize : 10, 
+                                orderBy : '<field>', 
+                                orderDirection : '<asc|desc>', 
+                                search : '<search-phrase>' 
+                            })
+                            .then(function (collection) { 
+                                // perform success action here 
+                            },
+                            function (response, status, headers, config) { 
+                                // perform error handling here 
+                            });
+                **/
+                find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleCommentReply>>> {
+                    return this.baasicApp.articleModule.comments.commentReplies.find(options);
+                },
+
+                /**
+                 * Returns a promise that is resolved once the flag article comment reply action has been performed. This action sets the state of an article comment reply to "flagged". This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentRepliesRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+                 * ``` 
+                 * let params = modelMapper.updateParams(articleCommentReply); 
+                 * let uri = params['model'].links('comment-flag').href; 
+                 * ```
+                 * @method
+                 * @param data Article Comment Reply object.
+                 * @returns A promise that is resolved once the flag article comment reply action has been performed. 
+                 * @example     // articleCommentReply is a resource previously fetched using get action.
+                                    ArticleService.comments.commentReplies.flag(articleCommentReply)
+                                        .then(function (data) { 
+                                            // perform success action here 
+                                        },
+                                        function (response, status, headers, config) { 
+                                            // perform error handling here 
+                                        });
+                **/
+                flag(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.comments.commentReplies.flag(data);
+                },
+
+                /**
+                 * Returns a promise that is resolved once the unflag article comment reply action has been performed. This action removes the "flagged" comment reply state. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentRepliesRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+                 * ``` 
+                 * let params = modelMapper.updateParams(articleCommentReply); 
+                 * let uri = params['model'].links('comment-unflag').href; 
+                 * ```
+                 * @method 
+                 * @param data Article Comment Reply object.
+                 * @returns A promise that is resolved once the unflag article comment reply action has been performed. 
+                 * @example // articleCommentReply is a resource previously fetched using get action. 
+                                ArticleService.comments.commentReplies.unflag(articleCommentReply)
+                                    .success(function (data) { 
+                                        // perform success action here 
+                                    }).error(function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });
+                **/
+                unflag(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.comments.commentReplies.unflag(data);
+                },
+
+                /**
+                 * Returns a promise that is resolved once the get action has been performed. Success response returns the specified article comment reply resource.
+                 * @method
+                 * @param id Id which uniquely identifies article comment reply resource that needs to be retrieved.
+                 * @param options Options object that contains embed data.
+                 * @returns A promise that is resolved once the get action has been performed. 
+                 * @example ArticleService.comments.commentReplies.get('<comment-reply-id>')
+                                .then(function (data) { 
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {
+                                    // perform error handling here 
+                                });
+                **/
+                get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticleCommentReply>> {
+                    return this.baasicApp.articleModule.comments.commentReplies.get(id, options);
+                },
+
+                /**
+                 * Returns a promise that is resolved once the remove article comment reply action has been performed. If the action is successfully completed, the article comment reply resource will be permanently removed from the system. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentRepliesRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+                 * ``` 
+                 * let params = baasicApiClient.removeParams(articleCommentReply); 
+                 * let uri = params['model'].links('delete').href; 
+                 * ```
+                 * @method
+                 * @param data An article Comment Reply object used to update specified article comment reply resource. 
+                 * @returns A promise that is resolved once the remove article comment reply action has been performed. 
+                 * @example // articleCommentReply is a resource previously fetched using get action. 
+                                ArticleService.comments.commentReplies.remove(articleCommentReply)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });
+                **/
+                remove(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.comments.commentReplies.remove(data);
+                },
+
+                /**
+                 * Returns a promise that is resolved once the report article comment reply action has been performed. This action sets the state of an article comment reply to "reported". This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentRepliesRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+                 * ``` 
+                 * let params = modelMapper.updateParams(articleCommentReply); 
+                 * let uri = params['model'].links('comment-report').href; 
+                 * ```
+                 * @method 
+                 * @param data Article Comment Reply object.
+                 * @param options Notification configuration used to control the article comment recourse access when managing notification distribution.
+                 * @returns A promise that is resolved once the report article comment reply action has been performed. 
+                 * @example // articleCommentReply is a resource previously fetched using get action. 
+                                ArticleService.comments.commentReplies.report(articleCommentReply, commentOptions)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });
+                **/
+                report(data: IArticleCommentReply, options?: INotificationConfiguration): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.comments.commentReplies.report(data, options);
+                },
+
+                /**
+                 * Returns a promise that is resolved once the unreport article comment reply action has been performed. This action removes the "reported" comment reply state. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentRepliesRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+                 * ``` 
+                 * let params = modelMapper.updateParams(articleCommentReply); 
+                 * let uri = params['model'].links('comment-unreport').href; 
+                 * ```
+                 * @method
+                 * @param data Article Comment Reply object.
+                 * @returns A promise that is resolved once the unreport article comment reply action has been performed. 
+                 * @example // articleCommentReply is a resource previously fetched using get action. 
+                                ArticleService.comments.commentReplies.unreport(articleCommentReply)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });
+                **/
+                unreport(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.comments.commentReplies.unreport(data);
+                },
+
+                /**
+                 * Returns a promise that is resolved once the mark as spam article comment reply action has been performed. This action sets the state of an article comment reply to "spam". This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentRepliesRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+                 * ``` 
+                 * let params = modelMapper.updateParams(articleCommentReply); 
+                 * let uri = params['model'].links('comment-spam').href; 
+                 * ```
+                 * @method
+                 * @param data Article Comment Reply object.
+                 * @returns A promise that is resolved once the mark as spam article comment reply action has been performed. 
+                 * @example // articleCommentReply is a resource previously fetched using get action. 
+                                ArticleService.comments.commentReplies.spam(articleCommentReply)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });
+                **/
+                spam(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.comments.commentReplies.spam(data);
+                },
+
+                /**
+                 * Returns a promise that is resolved once the unspam article comment reply action has been performed. This action removes the "spam" comment reply state. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentRepliesRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+                 * ``` 
+                 * let params = modelMapper.updateParams(articleCommentReply); 
+                 * let uri = params['model'].links('comment-unspam').href; 
+                 * ```
+                 * @method 
+                 * @param data Article Comment Reply object.
+                 * @returns A promise that is resolved once the unspam article comment reply action has been performed. 
+                 * @example // articleCommentReply is a resource previously fetched using get action. 
+                                 ArticleService.comments.commentReplies.unspam(articleCommentReply)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });
+                **/
+                unspam(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.comments.commentReplies.unspam(data);
+                },
+
+                /**
+                 * Returns a promise that is resolved once the update article comment reply action has been performed; this action updates an article comment reply resource. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicarticleCommentRepliesRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+                 * ``` 
+                 * let params = modelMapper.updateParams(articleCommentReply); 
+                 * let uri = params['model'].links('put').href; 
+                 * ```
+                 * @method
+                 * @param data An Article Comments Reply object used to update specified article comment reply resource.
+                 * @returns A promise that is resolved once the update article comment reply action has been performed. 
+                 * @example // articleCommentReply is a resource previously fetched using get action. 
+                                ArticleService.comments.commentReplies.update(articleCommentReply)
+                                    .then(function (data) { 
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) { 
+                                        // perform error handling here 
+                                    });
+                **/
+                update(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.comments.commentReplies.update(data);
+                }
+            }
+        };
+    }
+
+    get files(): IArticleFilesService {
+        return {
+            /**                  
+            * Returns a promise that is resolved once the find action has been performed. Success response returns a list of file resources matching the given criteria.                  
+            * @method 
+            * @param options Query resource options object.
+            * @returns A promise that is resolved once the find action has been performed.                         
+            * @example ArticleService.files.find({   
+                           pageNumber : 1,   
+                           pageSize : 10,   
+                           orderBy : '<field>',   
+                           orderDirection : '<asc|desc>',   
+                           search : '<search-phrase>' 
+                       })
+                       .then(function (collection) {   
+                           // perform success action here 
+                       },
+                       function (response, status, headers, config) {   
+                           // perform error handling here 
+                       });
+           **/
+            find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleFile>>> {
+                return this.baasicApp.articleModule.files.find(options);
+            },
+
+            /**                 
+             * Returns a promise that is resolved once the get action has been performed. Success response returns requested file resource.                 
+             * @method
+             * @param id Article file id which uniquely identifies article resource that needs to be retrieved.                       
+             * @param options Options object that contains embed data.
+             * @returns A promise that is resolved once the get action has been performed. 
+             * @example ArticleService.files.get('<file-id>')
+                         .then(function (data) {   
+                             // perform success action here 
+                         },
+                            function (response, status, headers, config) {   
+                            // perform error handling here 
+                        });                 
+            **/
+            get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticleFile>> {
+                return this.baasicApp.articleModule.files.get(id, options);
+            },
+
+            /**                  
+             * Returns a promise that is resolved once the unlink action has been performed. This action will remove one or many file resources from the system if successfully completed. Specified file and all its accompanying derived resources will be removed from the system. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply baasicArticleFilesRouteService route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = modelMapper.removeParams(fileEntry); 
+             * let uri = params['model'].links('unlink').href; 
+             * ```                  
+             * @method
+             * @param data Article file object.
+             * @param options options object.
+             * @returns A promise that is resolved once the unlink action has been performed.                          
+             * @example // fileEntry is a file resource previously fetched using get action. The following action will remove the original file resource and all accompanying derived file resources.			 
+                            ArticleService.files.remove(fileEntry)
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                }); 				
+            **/
+            unlink(data: IArticleFile, options: Object): PromiseLike<IHttpResponse<void>> {
+                return this.baasicApp.articleModule.files.unlink(data, options);
+            },
+
+            /**                  
+             * Returns a promise that is resolved once the update file action has been performed; this action will update a file resource if successfully completed. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicArticleFilesRouteService` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             ``` 
+             let params = modelMapper.updateParams(fileEntry); 
+             let uri = params['model'].links('put').href; 
+             ```                  
+             * @method
+             * @param data Article file object that need to be updated in the system.
+             * @returns A promise that is resolved once the update file action has been performed.                          
+             * @example // fileEntry is a file resource previously fetched using get action. 
+                         fileEntry.description = '<description>'; 
+                         ArticleService.files.update(fileEntry)
+                             .then(function (data) {   
+                                 // perform success action here 
+                             },
+                                function (response, status, headers, config) {   
+                                // perform error handling here 
+                            }); 				
+            **/
+            update(data: IArticleFile): PromiseLike<IHttpResponse<void>> {
+                return this.baasicApp.articleModule.files.update(data);
+            },
+
+            /** 
+             * Returns a promise that is resolved once the link action has been performed; this action links file resource from other modules into the Article Files module (For example: file resources from the Media Vault module can be linked directly into the Article Files module).                  
+             * @method
+             * @param data Article file object.
+             * @returns A promise that is resolved once the link action has been performed.                          
+             * @example ArticleService.files.link(fileObject)
+                            .then(function (response, status, headers, config) {   
+                                // perform success handling here 
+                            },
+                                function (response, status, headers, config) {   
+                                // perform error handling here 
+                            });                 
+            **/
+            link(data: IArticleFile): PromiseLike<IHttpResponse<IArticleFile>> {
+                return this.baasicApp.articleModule.files.link(data);
+            },
+
+            batch: {
+                /**                   
+                 * Returns a promise that is resolved once the unlink action has been performed. This action will remove file resources from the system if successfully completed. If derived resource's format is passed, such as `width` and `height` for the image type of file resource, the operation will remove just derived resource. Otherwise, specified file and all its accompanying derived resources will be removed from the system.                   
+                 * @method                         
+                 * @example // Remove original file resources                
+                             ArticleService.files.batch.unlink([{ id: '<file-id>' }])
+                                 .then(function (data) {   
+                                     // perform success action here 
+                                 },
+                                    function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                });		
+                        // Remove derived file resources  
+                            ArticleService.files.batch.unlink([{ id: '<file-id>', fileFormat: { width: <width>, height: <height> } }])
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                    function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                });		                    
+                **/
+                unlink(data: Object[]): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.files.batch.unlink(data);
+                },
+
+                /**                   
+                 * Returns a promise that is resolved once the update action has been performed; this action updates specified file resources.                  
+                 * @method                        
+                 * @example ArticleService.files.batch.update(files)
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                });                   
+                **/
+                update(data: IArticleFile[]): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.files.batch.update(data);
+                },
+
+                /**                   
+                 * Returns a promise that is resolved once the link action has been performed; this action links file resources from other modules into the Files module (For example: file resources from the Media Vault module can be linked directly into the Files module).                   
+                 * @method                         
+                 * @example ArticleService.files.batch.link(files)
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                });                   
+                **/
+                link(data: IArticleFile[]): PromiseLike<IHttpResponse<any>> {
+                    return this.baasicApp.articleModule.files.batch.link(data);
+                }
+            },
+
+            streams: {
+                /**                     
+                 * Returns a promise that is resolved once the get action has been performed. Success response returns the file stream if successfully completed. If derived resource's format is passed, such as `width` and `height` for the image type of file resource, the operation will return a stream of the derived resource. Otherwise, stream of the original file resource will be retrieved.                     
+                 * @method streams.get                            
+                 * @example // Request the original file stream              
+                                ArticleService.files.streams.get({id: '<file-id>'})
+                                    .then(function (data) {     
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) {     
+                                        // perform error handling here 
+                                    });
+
+                            // Request derived file stream                
+                                    ArticleService.files.streams.get({id: '<file-id>', width: <width>, height: <height>})
+                                        .then(function (data) {     
+                                            // perform success action here 
+                                        },
+                                        function (response, status, headers, config) {    
+                                            // perform error handling here 
+                                        });                     
+                **/
+                get(data: any): PromiseLike<IHttpResponse<any>> {
+                    return this.baasicApp.articleModule.files.streams.get(data);
+                },
+
+                /**                     
+                 * Returns a promise that is resolved once the get action has been performed. Success response returns the file stream as a blob. If derived resource's format is passed, such as `width` and `height` for the image type of file resource, the operation will return a blob of the derived file resource. Otherwise, blob of the original file resource will be retrieved. For more information on Blob objects please see [Blob Documentation](https://developer.mozilla.org/en-US/docs/Web/API/Blob).                     
+                 * @method streams.getBlob                            
+                 * @example // Request the original blob                
+                                ArticleService.files.streams.getBlob('<file-id>')
+                                    .then(function (data) {     
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) {     
+                                        // perform error handling here 
+                                    }); 
+                                    
+                            // Request derived blob                 
+                                    ArticleService.files.streams.getBlob({
+                                        id: '<file-id>', 
+                                        width: <width>, 
+                                        height: <height>
+                                    })
+                                    .then(function (data) {     
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) {     
+                                        // perform error handling here 
+                                    });                     
+                **/
+                getBlob(data: any): PromiseLike<IHttpResponse<any>> {
+                    return this.baasicApp.articleModule.files.streams.getBlob(data);
+                },
+
+                /**                      
+                 * Returns a promise that is resolved once the update file stream action has been performed; this action will replace the existing stream with a new one. Alternatively, if a derived stream is being updated it will either create a new derived stream or replace the existing one. In order to update a derived stream, format needs to be passed (For example: `width` and `height` for the image type of file stream data type).                      
+                 * @method streams.update                      
+                 * @example // Update original file stream 
+                                ArticleService.files.streams.update('<file-id>', <file-stream>)
+                                    .then(function (data) {   
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) {   
+                                        // perform error handling here 
+                                    }); 
+                            // Update derived file stream 
+                                ArticleService.files.streams.update({id: '<file-id>', width: <width>, height: <height>}, <file-stream>)
+                                    .then(function (data) {   
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) {   
+                                        // perform error handling here 
+                                    });                     
+                **/
+                update(data: any, stream: any): PromiseLike<IHttpResponse<any>> {
+                    return this.baasicApp.articleModule.files.streams.update(data, stream);
+                },
+
+                /**                      
+                 * Returns a promise that is resolved once the create file stream action has been performed; this action will upload the specified blob. For more information on Blob objects please see [Blob Documentation](https://developer.mozilla.org/en-US/docs/Web/API/Blob).                      
+                 * @method streams.create                      
+                 * @example ArticleService.files.streams.create('<file-id>', <blob>)
+                             .then(function (data) {  
+                                    // perform success action here 
+                            },
+                                function (response, status, headers, config) {   
+                                // perform error handling here 
+                            });                     
+                **/
+                create(data: IArticleFile, stream: any): PromiseLike<IHttpResponse<any>> {
+                    return this.baasicApp.articleModule.files.streams.create(data);
+                }
+            }
+        };
+    }
+
+    get ratings(): IArticleRatingsService {
+        return {
+            /**       
+             * Returns a promise that is resolved once the create article rating action has been performed; this action creates a new rating for an article.                   
+             * @method 
+             * @param data An article rating object that needs to be inserted into the system.
+             * @returns A promise that is resolved once the create article rating action has been performed.                      
+             * @example ArticleService.ratings.create({ 
+                            articleId : '<article-id>', 
+                            rating : 5, 
+                            userId : '<user-id>' 
+                        })
+                        .then(function (data) { 
+                            // perform success action here 
+                        },
+                        function (response, status, headers, config) { 
+                            // perform error handling here 
+                        });                   
+            **/
+            create(data: IRating): PromiseLike<IHttpResponse<IRating>> {
+                return this.baasicApp.articleModule.ratings.create(data);
+            },
+
+            /**                  
+             * Returns a promise that is resolved once the find action has been performed. Success response returns a list of article rating resources matching the given criteria.                  
+             * @method
+             * @param options Query resource options object.
+             * @returns A promise that is resolved once the find action has been performed.                         
+             * @example ArticleService.ratings.find({ 
+                            pageNumber : 1,   
+                            pageSize : 10,   
+                            orderBy : '<field>',   
+                            orderDirection : '<asc|desc>',   
+                            search : '<search-phrase>' 
+                        })
+                        .then(function (collection) {   
+                            // perform success action here 
+                        },
+                        function (response, status, headers, config) {   
+                            // perform error handling here 
+                        });                     
+            **/
+            find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IRating>>> {
+                return this.baasicApp.articleModule.ratings.find(options);
+            },
+
+            /**                  
+             * Returns a promise that is resolved once the findByUser action has been performed. Success response returns a list of article rating resources filtered by username.                  
+             * @method
+             * @param username Username which uniquely identifies a user which has created an article rating.
+             * @param options Query resource options object.
+             * @returns A promise that is resolved once the findByUser action has been performed.                        
+             * @example ArticleService.ratings.find('<username>', {   
+                            pageNumber : 1,   
+                            pageSize : 10,   
+                            orderBy : '<field>',   
+                            orderDirection : '<asc|desc>'
+                        })
+                        .then(function (collection) {   
+                            // perform success action here 
+                        },
+                        function (response, status, headers, config) {   
+                            // perform error handling here 
+                        });                     
+            **/
+            findByUser(username: string, options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IRating>>> {
+                return this.baasicApp.articleModule.ratings.findByUser(username, options);
+            },
+
+            /**                  
+             * Returns a promise that is resolved once the get action has been performed. Success response returns the specified article rating resource.                  
+             * @method
+             * @param id Id which uniquely identifies article rating resource that needs to be retrieved.
+             * @param options Options object that contains embed data.
+             * @returns A promise that is resolved once the get action has been performed.                           
+             * @example ArticleService.ratings.get('<articleRating-id>')
+                            .then(function (data) {   
+                                // perform success action here 
+                            },
+                            function (response, status, headers, config) {   
+                                // perform error handling here 
+                            });                 
+            **/
+            get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IRating>> {
+                return this.baasicApp.articleModule.ratings.get(id, options);
+            },
+
+            /**                  
+             * Returns a promise that is resolved once the update article rating action has been performed; this action updates an article rating. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicArticleRatingsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = modelMapper.removeParams(articleRating); 
+             * let uri = params['model'].links('put').href; 
+             * ```                  
+             * @method
+             * @param data An article object used to update specified article rating resource.
+             * @returns A promise that is resolved once the update article rating action has been performed.                          
+             * @example // articleRating is a resource previously fetched using get action. 
+                            articleRating.rating = 4; 
+                            ArticleService.ratings.update(articleRating)
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                }); 				
+            **/
+            update(data: IRating): PromiseLike<IHttpResponse<void>> {
+                return this.baasicApp.articleModule.ratings.update(data);
+            },
+
+            /**                 
+             * Returns a promise that is resolved once the remove article rating action has been performed. If the action is successfully completed, the article rating resource will be permanently removed from the system. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicArticleRatingsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = modelMapper.removeParams(articleRating); 
+             * let uri = params['model'].links('delete').href; 
+             * ```                 
+             * @method
+             * @param data An article object used to delete specified article rating resource.
+             * @returns A promise that is resolved once the remove article rating action has been performed.                          
+             * @example // articleRating is a resource previously fetched using get action.				 
+                            ArticleService.ratings.remove(articleRating)
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                });						
+            **/
+            remove(data: IRating): PromiseLike<IHttpResponse<void>> {
+                return this.baasicApp.articleModule.ratings.remove(data);
+            }
+        };
+    }
+
+    get subscriptions(): IArticleSubscriptionsService {
+        return {
+            /**                         
+             * Returns a promise that is resolved once the subscribe action has been performed. This action subscribes an user to the article module.                         
+             * @method                        
+             * @example ArticleService.subscriptions.subscribe(data)
+                         .then(function (data) { 
+                             // perform success action here 
+                         },
+                            function (response, status, headers, config) { 
+                                // perform error handling here 
+                        });                         
+            **/
+            subscribe(data: IArticleSubscription): PromiseLike<IHttpResponse<any>> {
+                return this.baasicApp.articleModule.subscriptions.subscribe(data);
+            },
+
+            /**                         
+             * Returns a promise that is resolved once the isSubscribed action has been performed. This action checks if a user is subscribed to the article module.                         
+             * @method                       
+             * @example ArticleService.subscriptions.isSubscribe(data)
+                         .then(function (data) { 
+                             // perform success action here 
+                         },
+                            function (response, status, headers, config) { 
+                                // perform error handling here 
+                        });                         
+            **/
+            isSubscribed(data: IArticleSubscription): PromiseLike<IHttpResponse<any>> {
+                return this.baasicApp.articleModule.subscriptions.isSubscribed(data);
+            },
+
+            /**                         
+             * Returns a promise that is resolved once the unSubscribe action has been performed. This action unsubscribes a user from the article module.                         
+             * @method                        
+             * @example ArticleService.subscriptions.unSubscribe(data)
+                         .then(function (data) { 
+                             // perform success action here 
+                         },
+                            function (response, status, headers, config) { 
+                                // perform error handling here 
+                        });                          **/
+            unSubscribe(data: IArticleSubscription): PromiseLike<IHttpResponse<void>> {
+                return this.baasicApp.articleModule.subscriptions.unSubscribe(data);
+            }
+        };
+    }
+
+    get tags(): IArticleTagsService {
+        return {
+            /**                 
+             * Returns a promise that is resolved once the find action has been performed. Success response returns a list of article tag resources matching the given criteria.                 
+             * @method
+             * @param options Query resource options object.
+             * @returns A promise that is resolved once the find action has been performed.                         
+             * @example ArticleService.tags.find({  
+                            pageNumber : 1,  
+                            pageSize : 10, 
+                            orderBy : '<field>',  
+                            orderDirection : '<asc|desc>',  
+                            search : '<search-phrase>' 
+                        })
+                        .then(function (collection) {  
+                            // perform success action here 
+                        },
+                        function (response, status, headers, config) {  
+                            // perform error handling here 
+                        });                    
+            **/
+            find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleTag>>> {
+                return this.baasicApp.articleModule.tags.find(options);
+            },
+
+            /**                 
+             * Returns a promise that is resolved once the get action has been performed. Success response returns the specified article tag resource.             
+             * @method                        
+             * @param id Article tag id or slug that uniquely identifies article tag resource that needs to be retrieved.
+             * @param options Options object that contains embed data.
+             * @returns A promise that is resolved once the get action has been performed. 
+             * @example ArticleService.tags.get('<articleTag-id>')
+                         .then(function (data) {  
+                             // perform success action here 
+                         },
+                            function (response, status, headers, config) {  
+                            // perform error handling here 
+                        });                
+            **/
+            get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticleTag>> {
+                return this.baasicApp.articleModule.tags.get(id, options);
+            },
+
+            /**                 
+             * Returns a promise that is resolved once the update article tag action has been performed; this action updates a tag. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicArticleTagsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = modelMapper.removeParams(articleTag); 
+             * let uri = params['model'].links('put').href; 
+             * ```               
+             * @method
+             * @param data An article tag object used to update specified article tag resource.
+             * @returns A promise that is resolved once the update article tag action has been performed.                           
+             * @example // articleTag is a resource previously fetched using get action. 
+                            articleTag.tag = '<new-tag>'; 
+                            ArticleService.tags.update(articleTag)
+                                .then(function (data) {  
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {  
+                                    // perform error handling here 
+                                });                
+            **/
+            update(data: IArticleTag): PromiseLike<IHttpResponse<void>> {
+                return this.baasicApp.articleModule.tags.update(data);
+            },
+
+            /**                 
+             * Returns a promise that is resolved once the remove article tag action has been performed. If the action is successfully completed, the article tag resource will be permanently removed from the system. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicArticleTagsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = modelMapper.removeParams(articleTag); 
+             * let uri = params['model'].links('delete').href; 
+             * ```                 
+             * @method
+             * @param data An article tag object used to delete specified article tag resource.
+             * @returns A promise that is resolved once the remove article tag action has been performed.                         
+             * @example // articleTag is a resource previously fetched using get action.
+                            ArticleService.tags.remove(articleTag)
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                });						
+            **/
+            remove(data: IArticleTag): PromiseLike<IHttpResponse<void>> {
+                return this.baasicApp.articleModule.tags.remove(data);
+            },
+
+            subscriptions: {
+                /**                     
+                 * Returns a promise that is resolved once the subscribe action has been performed. This action subscribes an user to the specified tag.                     
+                 * @method             
+                 * @example ArticleService.tags.subscriptions.subscribe(tag, user) 
+                                .then(function (data) { 
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) { 
+                                    // perform error handling here 
+                                });                     
+                **/
+                subscribe(tag: IArticleTag, data: any): PromiseLike<IHttpResponse<IArticleSubscription>> {
+                    return this.baasicApp.articleModule.tags.subscriptions.subscribe(tag, data);
+                },
+
+                /**                    
+                 * Returns a promise that is resolved once the isSubscribed action has been performed. This action checks if a user is subscribed to the specified tag.
+                 * @param                     
+                 * @method                     
+                 * @example ArticleService.tags.subscriptions.isSubscribed(tag, user)
+                                .then(function (data) { 
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) { 
+                                    // perform error handling here 
+                                });                     
+                **/
+                isSubscribed(tag: IArticleTag, data: any): PromiseLike<IHttpResponse<IArticleSubscription>> {
+                    return this.baasicApp.articleModule.tags.subscriptions.isSubscribed(tag, data);
+                },
+
+                /**                     
+                 * Returns a promise that is resolved once the unSubscribe action has been performed. This action unsubscribes a user from the specified tag.
+                 * @param tag tag object
+                 * @param data data object                     
+                 * @method subscriptions.unSubscribe                     
+                 * @example ArticleService.tags.subscriptions.unSubscribe(tag, user)
+                             .then(function (data) { 
+                                 // perform success action here 
+                             },
+                                function (response, status, headers, config) { 
+                                // perform error handling here 
+                            });                     
+                **/
+                unSubscribe(tag: IArticleTag, data: any): PromiseLike<IHttpResponse<void>> {
+                    return this.baasicApp.articleModule.tags.subscriptions.unSubscribe(tag, data);
+                }
+            }
+        };
+    }
+
+    get settings(): IArticleSettingsService {
+        return {
+            /**                  
+             * Returns a promise that is resolved once the get action has been performed. Success response returns the article settings. 
+             * @param options options object                 
+             * @method
+             * @param options Options object that contains embed data.
+             * @returns A promise that is resolved once the get action has been performed.                          
+             * @example baasicArticleSettingsClient.get()
+                            .then(function (data) {   
+                                // perform success action here 
+                            },
+                            function (response, status, headers, config) {   
+                                // perform error handling here 
+                            });                 
+            **/
+            get(options?: IGetRequestOptions): PromiseLike<IHttpResponse<any>> {
+                return this.baasicApp.articleModule.settings.get(options);
+            },
+
+            /**                  
+             * Returns a promise that is resolved once the update article settings action has been performed; this action updates article settings. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicArticleSettingsRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = modelMapper.removeParams(articleSettings); 
+             * let uri = params['model'].links('put').href; 
+             * ```               
+             * @method
+             * @param options Options object that contains embed data.
+             * @returns A promise that is resolved once the update article settings action has been performed.                          
+             * @example // articleSettings is a resource previously fetched using get action. 
+                            articleSettings.allowArchive = true; 
+                            baasicArticleSettingsClient.update(articleSettings)
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                }); 				
+            **/
+            update(data: IArticleSettings): PromiseLike<IHttpResponse<void>> {
+                return this.baasicApp.articleModule.settings.update(data);
             }
         };
     }
