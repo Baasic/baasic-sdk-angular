@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
 import { BaasicApp } from 'index'
 
-import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
+import { IACLOptions, IACLPolicy, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
 import {
     IArticle,
     IArticleComment,
@@ -258,6 +258,97 @@ export class ArticleService {
              **/
             purge(options: Object): PromiseLike<IHttpResponse<void>> {
                 return baasicApp.articleModule.articles.purge(options);
+            },
+
+            acl: {
+                /**                     
+                 * Returns a promise that is resolved once the get action has been performed. Success response returns a list of ACL policies established for the specified article resource.                     
+                 * @method                         
+                 * @example baasicArticleACLClient.get({id: '<article-id>'})
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                });                     
+                **/
+                get(options: IACLOptions): PromiseLike<IHttpResponse<IACLPolicy[]>> {
+                    return baasicApp.articleModule.articles.acl.get(options);
+                },
+
+                /**                     
+                 * Returns a promise that is resolved once the update acl action has been performed, this action creates new ACL policy for the specified article resource.                     
+                 * @method
+                 * @param options An ACL policy object that needs to be updated in the system. This object specifies parameters necessary for establishing user and/or role set of rights.
+                 * @returns A promise that is resolved once the update acl action has been performed.
+                 * @example let options = {id : '<article-id>'}; 
+                            let aclObj =  {  
+                                actionId: '<action-id'>,  
+                                roleId: '<roleId>',  
+                                userId: '<userId>' 
+                            }; 
+                            options[baasicConstants.modelPropertyName] = aclObj; 
+                            baasicArticleACLClient.update(options)
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                }); 				    
+                **/
+                update(options: IACLOptions): PromiseLike<IHttpResponse<IACLPolicy[]>> {
+                    return baasicApp.articleModule.articles.acl.update(options);
+                },
+
+                /**                     
+                 * Returns a promise that is resolved once the removeByUser action has been performed. This action deletes ACL policy assigned to the specified user and article resource.                     
+                 * @method
+                 * @param articleId Article id which uniquely identifies article resource whose security privileges need to be retrieved and updated.
+                 * @param action Action abbreviation which identifies ACL policy assigned to the specified user and article resource.
+                 *               Supported Values:
+                 *               "Create"
+                 *               "Delete"
+                 *               "Read"
+                 *               "Update"
+                 * @param user A value that uniquely identifies user for which ACL policy needs to be removed.
+                 * @param data An ACL policy object that needs to be updated in the system. 
+                 * @returns A promise that is resolved once the removeByUser action has been performed.                        
+                 * @example baasicArticleACLClient.removeByUser('<article-id>', '<access-action>', '<username>')
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                }); 				    
+                **/
+                removeByUser(articleId: string, action: string, user: string, data: IACLPolicy): PromiseLike<IHttpResponse<void>> {
+                    return baasicApp.articleModule.articles.acl.removeByUser(articleId, action, user, data);
+                },
+
+                /**                     
+                 * Returns a promise that is resolved once the removeByRole action has been performed. This action deletes ACL policy assigned to the specified role and article resource.                     
+                 * @method 
+                 * @param articleId Article id which uniquely identifies article resource whose security privileges need to be retrieved and updated.
+                 * @param action Action abbreviation which identifies ACL policy assigned to the specified user and article resource.
+                 *               Supported Values:
+                 *               "Create"
+                 *               "Delete"
+                 *               "Read"
+                 *               "Update"
+                 * @param role A value that uniquely identifies role for which ACL policy needs to be removed.
+                 * @param data An ACL policy object that needs to be updated in the system. 
+                 * @returns A promise that is resolved once the removeByRole action has been performed.                     
+                 * @example baasicArticleACLClient.removeByRole('<article-id>', '<access-action>', '<role-name>')
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                }); 				    
+                **/
+                removeByRole(articleId: string, action: string, role: string, data: IACLPolicy): PromiseLike<IHttpResponse<void>> {
+                    return baasicApp.articleModule.articles.acl.removeByRole(articleId, action, role, data);
+                }
             },
 
             comments: {

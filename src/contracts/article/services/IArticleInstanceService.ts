@@ -1,4 +1,4 @@
-import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
+import { IACLService, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
 import {
     IArticle,
     IArticleInstanceCommentsService,
@@ -25,5 +25,6 @@ export interface IArticleInstanceService {
     files: IArticleInstanceFilesService,
     ratings: IArticleInstanceRatingsService,
     subscriptions: IArticleInstanceSubscriptionsService,
-    tags: IArticleInstanceTagsService
+    tags: IArticleInstanceTagsService,
+    acl: IACLService
 }
