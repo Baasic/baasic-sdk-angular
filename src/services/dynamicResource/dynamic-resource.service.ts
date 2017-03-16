@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
 import { BaasicApp } from 'index'
 
-import { IACLPolicy, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
-import { IDynamicACLOptions, IDynamicObject, IDynamicResourceACLService, IDynamicResourceSchemaService, IResourceSchema } from 'contracts/dynamicResource';
+import { IACLPolicy, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
+import { IDynamicACLOptions, IDynamicObject, IDynamicResourceACLService, IDynamicResourceSchemaService, IResourceSchema } from 'services/dynamicResource/contracts';
 
 @Injectable()
 export class DynamicResourceService {

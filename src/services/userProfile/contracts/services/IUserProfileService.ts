@@ -1,4 +1,4 @@
-import { IACLService, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
+import { IACLService, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
 import {
     IUserProfile,
     IUserProfileAvatarService,

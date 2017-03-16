@@ -1,4 +1,4 @@
-import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
+import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
 import { IMeteringCategory, IMeteringCategoryBatchService } from 'contracts/metering';
 
 export interface IMeteringCategoryService {

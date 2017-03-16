@@ -1,4 +1,4 @@
-import { IOptions } from 'contracts/common';
+import { IOptions } from 'common/contracts';
 
 export interface IArticleOptions extends IOptions {
     articleUrl?: string,

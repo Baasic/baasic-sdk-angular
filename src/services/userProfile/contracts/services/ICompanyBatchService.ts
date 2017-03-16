@@ -1,4 +1,4 @@
-import { IHttpResponse } from 'contracts/common';
+import { IHttpResponse } from 'common/contracts';
 import { ICompany } from 'contracts/userProfile';
 
 export interface ICompanyBatchService {

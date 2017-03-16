@@ -1,4 +1,4 @@
-import { IException } from 'contracts/common';
+import { IException } from 'common/contracts';
 
 export interface IBaasicResponse {
     details: string,

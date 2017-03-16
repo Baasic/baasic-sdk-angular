@@ -1,5 +1,5 @@
 import { IValueSetItem } from 'contracts/valueSet';
-import { IBaasicModel } from 'contracts/common';
+import { IBaasicModel } from 'common/contracts';
 
 export interface IValueSet extends IBaasicModel {
     values?: IValueSetItem[],

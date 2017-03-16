@@ -1,4 +1,4 @@
-import { IBaasicModel } from 'contracts/common';
+import { IBaasicModel } from 'common/contracts';
 
 export interface IPolicy extends IBaasicModel {
     action: string,

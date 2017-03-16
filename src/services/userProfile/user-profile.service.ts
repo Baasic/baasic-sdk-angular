@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
 import { BaasicApp } from 'index'
 
-import { IACLOptions, IACLPolicy, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
+import { IACLOptions, IACLPolicy, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
 import {
     ICompany,
     ICompanyService,
@@ -16,7 +16,7 @@ import {
     IUserProfileService,
     IUserSkill,
     IUserWork
-} from 'contracts/userProfile';
+} from 'services/userProfile/contracts';
 
 @Injectable()
 export class UserProfileService {

@@ -1,4 +1,4 @@
-import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
+import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
 import { IInvoiceStreamsService } from 'contracts/commerce';
 
 export interface IInvoiceService {

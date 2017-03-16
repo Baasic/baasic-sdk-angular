@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
 import { BaasicApp } from 'index'
 
-import { IACLOptions, IACLPolicy, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
+import { IACLOptions, IACLPolicy, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
 import {
     IArticle,
     IArticleComment,
@@ -22,7 +22,7 @@ import {
     IArticleTagsService,
     INotificationConfiguration,
     IRating
-} from 'contracts/article';
+} from 'services/article/contracts';
 
 @Injectable()
 export class ArticleService {

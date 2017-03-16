@@ -1,4 +1,4 @@
-import { IHttpResponse } from 'contracts/common';
+import { IHttpResponse } from 'common/contracts';
 import { ISocialLogin } from 'contracts/membership';
 
 export interface ILoginSocialService {

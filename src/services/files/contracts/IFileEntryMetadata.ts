@@ -1,4 +1,4 @@
-import { IUserInfo } from 'contracts/common';
+import { IUserInfo } from 'common/contracts';
 import { IDerivedEntry } from 'contracts/files';
 
 

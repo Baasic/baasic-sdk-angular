@@ -1,4 +1,4 @@
-import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
+import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
 import { IResourceSchema } from 'contracts/dynamicResource';
 
 export interface IDynamicResourceSchemaService {

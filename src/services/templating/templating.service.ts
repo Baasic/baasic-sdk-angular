@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
 import { BaasicApp } from 'index'
 
-import { IBaasicResponse, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
-import { ITemplate, ITemplatingBatchService } from 'contracts/templating';
+import { IBaasicResponse, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
+import { ITemplate, ITemplatingBatchService } from 'services/templating/contracts';
 
 @Injectable()
 export class TemplatingService {

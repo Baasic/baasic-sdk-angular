@@ -7,8 +7,8 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
-import { IKeyValue } from 'contracts/keyValue';
+import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
+import { IKeyValue } from 'services/keyValue/contracts';
 
 @Injectable()
 export class KeyValueService {

@@ -1,4 +1,4 @@
-import { IBaasicModel } from 'contracts/common';
+import { IBaasicModel } from 'common/contracts';
 import { IArticleComment, IArticleFile, IAuthor, IArticleTag, IRating } from 'contracts/article';
 
 export interface IArticle extends IBaasicModel {

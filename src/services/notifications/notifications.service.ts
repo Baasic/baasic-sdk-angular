@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
 import { BaasicApp } from 'index'
 
-import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
+import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
 import {
     IAnonymousRegistration,
     IAnonymousSubscription,
@@ -13,7 +13,7 @@ import {
     INotificationsSubscriptionsService,
     IUserRegistration,
     IUserSubscription
-} from 'contracts/notifications';
+} from 'services/notifications/contracts';
 
 @Injectable()
 export class NotificationsService {

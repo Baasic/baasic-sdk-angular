@@ -7,8 +7,8 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
-import { IValueSet, IValueSetItem, IValueSetItemService } from 'contracts/valueSet';
+import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
+import { IValueSet, IValueSetItem, IValueSetItemService } from 'services/valueSet/contracts';
 
 @Injectable()
 export class ValueSetService {

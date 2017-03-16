@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
 import { BaasicApp } from 'index'
 
-import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
+import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
 import {
     IMediaEntry,
     IMediaVaultBatchService,
@@ -11,7 +11,7 @@ import {
     IMediaVaultStreamsService,
     IMediaVaultSettings,
     IPreprocessingProviderSettings
-} from 'contracts/mediaVault';
+} from 'services/mediaVault/contracts';
 
 @Injectable()
 export class MediaVaultService {

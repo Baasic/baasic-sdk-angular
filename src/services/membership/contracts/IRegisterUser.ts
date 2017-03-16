@@ -1,4 +1,4 @@
-import { IBaasicModel } from 'contracts/common';
+import { IBaasicModel } from 'common/contracts';
 import { IUserIdentity } from 'contracts/membership';
 
 export interface IRegisterUser extends IBaasicModel, IUserIdentity {

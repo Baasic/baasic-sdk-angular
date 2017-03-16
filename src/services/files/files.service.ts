@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
 import { BaasicApp } from 'index'
 
-import { IACLOptions, IACLPolicy, IACLService, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
-import { IFileEntry, IFilesBatchService, IFilesStreamsService } from 'contracts/files';
+import { IACLOptions, IACLPolicy, IACLService, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
+import { IFileEntry, IFilesBatchService, IFilesStreamsService } from 'services/files/contracts';
 
 @Injectable()
 export class FilesService {

@@ -1,4 +1,4 @@
-import { IBaasicModel } from 'contracts/common';
+import { IBaasicModel } from 'common/contracts';
 import { IAccessAction, IAccessSection, IRole, ISnProvider } from 'contracts/membership';
 
 export interface ILookup extends IBaasicModel {

@@ -1,4 +1,4 @@
-import { IHttpResponse } from 'contracts/common';
+import { IHttpResponse } from 'common/contracts';
 
 export interface INotificationsSettingsService {
     get(provider: string): PromiseLike<IHttpResponse<any>>;

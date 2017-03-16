@@ -1,4 +1,4 @@
-import { IBaasicModel } from 'contracts/common';
+import { IBaasicModel } from 'common/contracts';
 import { IFileEntry } from 'contracts/userProfile';
 
 export interface IProfileAvatar extends IBaasicModel {

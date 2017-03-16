@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
 import { BaasicApp } from 'index'
 
-import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
+import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
 import {
     ICustomerService,
     IInvoiceService,
     IPaymentTransaction,
     IProductService
-} from 'contracts/commerce';
+} from 'services/commerce/contracts';
 
 @Injectable()
 export class CommerceService {

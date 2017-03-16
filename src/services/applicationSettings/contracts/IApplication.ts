@@ -1,6 +1,6 @@
 import { IApplicationRole } from 'contracts/applicationSettings';
 import { ISNProvider } from 'contracts/applicationSettings';
-import { IBaasicModel } from 'contracts/common';
+import { IBaasicModel } from 'common/contracts';
 
 export interface IApplication extends IBaasicModel {
     allowAnyOrigin?: boolean,
