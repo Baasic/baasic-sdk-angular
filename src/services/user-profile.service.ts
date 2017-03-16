@@ -242,7 +242,7 @@ export class UserProfileService {
                             });                    
                 **/
                 find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IUserEducation>>> {
-                    return baasicApp.userProfile.profile.education.find(options);
+                    return baasicApp.userProfileModule.profile.education.find(options);
                 },
 
                 /**                 
@@ -257,7 +257,7 @@ export class UserProfileService {
                                 });                 
                 **/
                 get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IUserEducation>> {
-                    return baasicApp.userProfile.profile.education.get(id, options);
+                    return baasicApp.userProfileModule.profile.education.get(id, options);
                 },
 
                 /**                  
@@ -278,7 +278,7 @@ export class UserProfileService {
                             });                 
                 **/
                 create(data: IUserEducation): PromiseLike<IHttpResponse<IUserEducation>> {
-                    return baasicApp.userProfile.profile.education.create(data);
+                    return baasicApp.userProfileModule.profile.education.create(data);
                 },
 
                 /**                  
@@ -301,7 +301,7 @@ export class UserProfileService {
                                     }); 				        
                 **/
                 update(data: IUserEducation): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.userProfile.profile.education.update(data);
+                    return baasicApp.userProfileModule.profile.education.update(data);
                 },
 
                 /**                  
@@ -321,7 +321,7 @@ export class UserProfileService {
                                     });						        
                 **/
                 remove(data: IUserEducation): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.userProfile.profile.education.remove(data);
+                    return baasicApp.userProfileModule.profile.education.remove(data);
                 }
             },
 
@@ -341,7 +341,7 @@ export class UserProfileService {
                             });                 
                 **/
                 get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IProfileAvatar>> {
-                    return baasicApp.userProfile.profile.avatar.get(id, options);
+                    return baasicApp.userProfileModule.profile.avatar.get(id, options);
                 },
 
                 /**                  
@@ -364,7 +364,7 @@ export class UserProfileService {
                                             // perform error handling here 
                 **/
                 update(data: IProfileAvatar): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.userProfile.profile.avatar.update(data);
+                    return baasicApp.userProfileModule.profile.avatar.update(data);
                 },
 
                 /**                 
@@ -382,7 +382,7 @@ export class UserProfileService {
                                 });                
                 **/
                 link(id: string, data: IProfileAvatar): PromiseLike<IHttpResponse<any>> {
-                    return baasicApp.userProfile.profile.avatar.link(id, data);
+                    return baasicApp.userProfileModule.profile.avatar.link(id, data);
                 },
 
                 /**                 
