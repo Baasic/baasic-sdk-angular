@@ -268,7 +268,7 @@ export class MeteringService {
                                 // perform error handling here 
                             }); 				    
             **/
-            update(options: IACLOptions[]): PromiseLike<IHttpResponse<void>> {
+            update(options: IACLOptions[]): PromiseLike<IHttpResponse<IACLPolicy[]>> {
                 return baasicApp.meteringModule.acl.update(options);
             },
 
