@@ -3,7 +3,6 @@ import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
 import { BaasicApp } from 'index'
 
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'contracts/common';
-
 import { IApplication } from 'contracts/common';
 
 @Injectable()
