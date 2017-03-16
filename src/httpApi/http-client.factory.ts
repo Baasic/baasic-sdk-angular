@@ -14,7 +14,7 @@ export class HttpClientFactory
 
     get() : IHttpClient {
        return {
-            cratePromise: this.createPromise,
+            createPromise: this.createPromise,
             request: this.httpClient
        };
     }
