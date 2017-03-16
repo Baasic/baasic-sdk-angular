@@ -1,9 +1,7 @@
 import { IUserInfo } from 'common/contracts';
-import { IDerivedEntry } from 'services/files/contracts';
 
 
-export interface IFileEntryMetadata {
-    derivedEntries?: IDerivedEntry[],
+export interface IArticleFileEntryMetadata {
     description?: string,
     fileExtension?: string,
     fileName?: string,

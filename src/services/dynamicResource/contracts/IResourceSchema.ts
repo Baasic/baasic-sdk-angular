@@ -1,5 +1,5 @@
-import { IBaasicModel } from 'contracts/common;
-import { IOwner } from 'contracts/dynamicResource';
+import { IBaasicModel } from 'common/contracts';
+import { IOwner } from 'services/dynamicResource/contracts';
 
 export interface IResourceSchema extends IBaasicModel {
     description?: string,

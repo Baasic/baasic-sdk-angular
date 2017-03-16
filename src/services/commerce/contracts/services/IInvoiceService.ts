@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
-import { IInvoiceStreamsService } from 'contracts/commerce';
+import { IInvoiceStreamsService } from 'services/commerce/contracts';
 
 export interface IInvoiceService {
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<any>>>;

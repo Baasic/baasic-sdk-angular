@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
-import { IRating } from 'contracts/article';
+import { IRating } from 'services/article/contracts';
 
 export interface IArticleRatingsService {
     create(data: IRating): PromiseLike<IHttpResponse<IRating>>;

@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
-import { IResourceSchema } from 'contracts/dynamicResource';
+import { IResourceSchema } from 'services/dynamicResource/contracts';
 
 export interface IDynamicResourceSchemaService {
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IResourceSchema>>>;

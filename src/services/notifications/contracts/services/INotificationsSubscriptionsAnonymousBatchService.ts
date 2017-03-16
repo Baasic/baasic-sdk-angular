@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'common/contracts';
-import { IAnonymousSubscription } from 'contracts/notifications';
+import { IAnonymousSubscription } from 'services/notifications/contracts';
 
 export interface INotificationsSubscriptionsAnonymousBatchService {
     create(data: IAnonymousSubscription[]): PromiseLike<IHttpResponse<IAnonymousSubscription[]>>;

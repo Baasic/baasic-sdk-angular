@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
-import { IArticleCommentReply, ICommentStatus, INotificationConfiguration } from 'contracts/article';
+import { IArticleCommentReply, ICommentStatus, INotificationConfiguration } from 'services/article/contracts';
 
 export interface IArticleCommentRepliesService {
     statuses: ICommentStatus;

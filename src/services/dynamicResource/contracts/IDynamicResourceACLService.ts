@@ -1,5 +1,5 @@
 import { IACLPolicy, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
-import { IDynamicACLOptions } from 'contracts/dynamicResource';
+import { IDynamicACLOptions } from 'services/dynamicResource/contracts';
 
 
 export interface IDynamicResourceACLService {

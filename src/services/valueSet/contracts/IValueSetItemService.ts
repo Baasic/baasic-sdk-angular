@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
-import { IValueSetItem } from 'contracts/valueSet';
+import { IValueSetItem } from 'services/valueSet/contracts';
 
 export interface IValueSetItemService {
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IValueSetItem>>>;

@@ -7,7 +7,7 @@ import {
     IArticleInstanceSubscriptionsService,
     IArticleInstanceTagsService,
     IArticleOptions
-} from 'contracts/article';
+} from 'services/article/contracts';
 
 export interface IArticleInstanceService {
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticle>>>;

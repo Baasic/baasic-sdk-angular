@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
-import { IArticleComment, IArticleInstanceRepliesService, INotificationConfiguration } from 'contracts/article';
+import { IArticle, IArticleComment, IArticleInstanceCommentsRepliesService, INotificationConfiguration } from 'services/article/contracts';
 
 export interface IArticleInstanceCommentsService {
     approve(data: IArticleComment, options: INotificationConfiguration): PromiseLike<IHttpResponse<void>>;
@@ -16,5 +16,5 @@ export interface IArticleInstanceCommentsService {
     update(data: IArticleComment): PromiseLike<IHttpResponse<void>>;
     spam(data: IArticleComment): PromiseLike<IHttpResponse<void>>;
     unspam(data: IArticleComment): PromiseLike<IHttpResponse<void>>;
-    replies: IArticleInstanceRepliesService;
+    replies: IArticleInstanceCommentsRepliesService;
 }

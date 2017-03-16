@@ -1,4 +1,4 @@
-import { IAccessAction } from 'contracts/membership';
+import { IAccessAction } from 'services/membership/contracts';
 
 export interface IAccessPolicy {
     id: string,

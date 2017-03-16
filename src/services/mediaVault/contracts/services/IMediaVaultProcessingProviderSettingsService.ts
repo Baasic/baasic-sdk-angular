@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
-import { IPreprocessingProviderSettings } from 'contracts/mediaVault';
+import { IPreprocessingProviderSettings } from 'services/mediaVault/contracts';
 
 export interface IMediaVaultProcessingProviderSettingsService {
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IPreprocessingProviderSettings>>>;

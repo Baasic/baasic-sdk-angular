@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'common/contracts';
-import { IOrganization } from 'contracts/userProfile';
+import { IOrganization } from 'services/userProfile/contracts';
 
 export interface IOrganizationBatchService {
     create(data: IOrganization[]): PromiseLike<IHttpResponse<any>>;

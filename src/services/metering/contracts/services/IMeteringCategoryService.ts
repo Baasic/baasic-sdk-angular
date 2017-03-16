@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
-import { IMeteringCategory, IMeteringCategoryBatchService } from 'contracts/metering';
+import { IMeteringCategory, IMeteringCategoryBatchService } from 'services/metering/contracts';
 
 export interface IMeteringCategoryService {
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IMeteringCategory>>>;

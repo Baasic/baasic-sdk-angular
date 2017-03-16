@@ -1,5 +1,5 @@
 import { IGetRequestOptions, IHttpResponse } from 'common/contracts';
-import { IProfileAvatar, IUserProfileAvatarStreamsService } from 'contracts/userProfile';
+import { IProfileAvatar, IUserProfileAvatarStreamsService } from 'services/userProfile/contracts';
 
 export interface IUserProfileAvatarService {
     get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IProfileAvatar>>;

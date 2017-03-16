@@ -1,5 +1,5 @@
 import { IBaasicModel } from 'common/contracts';
-import { IArticleFileEntry } from 'contracts/article';
+import { IArticleFileEntry } from 'services/article/contracts';
 
 export interface IArticleFile extends IBaasicModel {
     articleFileEntry?: IArticleFileEntry,

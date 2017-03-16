@@ -1,5 +1,5 @@
-import { IApplicationRole } from 'contracts/applicationSettings';
-import { ISNProvider } from 'contracts/applicationSettings';
+import { IApplicationRole } from 'services/applicationSettings/contracts';
+import { ISNProvider } from 'services/applicationSettings/contracts';
 import { IBaasicModel } from 'common/contracts';
 
 export interface IApplication extends IBaasicModel {

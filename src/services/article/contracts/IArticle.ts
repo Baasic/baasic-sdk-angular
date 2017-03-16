@@ -1,5 +1,5 @@
 import { IBaasicModel } from 'common/contracts';
-import { IArticleComment, IArticleFile, IAuthor, IArticleTag, IRating } from 'contracts/article';
+import { IArticleComment, IArticleFile, IAuthor, IArticleTag, IRating } from 'services/article/contracts';
 
 export interface IArticle extends IBaasicModel {
     allowComments?: boolean,

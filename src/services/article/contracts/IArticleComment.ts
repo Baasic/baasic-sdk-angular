@@ -1,5 +1,5 @@
 import { IBaasicModel } from 'common/contracts';
-import { IArticle, IArticleCommentMetadata } from 'contracts/article';
+import { IArticle, IArticleCommentMetadata } from 'services/article/contracts';
 
 export interface IArticleComment extends IBaasicModel, IArticleCommentMetadata {
     article?: IArticle,

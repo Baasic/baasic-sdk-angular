@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
-import { IRole } from 'contracts/membership';
+import { IRole } from 'services/membership/contracts';
 
 export interface IRoleService {
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IRole>>>;

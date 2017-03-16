@@ -1,5 +1,5 @@
 import { IBaasicModel } from 'common/contracts';
-import { IAppUser, IUserIdentity } from 'contracts/membership';
+import { IAppUser, IUserIdentity } from 'services/membership/contracts';
 
 export interface INewUser extends IBaasicModel, IAppUser, IUserIdentity {
     autoCreatedPassword?: boolean,

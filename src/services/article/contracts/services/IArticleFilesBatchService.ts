@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'common/contracts';
-import { IArticleFile } from 'contracts/article';
+import { IArticleFile } from 'services/article/contracts';
 
 export interface IArticleFilesBatchService {
     unlink(data: Object[]): PromiseLike<IHttpResponse<void>>;

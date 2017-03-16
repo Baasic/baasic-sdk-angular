@@ -1,5 +1,5 @@
 import { IBaasicModel } from 'common/contracts';
-import { IAccessAction, IAccessSection, IRole, ISnProvider } from 'contracts/membership';
+import { IAccessAction, IAccessSection, IRole, ISnProvider } from 'services/membership/contracts';
 
 export interface ILookup extends IBaasicModel {
     accessAction?: IAccessAction[],

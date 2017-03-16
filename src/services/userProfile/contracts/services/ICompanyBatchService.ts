@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'common/contracts';
-import { ICompany } from 'contracts/userProfile';
+import { ICompany } from 'services/userProfile/contracts';
 
 export interface ICompanyBatchService {
     create(data: ICompany[]): PromiseLike<IHttpResponse<any>>;

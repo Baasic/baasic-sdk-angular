@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IHttpResponse } from 'common/contracts';
-import { IUserSocialLogin } from 'contracts/membership';
+import { IUserSocialLogin } from 'services/membership/contracts';
 
 export interface IUserSocialLoginService {
     get(username: string): PromiseLike<IHttpResponse<IBaasicQueryModel<IUserSocialLogin>>>;

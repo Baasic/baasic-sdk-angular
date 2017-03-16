@@ -1,5 +1,5 @@
 import { IBaasicResponse, IHttpResponse } from 'common/contracts';
-import { ITemplate } from 'contracts/templating';
+import { ITemplate } from 'services/templating/contracts';
 
 export interface ITemplatingBatchService {
     create(data: ITemplate[]): PromiseLike<IHttpResponse<IBaasicResponse[]>>;

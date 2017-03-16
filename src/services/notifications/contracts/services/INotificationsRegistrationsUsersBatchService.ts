@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'common/contracts';
-import { IUserRegistration } from 'contracts/notifications';
+import { IUserRegistration } from 'services/notifications/contracts';
 
 export interface INotificationsRegistrationsUsersBatchService {
     create(data: IUserRegistration[]): PromiseLike<IHttpResponse<IUserRegistration[]>>;

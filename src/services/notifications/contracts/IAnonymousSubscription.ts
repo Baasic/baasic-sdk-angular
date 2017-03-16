@@ -1,5 +1,5 @@
 import { IBaasicModel } from 'common/contracts';
-import { IAnonymousRegistration } from 'contracts/notifications';
+import { IAnonymousRegistration } from 'services/notifications/contracts';
 
 export interface IAnonymousSubscription extends IBaasicModel {
     channel: string,

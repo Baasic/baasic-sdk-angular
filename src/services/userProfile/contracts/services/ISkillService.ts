@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
-import { ISkill, ISkillBatchService } from 'contracts/userProfile';
+import { ISkill, ISkillBatchService } from 'services/userProfile/contracts';
 
 export interface ISkillService {
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<ISkill>>>;

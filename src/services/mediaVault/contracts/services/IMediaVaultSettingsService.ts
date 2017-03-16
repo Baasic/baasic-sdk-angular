@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'common/contracts';
-import { IMediaVaultSettings } from 'contracts/mediaVault';
+import { IMediaVaultSettings } from 'services/mediaVault/contracts';
 
 export interface IMediaVaultSettingsService {
     get(): PromiseLike<IHttpResponse<IMediaVaultSettings>>;

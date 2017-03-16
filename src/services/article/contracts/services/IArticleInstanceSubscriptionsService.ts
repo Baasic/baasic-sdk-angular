@@ -2,7 +2,7 @@ import {
     IArticleInstanceSubscriptionsCommentReportedService,
     IArticleInstanceSubscriptionsArticleService,
     IArticleInstanceSubscriptionsCommentRequiresModerationService
-} from 'contracts/article';
+} from 'services/article/contracts';
 
 export interface IArticleInstanceSubscriptionsService {
     commentReported: IArticleInstanceSubscriptionsCommentReportedService,

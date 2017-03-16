@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'common/contracts';
-import { ISocialLogin } from 'contracts/membership';
+import { ISocialLogin } from 'services/membership/contracts';
 
 export interface ILoginSocialService {
     get(provider: string, returnUrl: string): PromiseLike<IHttpResponse<any>>;

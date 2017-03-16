@@ -1,5 +1,5 @@
 import { IBaasicModel } from 'common/contracts';
-import { IMembership, IProfileAvatar, IUserEducation, IUserProfileSkill, IUserProfileWork } from 'contracts/userProfile';
+import { IMembership, IProfileAvatar, IUserEducation, IUserProfileSkill, IUserProfileWork } from 'services/userProfile/contracts';
 
 export interface IUserProfile extends IBaasicModel {
     aboutMySelf?: string,
