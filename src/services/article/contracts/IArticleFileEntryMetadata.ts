@@ -1,6 +1,5 @@
 import { IUserInfo } from 'common/contracts';
 
-
 export interface IArticleFileEntryMetadata {
     description?: string,
     fileExtension?: string,
