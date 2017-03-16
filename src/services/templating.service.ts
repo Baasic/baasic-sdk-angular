@@ -129,7 +129,7 @@ export class TemplatingService {
                             });                     
             **/
             create(data: ITemplate[]): PromiseLike<IHttpResponse<IBaasicResponse[]>> {
-                return baasicApp.templating.batch.create(data);
+                return baasicApp.templatingModule.batch.create(data);
             },
 
             /**                     
@@ -146,7 +146,7 @@ export class TemplatingService {
                             });                     
             **/
             update(data: ITemplate[]): PromiseLike<IHttpResponse<IBaasicResponse[]>> {
-                return baasicApp.templating.batch.update(data);
+                return baasicApp.templatingModule.batch.update(data);
             },
 
             /**                     
@@ -163,7 +163,7 @@ export class TemplatingService {
                             });		                    
             **/
             remove(ids: string[]): PromiseLike<IHttpResponse<void>> {
-                return baasicApp.templating.batch.remove(ids);
+                return baasicApp.templatingModule.batch.remove(ids);
             }
         };
     }

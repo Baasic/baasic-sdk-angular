@@ -250,7 +250,7 @@ export class MeteringService {
                         });                     
             **/
             get(options?: IACLOptions): PromiseLike<IHttpResponse<IACLPolicy[]>> {
-                return baasicApp.meteringService.acl.get(options);
+                return baasicApp.meteringModule.acl.get(options);
             },
 
             /**                     
@@ -269,7 +269,7 @@ export class MeteringService {
                             }); 				    
             **/
             update(options: IACLOptions[]): PromiseLike<IHttpResponse<void>> {
-                return baasicApp.meteringService.acl.update(options);
+                return baasicApp.meteringModule.acl.update(options);
             },
 
             /**                     
@@ -294,7 +294,7 @@ export class MeteringService {
                             }); 				    
             **/
             removeByUser(id: string, action: string, user: string, data: IACLPolicy): PromiseLike<IHttpResponse<void>> {
-                return baasicApp.meteringService.acl.removeByUser(id, action, user, data);
+                return baasicApp.meteringModule.acl.removeByUser(id, action, user, data);
             },
 
             /**                     
@@ -319,7 +319,7 @@ export class MeteringService {
                            }); 				    
            **/
             removeByRole(id: string, action: string, role: string, data: IACLPolicy): PromiseLike<IHttpResponse<void>> {
-                return baasicApp.meteringService.acl.removeByRole(id, action, role, data);
+                return baasicApp.meteringModule.acl.removeByRole(id, action, role, data);
             }
         };
     }
@@ -339,7 +339,7 @@ export class MeteringService {
                             });                 
             **/
             get(options?: IGetRequestOptions): PromiseLike<IHttpResponse<IMeteringSettings>> {
-                return baasicApp.meteringService.settings.get(options);
+                return baasicApp.meteringModule.settings.get(options);
             },
 
             /**                  
@@ -362,7 +362,7 @@ export class MeteringService {
                                 }); 				
             **/
             update(data: IMeteringSettings): PromiseLike<IHttpResponse<void>> {
-                return baasicApp.meteringService.settings.update(data);
+                return baasicApp.meteringModule.settings.update(data);
             }
         };
     }
@@ -390,7 +390,7 @@ export class MeteringService {
                         });                     
             **/
             find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IMeteringCategory>>> {
-                return baasicApp.meteringService.category.find(options);
+                return baasicApp.meteringModule.category.find(options);
             },
 
             /**                 
@@ -408,7 +408,7 @@ export class MeteringService {
                             });                 
             **/
             get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IMeteringCategory>> {
-                return baasicApp.meteringService.category.get(id, options);
+                return baasicApp.meteringModule.category.get(id, options);
             },
 
             /**                  
@@ -431,7 +431,7 @@ export class MeteringService {
                         });                  
             **/
             create(data: IMeteringCategory): PromiseLike<IHttpResponse<IMeteringCategory>> {
-                return baasicApp.meteringService.category.create(data);
+                return baasicApp.meteringModule.category.create(data);
             },
 
             /**                  
@@ -454,7 +454,7 @@ export class MeteringService {
                                 }); 				
             **/
             update(data: IMeteringCategory): PromiseLike<IHttpResponse<void>> {
-                return baasicApp.meteringService.category.update(data);
+                return baasicApp.meteringModule.category.update(data);
             },
 
             /**                  
@@ -476,7 +476,7 @@ export class MeteringService {
                                 });						
             **/
             remove(data: IMeteringCategory): PromiseLike<IHttpResponse<void>> {
-                return baasicApp.meteringService.category.remove(data);
+                return baasicApp.meteringModule.category.remove(data);
             },
 
             batch: {
@@ -501,7 +501,7 @@ export class MeteringService {
                             });                   
                 **/
                 create(data: IMeteringCategory[]): PromiseLike<IHttpResponse<IMeteringCategory[]>> {
-                    return baasicApp.meteringService.category.batch.create(data);
+                    return baasicApp.meteringModule.category.batch.create(data);
                 },
 
                 /**                   
@@ -518,7 +518,7 @@ export class MeteringService {
                                 });                   
                 **/
                 update(data: IMeteringCategory[]): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.meteringService.category.batch.update(data);
+                    return baasicApp.meteringModule.category.batch.update(data);
                 },
 
                 /**                   
@@ -535,7 +535,7 @@ export class MeteringService {
                                 });		                  
                 **/
                 delete(ids: string[]): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.meteringService.category.batch.delete(ids);
+                    return baasicApp.meteringModule.category.batch.delete(ids);
                 }
             }
         };

@@ -207,7 +207,7 @@ export class MediaVaultService {
                                     });                     
             **/
             getBlob(data: any): PromiseLike<IHttpResponse<any>> {
-                return baasicApp.mediaVaultService.streams.getBlob(data);
+                return baasicApp.mediaVaultModule.streams.getBlob(data);
             },
 
             /**                      
@@ -222,7 +222,7 @@ export class MediaVaultService {
                             });                     
             **/
             create(data: any, stream: any): PromiseLike<IHttpResponse<any>> {
-                return baasicApp.mediaVaultService.streams.create(data, stream);
+                return baasicApp.mediaVaultModule.streams.create(data, stream);
             },
 
             /**                      
@@ -246,7 +246,7 @@ export class MediaVaultService {
                                 });                     
             **/
             update(data: any, stream: any): PromiseLike<IHttpResponse<any>> {
-                return baasicApp.mediaVaultService.streams.update(data, stream);
+                return baasicApp.mediaVaultModule.streams.update(data, stream);
             }
         };
     }
@@ -267,7 +267,7 @@ export class MediaVaultService {
                            });                     
            **/
             get(): PromiseLike<IHttpResponse<IMediaVaultSettings>> {
-                return baasicApp.mediaVaultService.settings.get();
+                return baasicApp.mediaVaultModule.settings.get();
             },
 
             /**                   
@@ -284,7 +284,7 @@ export class MediaVaultService {
                             });                   
             **/
             update(data: IMediaVaultSettings): PromiseLike<IHttpResponse<void>> {
-                return baasicApp.mediaVaultService.settings.update(data);
+                return baasicApp.mediaVaultModule.settings.update(data);
             }
         };
     }
@@ -312,7 +312,7 @@ export class MediaVaultService {
                         });                      
             **/
             find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IPreprocessingProviderSettings>>> {
-                return baasicApp.mediaVaultService.processingProviderSettings.find(options);
+                return baasicApp.mediaVaultModule.processingProviderSettings.find(options);
             },
 
             /**                   
@@ -330,7 +330,7 @@ export class MediaVaultService {
                             });                   
             **/
             get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IPreprocessingProviderSettings>> {
-                return baasicApp.mediaVaultService.processingProviderSettings.get(id, options);
+                return baasicApp.mediaVaultModule.processingProviderSettings.get(id, options);
             },
 
             /**                   
@@ -353,7 +353,7 @@ export class MediaVaultService {
                                 }); 			
             **/
             update(data: IPreprocessingProviderSettings): PromiseLike<IHttpResponse<void>> {
-                return baasicApp.mediaVaultService.processingProviderSettings.update(data);
+                return baasicApp.mediaVaultModule.processingProviderSettings.update(data);
             }
         };
     }

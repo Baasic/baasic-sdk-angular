@@ -24,7 +24,7 @@ export class ApplicationSettingsService {
                     });                 
      **/
     get(options: IOptions): PromiseLike<IHttpResponse<IApplication>> {
-        return this.baasicApp.applicationSettingsModule.get(options);
+        return this.baasicApp.applicationSettingModule.get(options);
     }
 
     /**                  
@@ -46,6 +46,6 @@ export class ApplicationSettingsService {
                         }); 				
      **/
     update(data: IApplication): PromiseLike<IHttpResponse<void>> {
-        return this.baasicApp.applicationSettingsModule.update(data);
+        return this.baasicApp.applicationSettingModule.update(data);
     }
 }

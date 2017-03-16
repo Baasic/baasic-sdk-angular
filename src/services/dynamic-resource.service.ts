@@ -91,7 +91,7 @@ export class DynamicResourceService {
                     }); 				
      **/
     update(data: any, options: IOptions): PromiseLike<IHttpResponse<void>> {
-        return this.baasicApp.dynamicResourceService.update(data, options);
+        return this.baasicApp.dynamicResourceModule.update(data, options);
     }
 
     /**                  
