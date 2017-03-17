@@ -1,3 +1,3 @@
-export * from './IApplicationRole';
-export * from './ISNProvider';
-export * from './IApplication';
+export * from './application-role.model';
+export * from './sn-provider.model';
+export * from './application.model';

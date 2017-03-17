@@ -1,2 +1,2 @@
-export * from './ITemplate';
+export * from './template.model';
 export * from './services';

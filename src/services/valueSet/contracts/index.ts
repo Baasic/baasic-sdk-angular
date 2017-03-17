@@ -1,3 +1,3 @@
-export * from './IValueSetItem';
-export * from './IValueSet';
-export * from './IValueSetItemService';
+export * from './value-set-item.model';
+export * from './value-set.model';
+export * from './services';
