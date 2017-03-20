@@ -37,7 +37,7 @@ export class MediaVaultService {
                    // perform error handling here 
               });                    
    **/
-    find(options?: IOptions): PromiseLike<IHttpResponse<IMediaEntry>> {
+    find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IMediaEntry>>> {
         return this.baasicApp.mediaVaultModule.find(options);
     }
 

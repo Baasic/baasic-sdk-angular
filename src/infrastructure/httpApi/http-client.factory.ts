@@ -8,52 +8,51 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class HttpClientFactory
-{
-    constructor (private http: Http) {}
+export class HttpClientFactory {
+    constructor(private http: Http) { }
 
-    get() : IHttpClient {
-       return {
+    get(): IHttpClient {
+        return {
             createPromise: this.createPromise,
             request: this.httpClient
-       };
+        };
     }
 
-    private createPromise<TData>(deferFn: (resolve : (TData) => void, reject: (any) => void) => void): PromiseLike<TData> {
+    private createPromise<TData>(deferFn: (resolve: (TData) => void, reject: (any) => void) => void): PromiseLike<TData> {
         return new Promise<TData>(deferFn);
     }
 
     private httpClient<ResponseType>(request: IHttpRequest) {
-           let httpRequest: RequestOptionsArgs = {
-                method: request.method,
-           };
+        let httpRequest: RequestOptionsArgs = {
+            method: request.method,
+        };
 
-           if (request.headers) httpRequest.headers = request.headers;
-           if (request.data) httpRequest.body = request.data;
+        if (request.headers) httpRequest.headers = request.headers;
+        if (request.data) httpRequest.body = request.data;
 
-           return this.http.request(request.url.toString(), httpRequest)
-                .map(response => {
-                    return <IHttpResponse<ResponseType>>{
+        return this.http.request(request.url.toString(), httpRequest)
+            .map(response => {
+                return <IHttpResponse<ResponseType>>{
+                    request: request,
+                    statusCode: response.status,
+                    statusText: response.statusText,
+                    headers: response.headers,
+                    data: <ResponseType>response.json()
+                };
+            })
+            .catch((response: Response | any) => {
+                if (response instanceof Response) {
+                    return Observable.throw(<IHttpResponse<ResponseType>>{
                         request: request,
                         statusCode: response.status,
                         statusText: response.statusText,
                         headers: response.headers,
-                        data: <ResponseType>response.json()
-                    };
-                })
-                .catch((response: Response | any) => {
-                    if (response instanceof Response) {
-                        return Observable.throw(<IHttpResponse<ResponseType>>{
-                            request: request,
-                            statusCode: response.status,
-                            statusText: response.statusText,
-                            headers: response.headers,
-                            data: response.json()
-                        });
-                    } else {
-                        Observable.throw(response);
-                    }
-                })
-                .toPromise();
-        };
+                        data: response.json()
+                    });
+                } else {
+                    Observable.throw(response);
+                }
+            })
+            .toPromise();
+    };
 };

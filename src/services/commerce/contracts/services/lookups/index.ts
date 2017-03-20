@@ -5,6 +5,7 @@ export * from './ICommerceLookupsCountryService';
 export * from './ICommerceLookupsCountryStateBatchService';
 export * from './ICommerceLookupsCountryStateService';
 export * from './ICommerceLookupsInvoiceStatusBatchService';
+export * from './ICommerceLookupsPaymentMethodBatchService';
 export * from './ICommerceLookupsPaymentMethodService';
 export * from './ICommerceLookupsPaymentTransactionStatusBatchService';
 export * from './ICommerceLookupsPaymentTransactionStatusService';

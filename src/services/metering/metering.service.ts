@@ -197,7 +197,7 @@ export class MeteringService {
                            });		                  
            **/
             remove(ids: string[]): PromiseLike<IHttpResponse<void>> {
-                return baasicApp.meteringModule.remove(ids);
+                return baasicApp.meteringModule.batch.remove(ids);
             }
         };
     }
