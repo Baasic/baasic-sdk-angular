@@ -651,7 +651,7 @@ export class MembershipService {
                         });                     
             **/
             find(section: string, options?: any): PromiseLike<IHttpResponse<IAccessPolicy[]>> {
-                return baasicApp.membershipModule.permission.find(section, options);
+                return baasicApp.membershipModule.permissions.find(section, options);
             },
 
             /**
@@ -669,7 +669,7 @@ export class MembershipService {
                     });    
             **/
             getActions(options?: any): PromiseLike<IHttpResponse<IAccessAction[]>> {
-                return baasicApp.membershipModule.permission.getActions(options);
+                return baasicApp.membershipModule.permissions.getActions(options);
             },
 
             /**
@@ -689,7 +689,7 @@ export class MembershipService {
                     }); 
             **/
             getPermissionSubjects(options: any): PromiseLike<any> {
-                return baasicApp.membershipModule.permission.getPermissionSubjects(options);
+                return baasicApp.membershipModule.permissions.getPermissionSubjects(options);
             },
 
             /**
@@ -710,7 +710,7 @@ export class MembershipService {
                     });
             **/
             create(data: IAccessPolicy): PromiseLike<IHttpResponse<IAccessPolicy[]>> {
-                return baasicApp.membershipModule.permission.create(data);
+                return baasicApp.membershipModule.permissions.create(data);
             },
 
             /**
@@ -727,7 +727,7 @@ export class MembershipService {
                     });		
             **/
             remove(data: IAccessPolicy): PromiseLike<IHttpResponse<any>> {
-                return baasicApp.membershipModule.permission.remove(data);
+                return baasicApp.membershipModule.permissions.remove(data);
             },
 
             /**
@@ -745,7 +745,7 @@ export class MembershipService {
                     MembershipService.permission.createPermission('<section-Name>', actionCollection, subjectItem);
             **/
             createPermission(section: string, actions: IAccessAction[], membershipItem: any): any {
-                return baasicApp.membershipModule.permission.createPermission(section, actions, membershipItem);
+                return baasicApp.membershipModule.permissions.createPermission(section, actions, membershipItem);
             },
 
             /**
@@ -754,7 +754,7 @@ export class MembershipService {
             * @example MembershipService.permission.findPermission(permissionObj, permissionCollection);
             **/
             findPermission(permission: Object, permissionCollection: any): any {
-                return baasicApp.membershipModule.permission.findPermission(permission, permissionCollection);
+                return baasicApp.membershipModule.permissions.findPermission(permission, permissionCollection);
             },
 
             /**
@@ -763,7 +763,7 @@ export class MembershipService {
             * @example MembershipService.permission.exists(permissionObj, permissionCollection);
             **/
             exists(permission: Object, permissionCollection: any): any {
-                return baasicApp.membershipModule.permission.exists(permission, permissionCollection);
+                return baasicApp.membershipModule.permissions.exists(permission, permissionCollection);
             },
 
             /**
@@ -772,7 +772,7 @@ export class MembershipService {
             * @example MembershipService.permission.togglePermission(permissionObj, action);
             **/
             togglePermission(permission: Object, action: string): any {
-                return baasicApp.membershipModule.permission.togglePermission(permission, action);
+                return baasicApp.membershipModule.permissions.togglePermission(permission, action);
             },
 
             /**
@@ -781,11 +781,11 @@ export class MembershipService {
             * @example MembershipService.permission.getModulePermissions('<section-name>');
             **/
             getModulePermissions(section: any): any {
-                return baasicApp.membershipModule.permission.getModulePermission(section);
+                return baasicApp.membershipModule.permissions.getModulePermissions(section);
             },
 
             resetPermission(): void {
-                return baasicApp.membershipModule.permission.resetPermission();
+                return baasicApp.membershipModule.permissions.resetPermissions();
             },
 
             /**
@@ -794,7 +794,7 @@ export class MembershipService {
             * @example MembershipService.permission.hasPermission("<baasic-Section>.<action>");				
             **/
             hasPermission(authorization: string): boolean {
-                return baasicApp.membershipModule.permission.hasPermission(authorization);
+                return baasicApp.membershipModule.permissions.hasPermission(authorization);
             }
         };
     }
@@ -816,7 +816,7 @@ export class MembershipService {
                            });                  
            **/
             get(options?: IGetRequestOptions): PromiseLike<IHttpResponse<ILookup>> {
-                return baasicApp.membershipModule.lookup.get(options);
+                return baasicApp.membershipModule.lookups.get(options);
             }
         };
     }
