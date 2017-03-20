@@ -1,4 +1,4 @@
-import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
+import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
 import { ICommerceLookupsCountryStateBatchService } from 'services/commerce/contracts';
 
 export interface ICommerceLookupsCountryStateService {

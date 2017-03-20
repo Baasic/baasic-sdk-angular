@@ -1,4 +1,4 @@
-import { IHttpResponse } from 'common/contracts';
+import { IHttpResponse } from 'infrastructure/common/contracts';
 
 export interface ICommerceLookupsSubscriptionStatusBatchService {
     create(data: any): PromiseLike<IHttpResponse<any>>;

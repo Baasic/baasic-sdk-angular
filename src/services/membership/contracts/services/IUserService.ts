@@ -1,4 +1,4 @@
-import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
+import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
 import { IAppUser, INewPassword, INewUser, IUserSocialLoginService } from 'services/membership/contracts';
 
 export interface IUserService {

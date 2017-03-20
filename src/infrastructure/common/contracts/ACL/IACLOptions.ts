@@ -1,4 +1,4 @@
-import { IACL } from 'common/contracts';
+import { IACL } from 'infrastructure/common/contracts';
 
 export interface IACLOptions {
     id?: string,

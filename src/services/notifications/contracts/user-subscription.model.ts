@@ -1,4 +1,4 @@
-import { IBaasicModel } from 'common/contracts';
+import { IBaasicModel } from 'infrastructure/common/contracts';
 import { IUser } from 'services/notifications/contracts';
 
 export interface IUserSubscription extends IBaasicModel {

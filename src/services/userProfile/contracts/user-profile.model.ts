@@ -1,4 +1,4 @@
-import { IBaasicModel } from 'common/contracts';
+import { IBaasicModel } from 'infrastructure/common/contracts';
 import { IMembership, IProfileAvatar, IUserEducation, IUserProfileSkill, IUserProfileWork } from 'services/userProfile/contracts';
 
 export interface IUserProfile extends IBaasicModel {

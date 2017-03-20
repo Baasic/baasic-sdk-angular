@@ -1,4 +1,4 @@
-import { IBaasicModel } from 'common/contracts';
+import { IBaasicModel } from 'infrastructure/common/contracts';
 import { IArticleFileEntryMetadata } from 'services/article/contracts';
 
 export interface IArticleFileEntry extends IBaasicModel, IArticleFileEntryMetadata {

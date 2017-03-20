@@ -1,4 +1,4 @@
-import { IHttpResponse } from 'common/contracts';
+import { IHttpResponse } from 'infrastructure/common/contracts';
 import { IMeteringCategory } from 'services/metering/contracts';
 
 export interface IMeteringCategoryBatchService {

@@ -1,4 +1,4 @@
-import { IHttpResponse } from 'common/contracts';
+import { IHttpResponse } from 'infrastructure/common/contracts';
 import { IUserRegistration } from 'services/notifications/contracts';
 
 export interface INotificationsRegistrationsUsersBatchService {

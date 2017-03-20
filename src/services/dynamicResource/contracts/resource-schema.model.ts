@@ -1,4 +1,4 @@
-import { IBaasicModel } from 'common/contracts';
+import { IBaasicModel } from 'infrastructure/common/contracts';
 import { IOwner } from 'services/dynamicResource/contracts';
 
 export interface IResourceSchema extends IBaasicModel {
