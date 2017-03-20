@@ -4,7 +4,14 @@
         "moduleResolution": "node",
         "target": "es5",
         "experimentalDecorators": true,
-        "baseUrl": "./src",
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "*",
+                "src/*",
+                "dependencies/baasic-sdk-javascript/build/lib/types/*"
+            ]
+        },
         "noEmitOnError": true,
         "lib": [
             "dom",
