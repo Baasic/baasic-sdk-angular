@@ -1552,7 +1552,7 @@ export class CommerceService {
                                 });                     
                 **/
                 find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<any>>> {
-                    return baasicApp.commerceModule.lookups.subcriptionStatuses.find(options);
+                    return baasicApp.commerceModule.lookups.subscriptionStatuses.find(options);
                 },
 
                 /**                 
@@ -1567,7 +1567,7 @@ export class CommerceService {
                                 });                 
                 **/
                 get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<any>> {
-                    return baasicApp.commerceModule.lookups.subcriptionStatuses.get(id, options);
+                    return baasicApp.commerceModule.lookups.subscriptionStatuses.get(id, options);
                 },
 
                 /**                  
@@ -1588,7 +1588,7 @@ export class CommerceService {
                                     }); 				
                 **/
                 update(data: any): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.commerceModule.lookups.subcriptionStatuses.update(data);
+                    return baasicApp.commerceModule.lookups.subscriptionStatuses.update(data);
                 },
 
                 /**                  
@@ -1607,7 +1607,7 @@ export class CommerceService {
                             });                  
                 **/
                 create(data: any): PromiseLike<IHttpResponse<any>> {
-                    return baasicApp.commerceModule.lookups.subcriptionStatuses.create(data);
+                    return baasicApp.commerceModule.lookups.subscriptionStatuses.create(data);
                 },
 
                 /**                  
@@ -1627,7 +1627,7 @@ export class CommerceService {
                                     });						
                 **/
                 remove(data: any): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.commerceModule.lookups.subcriptionStatuses.remove(data);
+                    return baasicApp.commerceModule.lookups.subscriptionStatuses.remove(data);
                 },
 
                 batch: {
@@ -1647,7 +1647,7 @@ export class CommerceService {
                                 });                     
                     **/
                     create(data: any): PromiseLike<IHttpResponse<any>> {
-                        return baasicApp.commerceModule.lookups.subcriptionStatuses.batch.create(data);
+                        return baasicApp.commerceModule.lookups.subscriptionStatuses.batch.create(data);
                     },
 
                     /**                     
@@ -1662,7 +1662,7 @@ export class CommerceService {
                                     });                     
                     **/
                     update(data: any): PromiseLike<IHttpResponse<void>> {
-                        return baasicApp.commerceModule.lookups.subcriptionStatuses.batch.update(data);
+                        return baasicApp.commerceModule.lookups.subscriptionStatuses.batch.update(data);
                     },
 
                     /**                     
@@ -1677,7 +1677,7 @@ export class CommerceService {
                                     });		                    
                     **/
                     remove(ids: string[]): PromiseLike<IHttpResponse<void>> {
-                        return baasicApp.commerceModule.lookups.subcriptionStatuses.batch.remove(ids);
+                        return baasicApp.commerceModule.lookups.subscriptionStatuses.batch.remove(ids);
                     }
                 }
             },

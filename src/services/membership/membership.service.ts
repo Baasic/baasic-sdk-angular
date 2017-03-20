@@ -631,7 +631,7 @@ export class MembershipService {
         };
     }
 
-    get permission(): IPermissionService {
+    get permissions(): IPermissionService {
         let baasicApp = this.baasicApp;
         return {
             /**                  
@@ -639,7 +639,7 @@ export class MembershipService {
              * @method
              * @param options Query resource options object. 
              * @returns A promise that is resolved once the find action has beend performed.                            
-             * @example MembershipService.permission.find({   
+             * @example MembershipService.permissions.find({   
                             section : '<access-section>',   
                             search : '<search-phrase>' 
                         })
@@ -658,7 +658,7 @@ export class MembershipService {
             * Returns a promise that is resolved once the getActions action has been performed. Success response returns a list of access policies that match the specified search parameters.
             * @method        
             * @example 
-                    MembershipService.permission.getActions({
+                    MembershipService.permissions.getActions({
                     search : '<search-phrase>'
                     })
                     .success(function (collection) {
@@ -676,7 +676,7 @@ export class MembershipService {
             * Returns a promise that is resolved once the getPermissionSubjects action has been performed. Success response returns a list of matching user and role resources.
             * @method        
             * @example 
-                    MembershipService.permission.getPermissionSubjects({
+                    MembershipService.permissions.getPermissionSubjects({
                     orderBy : '<field>',
                     orderDirection : '<asc|desc>',
                     search : '<search-phrase>'
@@ -697,7 +697,7 @@ export class MembershipService {
              * @method        
              * @example 
                     // readAction and updateActions are resources previously fetched using getActions.
-                    MembershipService.permission.create({
+                    MembershipService.permissions.create({
                     actions : [readAction, updateAction],
                     section : '<section-name>',
                     userName : '<userName>'
@@ -718,7 +718,7 @@ export class MembershipService {
             * @method        
             * @example 
                     // permission is a resource previously fetched using get action.				 
-                    MembershipService.permission.remove(permission)
+                    MembershipService.permissions.remove(permission)
                     .success(function (data) {
                     // perform success action here
                     })
@@ -742,7 +742,7 @@ export class MembershipService {
                     })
                     .error(function (data, status, headers, config) {});
                     // subjectItem is an item fetched using MembershipService.permission.getPermissionSubjects action.
-                    MembershipService.permission.createPermission('<section-Name>', actionCollection, subjectItem);
+                    MembershipService.permissions.createPermission('<section-Name>', actionCollection, subjectItem);
             **/
             createPermission(section: string, actions: IAccessAction[], membershipItem: any): any {
                 return baasicApp.membershipModule.permissions.createPermission(section, actions, membershipItem);
@@ -751,7 +751,7 @@ export class MembershipService {
             /**
             * Finds a permission in a given permission collection.
             * @method        
-            * @example MembershipService.permission.findPermission(permissionObj, permissionCollection);
+            * @example MembershipService.permissions.findPermission(permissionObj, permissionCollection);
             **/
             findPermission(permission: Object, permissionCollection: any): any {
                 return baasicApp.membershipModule.permissions.findPermission(permission, permissionCollection);
@@ -760,7 +760,7 @@ export class MembershipService {
             /**
             * Checks if a permission object exists in a given permission collection.
             * @method        
-            * @example MembershipService.permission.exists(permissionObj, permissionCollection);
+            * @example MembershipService.permissions.exists(permissionObj, permissionCollection);
             **/
             exists(permission: Object, permissionCollection: any): any {
                 return baasicApp.membershipModule.permissions.exists(permission, permissionCollection);
@@ -769,7 +769,7 @@ export class MembershipService {
             /**
             * Returns a promise that is resolved once the togglePermission action has been completed. The action will internally either call a `remove` or `create` action based on given criteria.
             * @method        
-            * @example MembershipService.permission.togglePermission(permissionObj, action);
+            * @example MembershipService.permissions.togglePermission(permissionObj, action);
             **/
             togglePermission(permission: Object, action: string): any {
                 return baasicApp.membershipModule.permissions.togglePermission(permission, action);
@@ -778,7 +778,7 @@ export class MembershipService {
             /**
             * Fetches and returns and object containing all existing module permissions.
             * @method        
-            * @example MembershipService.permission.getModulePermissions('<section-name>');
+            * @example MembershipService.permissions.getModulePermissions('<section-name>');
             **/
             getModulePermissions(section: any): any {
                 return baasicApp.membershipModule.permissions.getModulePermissions(section);
@@ -791,7 +791,7 @@ export class MembershipService {
             /**
             * Checks if current user has permissions to perform a certain action. To optimize performance this information is cached and can be reset using the resetPermissions action. Permissions cache should be reset when updated user information is set.
             * @method        
-            * @example MembershipService.permission.hasPermission("<baasic-Section>.<action>");				
+            * @example MembershipService.permissions.hasPermission("<baasic-Section>.<action>");				
             **/
             hasPermission(authorization: string): boolean {
                 return baasicApp.membershipModule.permissions.hasPermission(authorization);
@@ -799,7 +799,7 @@ export class MembershipService {
         };
     }
 
-    get lookup(): ILookupService {
+    get lookups(): ILookupService {
         let baasicApp = this.baasicApp;
         return {
             /**                  
@@ -807,7 +807,7 @@ export class MembershipService {
             * @method
             * @param options Options object that contains comma separated list of related resources to be contained within the current representation.                         
             * @returns A promise that is resolved once the get action has been performed. 
-            * @example MembershipService.lookup.get()
+            * @example MembershipService.lookups.get()
                            .then(function (data) {   
                                // perform success action here 
                            },

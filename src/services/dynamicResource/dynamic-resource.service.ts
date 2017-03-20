@@ -300,7 +300,7 @@ export class DynamicResourceService {
                             });                     
             **/
             get(options: IDynamicACLOptions): PromiseLike<IHttpResponse<IACLPolicy[]>> {
-                return baasicApp.dynamicResourceModule.get(options);
+                return baasicApp.dynamicResourceModule.acl.get(options);
             },
 
             /**                    
@@ -316,7 +316,7 @@ export class DynamicResourceService {
                             }); 				    
             **/
             update(options: IDynamicACLOptions): PromiseLike<IHttpResponse<IACLPolicy[]>> {
-                return baasicApp.dynamicResourceModule.update(options);
+                return baasicApp.dynamicResourceModule.acl.update(options);
             },
 
             /**                     
@@ -340,7 +340,7 @@ export class DynamicResourceService {
                                 }); 				    
             **/
             removeByUser(action: string, user: string, data: IACLPolicy): PromiseLike<IHttpResponse<void>> {
-                return baasicApp.dynamicResourceModule.removeByUser(action, user, data);
+                return baasicApp.dynamicResourceModule.acl.removeByUser(action, user, data);
             },
 
             /**                     
@@ -364,7 +364,7 @@ export class DynamicResourceService {
                                 }); 				    
             **/
             removeByRole(action: string, role: string, data: IACLPolicy): PromiseLike<IHttpResponse<void>> {
-                return baasicApp.dynamicResourceModule.removeByRole(action, role, data);
+                return baasicApp.dynamicResourceModule.acl.removeByRole(action, role, data);
             }
         };
     }
