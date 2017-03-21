@@ -19,14 +19,12 @@ module.exports = {
      * Rule for which files should be transpiled via typescript loader.
      */
     module: {
-        rules: [
-            {
-                test: /\.ts$/,
-                use: [{
-                    loader: 'ts-loader'
-                }]
-            }
-        ]
+        rules: [{
+            test: /\.ts$/,
+            use: [{
+                loader: 'ts-loader'
+            }]
+        }]
     },
     resolve: {
         /**
@@ -43,8 +41,8 @@ module.exports = {
      */
     output: {
         path: 'build/dist',
-        filename: 'baasic-sdk-javascript.js',
-        library: 'baasicSdkJavaScript',
+        filename: 'baasic-sdk-angular.js',
+        library: 'baasicSdkAngular',
         libraryTarget: 'umd'
     },
     externals: {
@@ -53,6 +51,9 @@ module.exports = {
             commonjs: '@angular/core',
             commonjs2: '@angular/core',
             amd: '@angular/core'
+        },
+        'baasic-sdk-javascript': {
+
         }
     }
 }

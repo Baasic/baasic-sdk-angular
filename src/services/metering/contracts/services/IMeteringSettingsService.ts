@@ -1,4 +1,4 @@
-import { IGetRequestOptions, IHttpResponse } from 'common/contracts';
+import { IGetRequestOptions, IHttpResponse } from 'infrastructure/common/contracts';
 import { IMeteringSettings } from 'services/metering/contracts';
 
 export interface IMeteringSettingsService {

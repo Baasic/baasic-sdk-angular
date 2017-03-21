@@ -1,4 +1,4 @@
-import { IHttpResponse } from 'common/contracts';
+import { IHttpResponse } from 'infrastructure/common/contracts';
 import { IFileEntry } from 'services/files/contracts';
 
 export interface IFilesBatchService {

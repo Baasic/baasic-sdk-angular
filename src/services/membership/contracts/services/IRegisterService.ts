@@ -1,4 +1,4 @@
-import { IHttpResponse } from 'common/contracts';
+import { IHttpResponse } from 'infrastructure/common/contracts';
 import { IAppUser, IRegisterUser } from 'services/membership/contracts';
 
 export interface IRegisterService {

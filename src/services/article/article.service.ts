@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
 import { BaasicApp } from 'index'
 
-import { IACLOptions, IACLPolicy, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'common/contracts';
+import { IACLOptions, IACLPolicy, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
 import {
     IArticle,
     IArticleComment,
@@ -180,7 +180,7 @@ export class ArticleService {
                                 });		               
              **/
             archive(data: IArticle, options: IArticleOptions): PromiseLike<IHttpResponse<void>> {
-                return baasicApp.articleModule.articles.archive(data);
+                return baasicApp.articleModule.articles.archive(data, options);
             },
 
             /**                 
@@ -656,7 +656,7 @@ export class ArticleService {
                                         });						    
                 **/
                 unspam(data: IArticleComment): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.articleModule.articles.comments.unspam();
+                    return baasicApp.articleModule.articles.comments.unspam(data);
                 },
 
                 replies: {
@@ -951,7 +951,10 @@ export class ArticleService {
             files: {
                 /**                  
                  * Returns a promise that is resolved once the find action has been performed. Success response returns a list of file resources matching the given criteria.                  
-                 * @method                         
+                 * @method
+                 * @param articleId Article slug or id which uniquely identifies article whose article files need to be retrieved.
+                 * @param options Query resource options object.
+                 * @returns A promise that is resolved once the find action has been performed.                         
                  * @example ArticleService.articles.files.find({   
                                 pageNumber : 1,   
                                 pageSize : 10,   
@@ -972,7 +975,11 @@ export class ArticleService {
 
                 /**                 
                  * Returns a promise that is resolved once the get action has been performed. Success response returns requested file resource.                 
-                 * @method                        
+                 * @method
+                 * @param articleId Article slug or id which uniquely identifies article whose article files need to be retrieved.
+                 * @param id Article file id which uniquely identifies article file that needs to be retrieved.
+                 * @param options options object that contains embed data.
+                 * @returns A promise that is resolved once the get action has been performed.                         
                  * @example ArticleService.articles.files.get('<file-id>')
                              .then(function (data) {   
                                  // perform success action here 
@@ -991,7 +998,11 @@ export class ArticleService {
                  * let params = modelMapper.removeParams(fileEntry); 
                  * let uri = params['model'].links('unlink').href; 
                  * ```                  
-                 * @method                         
+                 * @method
+                 * @param articleId Article slug or id which uniquely identifies article whose article files need to be deleted.
+                 * @param data Article file used to identify article files on which delete action should be performed.
+                 * @param options
+                 * @returns A promise that is resolved once the unlink action has been performed.                          
                  * @example // fileEntry is a file resource previously fetched using get action. The following action will remove the original file resource and all accompanying derived file resources.			 
                                 ArticleService.articles.files.remove(fileEntry)
                                     .then(function (data) {   
@@ -1011,7 +1022,11 @@ export class ArticleService {
                  * let params = modelMapper.removeParams(fileEntry); 
                  * let uri = params['model'].links('unlink-by-article').href; 
                  * ```                     
-                 * @method                         
+                 * @method
+                 * @param articleId Article slug or id which uniquely identifies article whose article files need to be deleted.
+                 * @param data Article file used to identify article files on which delete action should be performed.
+                 * @param options
+                 * @returns A promise that is resolved once the unlink by article action has been performed.                              
                  * @example // fileEntry is a file resource previously fetched using get action.		 
                                 ArticleService.articles.files.unlinkByArticle(fileEntry)
                                     .then(function (data) { 
@@ -1031,7 +1046,10 @@ export class ArticleService {
                  let params = modelMapper.updateParams(fileEntry); 
                  let uri = params['model'].links('put').href; 
                  ```                  
-                 * @method                         
+                 * @method
+                 * @param articleId Article slug or id which uniquely identifies article whose article file need to be updated.
+                 * @param data A article file object used to update specified article file.
+                 * @returns A promise that is resolved once the update file action has been performed                            
                  * @example // fileEntry is a file resource previously fetched using get action. 
                              fileEntry.description = '<description>'; 
                              ArticleService.articles.files.update(fileEntry)
@@ -1048,7 +1066,10 @@ export class ArticleService {
 
                 /** 
                  * Returns a promise that is resolved once the link action has been performed; this action links file resource from other modules into the Article Files module (For example: file resources from the Media Vault module can be linked directly into the Article Files module).                  
-                 * @method                         
+                 * @method
+                 * @param articleId Article slug or id which uniquely identifies article whose article files need to be linked.
+                 * @param data A article file object that need to be inserted into the system.
+                 * @returns A promise that is resolved once the link action has been performed.                          
                  * @example ArticleService.articles.files.link(fileObject)
                                 .then(function (response, status, headers, config) {   
                                     // perform success handling here 
@@ -1064,7 +1085,10 @@ export class ArticleService {
                 batch: {
                     /**                   
                      * Returns a promise that is resolved once the unlink action has been performed. This action will remove file resources from the system if successfully completed. If derived resource's format is passed, such as `width` and `height` for the image type of file resource, the operation will remove just derived resource. Otherwise, specified file and all its accompanying derived resources will be removed from the system.                   
-                     * @method                         
+                     * @method
+                     * @param articleId Article file id of the original article file used to identify article files on which delete action should be performed.
+                     * @param data Collection of article delete requests which uniquely identifies article files that need to be deleted.
+                     * @returns A promise that is resolved once the unlink action has been performed.                          
                      * @example // Remove original file resources                
                                  baasicArticleInstanceFilesBatchClient.unlink([{ id: '<file-id>' }])
                                      .then(function (data) {   
@@ -1088,7 +1112,10 @@ export class ArticleService {
 
                     /**                   
                      * Returns a promise that is resolved once the update action has been performed; this action updates specified file resources.                  
-                     * @method batch.update                         
+                     * @method
+                     * @param articleId Article slug or id which uniquely identifies article whose article file need to be updated.
+                     * @param data Article file object that need to be updated in the system.
+                     * @returns A promise that is resolved once the update action has been performed.                           
                      * @example ArticleService.articles.files.batch.update(files)
                                     .then(function (data) {   
                                         // perform success action here 
@@ -1103,7 +1130,10 @@ export class ArticleService {
 
                     /**                   
                      * Returns a promise that is resolved once the link action has been performed; this action links file resources from other modules into the Files module (For example: file resources from the Media Vault module can be linked directly into the Files module).                   
-                     * @method batch.link                         
+                     * @method
+                     * @param articleId Article slug or id which uniquely identifies article whose article files need to be linked.
+                     * @param data A collection of article file objects that need to be inserted into the system.
+                     * @returns A promise that is resolved once the link action has been performed.                          
                      * @example ArticleService.articles.files.batch.link(files)
                                     .then(function (data) {   
                                         // perform success action here 
@@ -1120,7 +1150,10 @@ export class ArticleService {
                 streams: {
                     /**                     
                      * Returns a promise that is resolved once the get action has been performed. Success response returns the file stream if successfully completed. If derived resource's format is passed, such as `width` and `height` for the image type of file resource, the operation will return a stream of the derived resource. Otherwise, stream of the original file resource will be retrieved.                     
-                     * @method streams.get                            
+                     * @method
+                     * @param articleId Article slug or id which uniquely identifies article whose article file need to be retrieved.
+                     * @param data Article File object used to identify stream that needs to be retrieved from the system.                             
+                     * @returns A promise that is resolved once the get action has been performed.                           
                      * @example // Request the original file stream              
                                     ArticleService.articles.files.streams.get({id: '<file-id>'})
                                         .then(function (data) {     
@@ -1145,7 +1178,10 @@ export class ArticleService {
 
                     /**                     
                     * Returns a promise that is resolved once the get action has been performed. Success response returns the file stream as a blob. If derived resource's format is passed, such as `width` and `height` for the image type of file resource, the operation will return a blob of the derived file resource. Otherwise, blob of the original file resource will be retrieved. For more information on Blob objects please see [Blob Documentation](https://developer.mozilla.org/en-US/docs/Web/API/Blob).                     
-                    * @method streams.getBlob                            
+                    * @method
+                    * @param articleId Article slug or id which uniquely identifies article whose article file need to be retrieved.
+                    * @param data Article File object used to identify stream that needs to be retrieved from the system.    
+                    * @returns A promise that is resolved once the get action has been performed.                             
                     * @example // Request the original blob                
                                 ArticleService.articles.files.streams.getBlob('<file-id>')
                                     .then(function (data) {     
@@ -1174,7 +1210,11 @@ export class ArticleService {
 
                     /**                      
                      * Returns a promise that is resolved once the update file stream action has been performed; this action will replace the existing stream with a new one. Alternatively, if a derived stream is being updated it will either create a new derived stream or replace the existing one. In order to update a derived stream, format needs to be passed (For example: `width` and `height` for the image type of file stream data type).                      
-                     * @method streams.update                      
+                     * @method
+                     * @param articleId Article slug or id which uniquely identifies article whose article file need to be updated.
+                     * @param data Article File object used to identify stream that needs to be updated.
+                     * @param stream                     
+                     * @returns A promise that is resolved once the update file stream action has been performed.                     
                      * @example // Update original file stream 
                                     ArticleService.articles.files.streams.update('<file-id>', <file-stream>)
                                         .then(function (data) {   
@@ -1198,7 +1238,11 @@ export class ArticleService {
 
                     /**                      
                      * Returns a promise that is resolved once the create file stream action has been performed; this action will upload the specified blob. For more information on Blob objects please see [Blob Documentation](https://developer.mozilla.org/en-US/docs/Web/API/Blob).                      
-                     * @method streams.create                      
+                     * @method
+                     * @param articleId Article slug or id which uniquely identifies article whose article file need to be inserted.
+                     * @param data Article File object that need to be inserted into the system.
+                     * @param stream
+                     * @returns A promise that is resolved once the create file stream action has been performed.                        
                      * @example ArticleService.articles.files.streams.create('<file-id>', <blob>)
                                  .then(function (data) {  
                                         // perform success action here 
@@ -1216,7 +1260,9 @@ export class ArticleService {
             ratings: {
                 /**       
                  * Returns a promise that is resolved once the create article rating action has been performed; this action creates a new rating for an article.                   
-                 * @method                       
+                 * @method
+                 * @param data An article rating object that needs to be inserted into the system.
+                 * @returns A promise that is resolved once the create article rating action has been performed.                        
                  * @example ArticleService.articles.ratings.create({ articleId : '<article-id>', rating : 5, userId : '<user-id>' })
                                 .then(function (data) { 
                                     // perform success action here 
@@ -1231,7 +1277,10 @@ export class ArticleService {
 
                 /**                  
                  * Returns a promise that is resolved once the find action has been performed. Success response returns a list of article rating resources matching the given criteria.                  
-                 * @method                         
+                 * @method
+                 * @param articleId Article slug or id which uniquely identifies article whose rating resources need to be retrieved.
+                 * @param options Query resource options object.
+                 * @returns A promise that is resolved once the find action has been performed.                           
                  * @example ArticleService.articles.ratings.find({ 
                                 pageNumber : 1,   
                                 pageSize : 10,   
@@ -1252,7 +1301,11 @@ export class ArticleService {
 
                 /**                  
                  * Returns a promise that is resolved once the findByUser action has been performed. Success response returns a list of article rating resources filtered by username.                  
-                 * @method                         
+                 * @method
+                 * @param articleId Article slug or id which uniquely identifies article whose rating resources need to be retrieved.
+                 * @param username Username which uniquely identifies a user which has created an article rating.
+                 * @param options Query resource options object.
+                 * @returns A promise that is resolved once the findByUser action has been performed.                         
                  * @example ArticleService.articles.ratings.find('<username>', {   
                                 pageNumber : 1,   
                                 pageSize : 10,   
@@ -1272,7 +1325,11 @@ export class ArticleService {
 
                 /**                  
                  * Returns a promise that is resolved once the get action has been performed. Success response returns the specified article rating resource.                  
-                 * @method                         
+                 * @method
+                 * @param articleId Article slug or id which uniquely identifies article whose rating resources need to be retrieved.
+                 * @param id Article slug or id which uniquely identifies article resource that needs to be retrieved.
+                 * @param options Options object that contains embed data.
+                 * @returns A promise that is resolved once the get action has been performed.                          
                  * @example ArticleService.articles.ratings.get('<articleRating-id>')
                                 .then(function (data) {   
                                     // perform success action here 
@@ -1291,7 +1348,9 @@ export class ArticleService {
                  * let params = modelMapper.removeParams(articleRating); 
                  * let uri = params['model'].links('put').href; 
                  * ```                  
-                 * @method                         
+                 * @method
+                 * @param data An article object used to update specified article resource.
+                 * @returns A promise that is resolved once the update article rating action has been performed.                          
                  * @example // articleRating is a resource previously fetched using get action. 
                                 articleRating.rating = 4; 
                                 ArticleService.articles.ratings.update(articleRating)
@@ -1312,7 +1371,9 @@ export class ArticleService {
                  * let params = modelMapper.removeParams(articleRating); 
                  * let uri = params['model'].links('delete').href; 
                  * ```                 
-                 * @method                        
+                 * @method
+                 * @param data Rating resource resource that needs to be deleted.                        
+                 * @returns a promise that is resolved once the remove article rating action has been performed.                        
                  * @example // articleRating is a resource previously fetched using get action.				 
                                 ArticleService.articles.ratings.remove(articleRating)
                                     .then(function (data) {   
@@ -1332,7 +1393,9 @@ export class ArticleService {
                  * let params = modelMapper.removeParams(article); 
                  * let uri = params['model'].links('delete-ratings-by-article').href; 
                  * ```                     
-                 * @method                     
+                 * @method
+                 * @param data Article object whose ratings needs to be deleted.
+                 * @returns A promise that is resolved once the removeAll article rating action has been performed.                        
                  * @example // article is a resource previously fetched using get action.					
                                 ArticleService.articles.ratings.removeAll(article)
                                     .then(function (data) {   
@@ -1351,7 +1414,9 @@ export class ArticleService {
                 commentReported: {
                     /**                         
                      * Returns a promise that is resolved once the subscribe action has been performed.                         
-                     * @method                        
+                     * @method
+                     * @param data The subscribe information.
+                     * @returns A promise that is resolved once the subscribe action has been performed.                              
                      * @example ArticleService.articles.subscriptions.commentReported.subscribe(data)
                                     .then(function (data) { 
                                         // perform success action here 
@@ -1366,7 +1431,9 @@ export class ArticleService {
 
                     /**                         
                      * Returns a promise that is resolved once the isSubscribed action has been performed.                         
-                     * @method                        
+                     * @method
+                     * @param data The subscribe information.
+                     * @returns A promise that is resolved once the isSubscribed action has been performed.                           
                      * @example ArticleService.articles.subscriptions.commentReported.isSubscribed(data)
                                     .then(function (data) { 
                                         // perform success action here 
@@ -1381,7 +1448,9 @@ export class ArticleService {
 
                     /**                         
                      * Returns a promise that is commentReported once the unSubscribe action has been performed.                         
-                     * @method                         
+                     * @method
+                     * @param data The unsubscribe information.
+                     * @returns A promise that is commentReported once the unSubscribe action has been performed.                         
                      * @example ArticleService.articles.subscriptions.commentReported.isSubscribed(data)
                                     .then(function (data) { 
                                         // perform success action here 
@@ -1398,7 +1467,10 @@ export class ArticleService {
                 article: {
                     /**                         
                      * Returns a promise that is resolved once the subscribe action has been performed. This action subscribes an user to the specified article.                         
-                     * @method                         
+                     * @method
+                     * @param article The article identifier.
+                     * @param data The subscribe information.
+                     * @returns A promise that is resolved once the subscribe action has been performed.                         
                      * @example ArticleService.articles.subscriptions.article.subscribe(article, user)
                                     .then(function (data) { 
                                         // perform success action here 
@@ -1413,7 +1485,10 @@ export class ArticleService {
 
                     /**                         
                      * Returns a promise that is resolved once the isSubscribed action has been performed. This action checks if a user is subscribed to the specified article.                         
-                     * @method                       
+                     * @method
+                     * @param article The article identifier.
+                     * @param data The subscriber identifier.
+                     * @returns A promise that is resolved once the isSubscribed action has been performed.                        
                      * @example ArticleService.articles.subscriptions.article.subscribe(article, user)
                                     .then(function (data) { 
                                         // perform success action here 
@@ -1428,7 +1503,10 @@ export class ArticleService {
 
                     /**                         
                      * Returns a promise that is resolved once the unSubscribe action has been performed. This action unsubscribes a user from the specified article.                         
-                     * @method                        
+                     * @method
+                     * @param article The article identifier.
+                     * @param data The unsubscribe information.
+                     * @returns A promise that is resolved once the unSubscribe action has been performed.                        
                      * @example ArticleService.articles.subscriptions.article.subscribe(article, user)
                                     .then(function (data) { 
                                         // perform success action here 
@@ -1445,7 +1523,9 @@ export class ArticleService {
                 commentRequiresModeration: {
                     /**                         
                      * Returns a promise that is resolved once the subscribe action has been performed.                         
-                     * @method                         
+                     * @method
+                     * @param data The subscribe information.
+                     * @returns A promise that is resolved once the subscribe action has been performed.                         
                      * @example ArticleService.articles.subscriptions.commentRequiresModeration.subscribe(data)
                                     .then(function (data) { 
                                         // perform success action here 
@@ -1460,7 +1540,9 @@ export class ArticleService {
 
                     /**                         
                      * Returns a promise that is resolved once the isSubscribed action has been performed.                         
-                     * @method                         
+                     * @method
+                     * @param data The subscribe information.
+                     * @returns A promise that is resolved once the isSubscribed action has been performed.                           
                      * @example ArticleService.articles.subscriptions.commentRequiresModeration.isSubscribed(data)
                                     .then(function (data) { 
                                         // perform success action here 
@@ -1475,7 +1557,9 @@ export class ArticleService {
 
                     /**                         
                      * Returns a promise that is commentReported once the unSubscribe action has been performed.                         
-                     * @method                        
+                     * @method
+                     * @param data The unsubscribe information.
+                     * @returns A promise that is commentReported once the unSubscribe action has been performed.                        
                      * @example ArticleService.articles.subscriptions.commentRequiresModeration.unSubscribed(data)
                                     .then(function (data) { 
                                         // perform success action here 
@@ -1485,7 +1569,7 @@ export class ArticleService {
                                     });                        
                     **/
                     unSubscribed(data: IArticleSubscription): PromiseLike<IHttpResponse<void>> {
-                        return baasicApp.articleModule.articles.subscriptions.commentRequiresModeration.unSubscribe(data);
+                        return baasicApp.articleModule.articles.subscriptions.commentRequiresModeration.unSubscribed(data);
                     }
                 }
             },
@@ -1493,7 +1577,10 @@ export class ArticleService {
             tags: {
                 /**                 
                  * Returns a promise that is resolved once the find action has been performed. Success response returns a list of article tag resources matching the given criteria.                 
-                 * @method                        
+                 * @method
+                 * @param articleId Article slug or id which uniquely identifies article whose tag resources need to be retrieved.
+                 * @param options Query resource options object.
+                 * @returns A promise that is resolved once the find action has been performed.                         
                  * @example ArticleService.articles.tags.find({  
                                 pageNumber : 1,  
                                 pageSize : 10, 
@@ -1513,10 +1600,12 @@ export class ArticleService {
                 },
 
                 /**                 
-                 * Returns a promise that is resolved once the get action has been performed. Success response returns the specified article tag resource.  
-                 * @param id tag id
-                 * @param options options object               
-                 * @method                        
+                 * Returns a promise that is resolved once the get action has been performed. Success response returns the specified article tag resource.                
+                 * @method 
+                 * @param articleId Article slug or id which uniquely identifies article whose tag resource needs to be retrieved.
+                 * @param id A slug or id which uniquely identifies article tag resource that needs to be retrieved.
+                 * @param options Options object that contains embed data.  	
+                 * @returns A promise that is resolved once the get action has been performed.                       
                  * @example ArticleService.articles.tags.get('<articleTag-id>')
                              .then(function (data) {  
                                  // perform success action here 
@@ -1526,12 +1615,14 @@ export class ArticleService {
                             });                
                 **/
                 get(articleId: string, id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticleTag>> {
-                    return baasicApp.articleModule.articles.tags.find(articleId, id, options);
+                    return baasicApp.articleModule.articles.tags.get(articleId, id, options);
                 },
 
                 /**                     
                  * Returns a promise that is resolved once the create article tag action has been performed; this action creates a new tag for an article.                     
-                 * @method                       
+                 * @method
+                 * @param data An article tag value that needs to be inserted as new article tag resource into the system.
+                 * @returns A promise that is resolved once the create article tag action has been performed.                         
                  * @example ArticleService.articles.tags.create({   
                                 articleId : '<article-id>',   
                                 tag : {     
@@ -1557,7 +1648,9 @@ export class ArticleService {
                  * let params = modelMapper.removeParams(articleTag); 
                  * let uri = params['model'].links('delete').href; 
                  * ```                 
-                 * @method                        
+                 * @method
+                 * @param data Article Tag object that needs to be removed from the system.
+                 * @returns A promise that is resolved once the remove article tag action has been performed.                         
                  * @example // articleTag is a resource previously fetched using get action.
                                 ArticleService.articles.tags.remove(articleTag)
                                     .then(function (data) {   
@@ -1577,7 +1670,9 @@ export class ArticleService {
                  * let params = modelMapper.removeParams(article); 
                  * let uri = params['model'].links('delete-tags-by-article').href; 
                  * ```                     
-                 * @method                     
+                 * @method
+                 * @param data Article object whoose tags needs to be removed from the system.
+                 * @returns A promise that is resolved once the removeAll article tag action has been performed.                     
                  * @example // article is a resource previously fetched using get action.					
                                 ArticleService.articles.tags.removeAll(article)
                                     .then(function (data) {   
@@ -1866,7 +1961,7 @@ export class ArticleService {
                                     });
                 **/
                 approve(data: IArticleCommentReply, options: INotificationConfiguration): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.articleModule.comments.commentReplies.approve(data, options);
+                    return baasicApp.articleModule.comments.replies.approve(data, options);
                 },
 
                 /**
@@ -1888,7 +1983,7 @@ export class ArticleService {
                                     });
                 **/
                 unapprove(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.articleModule.comments.commentReplies.unapprove(data);
+                    return baasicApp.articleModule.comments.replies.unapprove(data);
                 },
 
                 /**
@@ -1908,7 +2003,7 @@ export class ArticleService {
                             });
                 **/
                 create(data: IArticleCommentReply): PromiseLike<IHttpResponse<IArticleCommentReply>> {
-                    return baasicApp.articleModule.comments.commentReplies.create(data);
+                    return baasicApp.articleModule.comments.replies.create(data);
                 },
 
                 /**
@@ -1931,7 +2026,7 @@ export class ArticleService {
                             });
                 **/
                 find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleCommentReply>>> {
-                    return baasicApp.articleModule.comments.commentReplies.find(options);
+                    return baasicApp.articleModule.comments.replies.find(options);
                 },
 
                 /**
@@ -1953,7 +2048,7 @@ export class ArticleService {
                                         });
                 **/
                 flag(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.articleModule.comments.commentReplies.flag(data);
+                    return baasicApp.articleModule.comments.replies.flag(data);
                 },
 
                 /**
@@ -1974,7 +2069,7 @@ export class ArticleService {
                                     });
                 **/
                 unflag(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.articleModule.comments.commentReplies.unflag(data);
+                    return baasicApp.articleModule.comments.replies.unflag(data);
                 },
 
                 /**
@@ -1992,7 +2087,7 @@ export class ArticleService {
                                 });
                 **/
                 get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticleCommentReply>> {
-                    return baasicApp.articleModule.comments.commentReplies.get(id, options);
+                    return baasicApp.articleModule.comments.replies.get(id, options);
                 },
 
                 /**
@@ -2014,7 +2109,7 @@ export class ArticleService {
                                     });
                 **/
                 remove(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.articleModule.comments.commentReplies.remove(data);
+                    return baasicApp.articleModule.comments.replies.remove(data);
                 },
 
                 /**
@@ -2037,7 +2132,7 @@ export class ArticleService {
                                     });
                 **/
                 report(data: IArticleCommentReply, options?: INotificationConfiguration): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.articleModule.comments.commentReplies.report(data, options);
+                    return baasicApp.articleModule.comments.replies.report(data, options);
                 },
 
                 /**
@@ -2059,7 +2154,7 @@ export class ArticleService {
                                     });
                 **/
                 unreport(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.articleModule.comments.commentReplies.unreport(data);
+                    return baasicApp.articleModule.comments.replies.unreport(data);
                 },
 
                 /**
@@ -2081,7 +2176,7 @@ export class ArticleService {
                                     });
                 **/
                 spam(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.articleModule.comments.commentReplies.spam(data);
+                    return baasicApp.articleModule.comments.replies.spam(data);
                 },
 
                 /**
@@ -2103,7 +2198,7 @@ export class ArticleService {
                                     });
                 **/
                 unspam(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.articleModule.comments.commentReplies.unspam(data);
+                    return baasicApp.articleModule.comments.replies.unspam(data);
                 },
 
                 /**
@@ -2125,7 +2220,7 @@ export class ArticleService {
                                     });
                 **/
                 update(data: IArticleCommentReply): PromiseLike<IHttpResponse<void>> {
-                    return baasicApp.articleModule.comments.commentReplies.update(data);
+                    return baasicApp.articleModule.comments.replies.update(data);
                 }
             }
         };
@@ -2241,7 +2336,9 @@ export class ArticleService {
             batch: {
                 /**                   
                  * Returns a promise that is resolved once the unlink action has been performed. This action will remove file resources from the system if successfully completed. If derived resource's format is passed, such as `width` and `height` for the image type of file resource, the operation will remove just derived resource. Otherwise, specified file and all its accompanying derived resources will be removed from the system.                   
-                 * @method                         
+                 * @method
+                 * @param data Collection of article files that needs to be deleted.
+                 * @returns A promise that is resolved once the unlink action has been performed.                          
                  * @example // Remove original file resources                
                              ArticleService.files.batch.unlink([{ id: '<file-id>' }])
                                  .then(function (data) {   
@@ -2265,7 +2362,9 @@ export class ArticleService {
 
                 /**                   
                  * Returns a promise that is resolved once the update action has been performed; this action updates specified file resources.                  
-                 * @method                        
+                 * @method
+                 * @param data A collection of article files objects used to update specified article files.
+                 * @returns A promise that is resolved once the update action has been performed.                        
                  * @example ArticleService.files.batch.update(files)
                                 .then(function (data) {   
                                     // perform success action here 
@@ -2280,7 +2379,9 @@ export class ArticleService {
 
                 /**                   
                  * Returns a promise that is resolved once the link action has been performed; this action links file resources from other modules into the Files module (For example: file resources from the Media Vault module can be linked directly into the Files module).                   
-                 * @method                         
+                 * @method
+                 * @param data A collection of article file objects that need to be inserted into the system.
+                 * @returns A promise that is resolved once the link action has been performed.                           
                  * @example ArticleService.files.batch.link(files)
                                 .then(function (data) {   
                                     // perform success action here 
@@ -2297,7 +2398,9 @@ export class ArticleService {
             streams: {
                 /**                     
                  * Returns a promise that is resolved once the get action has been performed. Success response returns the file stream if successfully completed. If derived resource's format is passed, such as `width` and `height` for the image type of file resource, the operation will return a stream of the derived resource. Otherwise, stream of the original file resource will be retrieved.                     
-                 * @method streams.get                            
+                 * @method
+                 * @param data Article file id of the original article file used to identify stream that needs to be retrieved from the system.
+                 * @returns A promise that is resolved once the get action has been performed.                             
                  * @example // Request the original file stream              
                                 ArticleService.files.streams.get({id: '<file-id>'})
                                     .then(function (data) {     
@@ -2322,7 +2425,9 @@ export class ArticleService {
 
                 /**                     
                  * Returns a promise that is resolved once the get action has been performed. Success response returns the file stream as a blob. If derived resource's format is passed, such as `width` and `height` for the image type of file resource, the operation will return a blob of the derived file resource. Otherwise, blob of the original file resource will be retrieved. For more information on Blob objects please see [Blob Documentation](https://developer.mozilla.org/en-US/docs/Web/API/Blob).                     
-                 * @method streams.getBlob                            
+                 * @method
+                 * @param data Article file id of the original article file used to identify stream that needs to be retrieved from the system.
+                 * @returns A promise that is resolved once the get action has been performed.                             
                  * @example // Request the original blob                
                                 ArticleService.files.streams.getBlob('<file-id>')
                                     .then(function (data) {     
@@ -2351,7 +2456,10 @@ export class ArticleService {
 
                 /**                      
                  * Returns a promise that is resolved once the update file stream action has been performed; this action will replace the existing stream with a new one. Alternatively, if a derived stream is being updated it will either create a new derived stream or replace the existing one. In order to update a derived stream, format needs to be passed (For example: `width` and `height` for the image type of file stream data type).                      
-                 * @method streams.update                      
+                 * @method
+                 * @param data article file used to identify stream that needs to be updated.
+                 * @param stream
+                 * @returns A promise that is resolved once the update file stream action has been performed.                     
                  * @example // Update original file stream 
                                 ArticleService.files.streams.update('<file-id>', <file-stream>)
                                     .then(function (data) {   
@@ -2375,7 +2483,10 @@ export class ArticleService {
 
                 /**                      
                  * Returns a promise that is resolved once the create file stream action has been performed; this action will upload the specified blob. For more information on Blob objects please see [Blob Documentation](https://developer.mozilla.org/en-US/docs/Web/API/Blob).                      
-                 * @method streams.create                      
+                 * @method
+                 * @param data article file that needs to be saved into the system.
+                 * @param stream
+                 * @returns A promise that is resolved once the create file stream action has been performed.                       
                  * @example ArticleService.files.streams.create('<file-id>', <blob>)
                              .then(function (data) {  
                                     // perform success action here 
@@ -2385,7 +2496,7 @@ export class ArticleService {
                             });                     
                 **/
                 create(data: IArticleFile, stream: any): PromiseLike<IHttpResponse<any>> {
-                    return baasicApp.articleModule.files.streams.create(data);
+                    return baasicApp.articleModule.files.streams.create(data, stream);
                 }
             }
         };
@@ -2531,7 +2642,9 @@ export class ArticleService {
         return {
             /**                         
              * Returns a promise that is resolved once the subscribe action has been performed. This action subscribes an user to the article module.                         
-             * @method                        
+             * @method
+             * @param data The subscribe information.
+             * @returns A promise that is resolved once the subscribe action has been performed.                         
              * @example ArticleService.subscriptions.subscribe(data)
                          .then(function (data) { 
                              // perform success action here 
@@ -2546,7 +2659,9 @@ export class ArticleService {
 
             /**                         
              * Returns a promise that is resolved once the isSubscribed action has been performed. This action checks if a user is subscribed to the article module.                         
-             * @method                       
+             * @method
+             * @param data The subscribe information.
+             * @returns A promise that is resolved once the isSubscribed action has been performed.                       
              * @example ArticleService.subscriptions.isSubscribe(data)
                          .then(function (data) { 
                              // perform success action here 
@@ -2561,7 +2676,9 @@ export class ArticleService {
 
             /**                         
              * Returns a promise that is resolved once the unSubscribe action has been performed. This action unsubscribes a user from the article module.                         
-             * @method                        
+             * @method
+             * @param data The subscribe information.
+             * @returns A promise that is resolved once the unSubscribe action has been performed.                           
              * @example ArticleService.subscriptions.unSubscribe(data)
                          .then(function (data) { 
                              // perform success action here 
@@ -2667,7 +2784,10 @@ export class ArticleService {
             subscriptions: {
                 /**                     
                  * Returns a promise that is resolved once the subscribe action has been performed. This action subscribes an user to the specified tag.                     
-                 * @method             
+                 * @method
+                 * @param tag article tag object.
+                 * @param data The subscribe information.
+                 * @returns A promise that is resolved once the subscribe action has been performed.                   
                  * @example ArticleService.tags.subscriptions.subscribe(tag, user) 
                                 .then(function (data) { 
                                     // perform success action here 
@@ -2681,9 +2801,11 @@ export class ArticleService {
                 },
 
                 /**                    
-                 * Returns a promise that is resolved once the isSubscribed action has been performed. This action checks if a user is subscribed to the specified tag.
-                 * @param                     
-                 * @method                     
+                 * Returns a promise that is resolved once the isSubscribed action has been performed. This action checks if a user is subscribed to the specified tag.                
+                 * @method
+                 * @param tag Article tag object.
+                 * @param data The subscriber identifier.
+                 * @returns A promise that is resolved once the isSubscribed action has been performed.                       
                  * @example ArticleService.tags.subscriptions.isSubscribed(tag, user)
                                 .then(function (data) { 
                                     // perform success action here 
@@ -2697,10 +2819,11 @@ export class ArticleService {
                 },
 
                 /**                     
-                 * Returns a promise that is resolved once the unSubscribe action has been performed. This action unsubscribes a user from the specified tag.
-                 * @param tag tag object
-                 * @param data data object                     
-                 * @method subscriptions.unSubscribe                     
+                 * Returns a promise that is resolved once the unSubscribe action has been performed. This action unsubscribes a user from the specified tag.                    
+                 * @method
+                 * @param tag Article tag object.
+                 * @param data The unsubscribe information.
+                 * @returns A promise that is resolved once the unSubscribe action has been performed.                    
                  * @example ArticleService.tags.subscriptions.unSubscribe(tag, user)
                              .then(function (data) { 
                                  // perform success action here 
@@ -2720,8 +2843,7 @@ export class ArticleService {
         let baasicApp = this.baasicApp;
         return {
             /**                  
-             * Returns a promise that is resolved once the get action has been performed. Success response returns the article settings. 
-             * @param options options object                 
+             * Returns a promise that is resolved once the get action has been performed. Success response returns the article settings.                  
              * @method
              * @param options Options object that contains embed data.
              * @returns A promise that is resolved once the get action has been performed.                          

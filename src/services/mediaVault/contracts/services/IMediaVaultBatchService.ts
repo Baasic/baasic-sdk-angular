@@ -1,4 +1,4 @@
-import { IHttpResponse } from 'common/contracts';
+import { IHttpResponse } from 'infrastructure/common/contracts';
 import { IMediaEntry } from 'services/mediaVault/contracts';
 
 export interface IMediaVaultBatchService {

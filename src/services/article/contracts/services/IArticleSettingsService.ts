@@ -1,4 +1,4 @@
-import { IGetRequestOptions, IHttpResponse } from 'common/contracts';
+import { IGetRequestOptions, IHttpResponse } from 'infrastructure/common/contracts';
 import { IArticleSettings } from 'services/article/contracts';
 
 export interface IArticleSettingsService {

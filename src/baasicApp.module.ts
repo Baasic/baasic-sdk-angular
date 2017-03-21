@@ -1,6 +1,6 @@
 import { NgModule, Injectable, Inject, OpaqueToken, ModuleWithProviders } from '@angular/core';
-import { IBaasicAppOptions, BaasicApp as SDKBaasicApp } from 'baasic-sdk-javascript';
-import { HttpClientFactory } from 'httpApi/http-client.factory'
+import { IBaasicAppOptions, BaasicApp as SDKBaasicApp } from '../dependencies/baasic-sdk-javascript';
+import { HttpClientFactory } from 'infrastructure/httpApi/http-client.factory'
 
 let apiKeyToken = new OpaqueToken('ApiKey');
 let optionToken = new OpaqueToken('IAppOptions');

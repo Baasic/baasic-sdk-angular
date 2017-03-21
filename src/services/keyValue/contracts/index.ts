@@ -1,1 +1,1 @@
-export * from './IKeyValue';
+export * from './key-value.model';
