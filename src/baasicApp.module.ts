@@ -11,11 +11,7 @@ let optionToken = new OpaqueToken('IAppOptions');
     ]
 })
 export class BaasicApp extends SDKBaasicApp {
-    static forApp(apiKey: string, options?: Partial<IBaasicAppOptions>): ModuleWithProviders {
-        options = options || {};
-        if (!options.httpClient) {
-            options.httpClient = null;
-        }
+    static forRoot(apiKey: string, options?: Partial<IBaasicAppOptions>): ModuleWithProviders {
         return {
             ngModule: BaasicApp,
             providers: [{
