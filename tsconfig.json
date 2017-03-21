@@ -3,8 +3,8 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "target": "es5",
-        "experimentalDecorators": true,
         "baseUrl": ".",
+        "typeRoots": [],
         "paths": {
             "*": [
                 "*",
@@ -12,7 +12,10 @@
                 "dependencies/baasic-sdk-javascript/build/lib/types/*"
             ]
         },
-        "noEmitOnError": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "importHelpers": true,
+        "noEmitHelpers": true,
         "lib": [
             "dom",
             "es6"
@@ -20,8 +23,9 @@
 
     },
     "exclude": [
-        "node_modules",
-        "build",
-        "dependencies"
+        "node_modules/",
+        "build/",
+        "dependencies/baasic-sdk-javascript/",
+        "dependencies/baasic-sdk-javascript/node_modules/"
     ]
 }

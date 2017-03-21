@@ -14,7 +14,11 @@ module.exports = {
     /**
      * Entry point to the application, webpack will bundle all imported modules.
      */
-    entry: './src/index.ts',
+    entry: {
+        'app': [
+            './src/index.ts'
+        ]
+    },
     /**
      * Rule for which files should be transpiled via typescript loader.
      */
@@ -22,7 +26,14 @@ module.exports = {
         rules: [{
             test: /\.ts$/,
             use: [{
-                loader: 'ts-loader'
+                loader: 'ts-loader',
+                options: {
+                    transpileOnly: true,
+                    compilerOptions: {
+                        "importHelpers": true,
+                        "noEmitHelpers": true
+                    }
+                }
             }]
         }]
     },
@@ -34,7 +45,12 @@ module.exports = {
         /**
          * Resolve modules using following folders.
          */
-        modules: [getRootPath('src'), getRootPath('node_modules')]
+        modules: [
+            getRootPath('src'),
+            getRootPath('node_modules'),
+            getRootPath('dependencies/baasic-sdk-javascript/src'),
+            getRootPath('dependencies/baasic-sdk-javascript/node_modules')
+        ]
     },
     /**
      * Specify output as an UMD library.
@@ -52,8 +68,17 @@ module.exports = {
             commonjs2: '@angular/core',
             amd: '@angular/core'
         },
+        '@angular/http': {
+            root: ['ng', 'http'],
+            commonjs: '@angular/http',
+            commonjs2: '@angular/http',
+            amd: '@angular/http'
+        },
         'baasic-sdk-javascript': {
-
+            root: ['baasicSdkJavaScript'],
+            commonjs: 'baasic-sdk-javascript',
+            commonjs2: 'baasic-sdk-javascript',
+            amd: 'baasic-sdk-javascript'
         }
     }
 }
