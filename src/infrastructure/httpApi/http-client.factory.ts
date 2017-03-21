@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
+import { HttpModule, Http, RequestOptionsArgs, Response, Headers } from '@angular/http';
 import { IHttpClient, IHttpRequest, IHttpResponse, IHttpHeaders } from 'baasic-sdk-javascript'
 
 import { Observable } from 'rxjs/Observable';
@@ -27,7 +27,7 @@ export class HttpClientFactory {
             method: request.method,
         };
 
-        if (request.headers) httpRequest.headers = request.headers;
+        if (request.headers) httpRequest.headers = new Headers(request.headers);
         if (request.data) httpRequest.body = request.data;
 
         return this.http.request(request.url.toString(), httpRequest)
@@ -36,7 +36,7 @@ export class HttpClientFactory {
                     request: request,
                     statusCode: response.status,
                     statusText: response.statusText,
-                    headers: response.headers,
+                    headers: response.headers.toJSON(),
                     data: <ResponseType>response.json()
                 };
             })
@@ -46,7 +46,7 @@ export class HttpClientFactory {
                         request: request,
                         statusCode: response.status,
                         statusText: response.statusText,
-                        headers: response.headers,
+                        headers: response.headers.toJSON(),
                         data: response.json()
                     });
                 } else {
