@@ -1,13 +1,41 @@
 import { NgModule, Injectable, Inject, OpaqueToken, ModuleWithProviders } from '@angular/core';
 import { IBaasicAppOptions, BaasicApp as SDKBaasicApp } from '../dependencies/baasic-sdk-javascript';
-import { HttpClientFactory } from 'infrastructure/httpApi/http-client.factory'
+import { HttpClientFactory } from 'infrastructure/httpApi/http-client.factory';
+import {
+    ApplicationSettingsService,
+    ArticleService,
+    CommerceService,
+    DynamicResourceService,
+    FilesService,
+    KeyValueService,
+    MediaVaultService,
+    MembershipService,
+    MeteringService,
+    NotificationsService,
+    TemplatingService,
+    UserProfileService,
+    ValueSetService
+} from 'services';
 
 let apiKeyToken = new OpaqueToken('ApiKey');
 let optionToken = new OpaqueToken('IAppOptions');
 
 @NgModule({
     providers: [
-        HttpClientFactory
+        HttpClientFactory,
+        ApplicationSettingsService,
+        ArticleService,
+        CommerceService,
+        DynamicResourceService,
+        FilesService,
+        KeyValueService,
+        MediaVaultService,
+        MembershipService,
+        MeteringService,
+        NotificationsService,
+        TemplatingService,
+        UserProfileService,
+        ValueSetService
     ]
 })
 export class BaasicApp extends SDKBaasicApp {
