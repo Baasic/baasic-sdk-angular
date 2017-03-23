@@ -16,7 +16,8 @@
     "build:dev": "npm run clean:build && npm run build:tsc && webpack --config webpack.dev.js --bail",
     "build:prod": "npm run clean:build && npm run build:tsc && webpack --config webpack.prod.js --bail",
     "build:tsc": "tsc --outDir build/lib --declaration --declarationDir build/lib/types",
-    "clean:build": "rimraf build"
+    "clean:build": "rimraf build",
+    "compodoc": "./node_modules/.bin/compodoc -p tsconfig.json"
   },
   "devDependencies": {
     "@types/node": "^7.0.5",
@@ -29,9 +30,7 @@
     "typescript": "^2.1.6",
     "webpack": "^2.2.1",
     "webpack-merge": "^2.6.1",
-    "webpack-uglify-js-plugin": "^1.1.9",
-    "zone.js": "^0.7.2",
-    "@angular/platform-browser": "^2.4.9"
+    "webpack-uglify-js-plugin": "^1.1.9"
   },
   "peerDependencies": {
     "@angular/core": "^2.4.9",
