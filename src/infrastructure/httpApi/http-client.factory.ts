@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response, Headers } from '@angular/http';
-import { IHttpClient, IHttpRequest, IHttpResponse, IHttpHeaders } from 'baasic-sdk-javascript'
+import { IHttpClient, IHttpRequest, IHttpResponse, IHttpHeaders } from '../../../dependencies/baasic-sdk-javascript'
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
