@@ -9,7 +9,6 @@
             "*": [
                 "*",
                 "src/*"
-                //"dependencies/baasic-sdk-javascript/build/lib/types/*"
             ]
         },
         "experimentalDecorators": true,
@@ -24,8 +23,6 @@
     },
     "exclude": [
         "node_modules/",
-        "build/",
-        "dependencies/baasic-sdk-javascript/",
-        "dependencies/baasic-sdk-javascript/node_modules/"
+        "build/"
     ]
 }

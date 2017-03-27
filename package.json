@@ -1,8 +1,11 @@
 {
   "name": "baasic-sdk-angular",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
+  "description": "Angular (v2+) SDK provides core functionality for building web and mobile applications on [Baasic](http://www.baasic.com/).",
+  "keywords": ["Baasic", "BaaS", "sdk", "JavaScript", "Angular", "Backend", "browser", "client-side"],
+  "homepage": "http://www.baasic.com/",
   "main": "./lib/index.js",
-  "types": "./lib/types/index.d.ts",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "ws:setup": "npm install npm-workspace && npm run link-dependencies && npm run build:dependencies && npm run install-peer-dependencies",
     "ws:clean": "npm-workspace clean",
@@ -15,10 +18,19 @@
     "watch:webpack": "webpack --config webpack.watch-dev.js",
     "build:dev": "npm run clean:build && npm run build:tsc && webpack --config webpack.dev.js --bail",
     "build:prod": "npm run clean:build && npm run build:tsc && webpack --config webpack.prod.js --bail",
-    "build:tsc": "tsc --outDir build/lib --declaration --declarationDir build/lib/types",
+    "build:tsc": "tsc --outDir build/lib --declaration --declarationDir build/lib",
     "clean:build": "rimraf build",
     "compodoc": "./node_modules/.bin/compodoc -p tsconfig.json"
   },
+  "author": "Mono Software",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baasic/baasic-sdk-angular.git"
+  },
+  "files": [
+    "build/lib/*"
+  ],
   "devDependencies": {
     "@types/node": "^7.0.5",
     "@types/webpack": "^2.2.5",
@@ -36,7 +48,7 @@
     "@angular/core": "^2.4.9",
     "@angular/http": "^2.4.9",
     "rxjs": "^5.2.0",
-    "baasic-sdk-javascript": "^2.0.0-rc.9"
+    "baasic-sdk-javascript": "^2.0.0-rc.10"
   },
   "dependencies": {}
 }

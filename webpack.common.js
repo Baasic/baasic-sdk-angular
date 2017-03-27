@@ -48,8 +48,6 @@ module.exports = {
         modules: [
             getRootPath('src'),
             getRootPath('node_modules')
-            //getRootPath('dependencies/baasic-sdk-javascript/src'),
-            //getRootPath('dependencies/baasic-sdk-javascript/node_modules')
         ]
     },
     /**
