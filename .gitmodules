@@ -1,4 +1,0 @@
-[submodule "dependencies/baasic-sdk-javascript"]
-	path = dependencies/baasic-sdk-javascript
-	url = https://github.com/Baasic/baasic-sdk-javascript.git
-	branch = master

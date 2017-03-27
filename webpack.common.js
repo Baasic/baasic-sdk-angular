@@ -47,16 +47,16 @@ module.exports = {
          */
         modules: [
             getRootPath('src'),
-            getRootPath('node_modules'),
-            getRootPath('dependencies/baasic-sdk-javascript/src'),
-            getRootPath('dependencies/baasic-sdk-javascript/node_modules')
+            getRootPath('node_modules')
+            //getRootPath('dependencies/baasic-sdk-javascript/src'),
+            //getRootPath('dependencies/baasic-sdk-javascript/node_modules')
         ]
     },
     /**
      * Specify output as an UMD library.
      */
     output: {
-        path: 'build/dist',
+        path: rootDir + 'build/dist',
         filename: 'baasic-sdk-angular.js',
         library: 'baasicSdkAngular',
         libraryTarget: 'umd'

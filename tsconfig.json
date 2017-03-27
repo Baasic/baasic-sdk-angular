@@ -8,8 +8,8 @@
         "paths": {
             "*": [
                 "*",
-                "src/*",
-                "dependencies/baasic-sdk-javascript/build/lib/types/*"
+                "src/*"
+                //"dependencies/baasic-sdk-javascript/build/lib/types/*"
             ]
         },
         "experimentalDecorators": true,
