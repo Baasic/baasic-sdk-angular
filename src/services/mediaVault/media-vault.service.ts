@@ -11,7 +11,7 @@ import {
     IMediaVaultStreamsService,
     IMediaVaultSettings,
     IPreprocessingProviderSettings
-} from 'services/mediaVault/contracts';
+} from './contracts';
 
 @Injectable()
 export class MediaVaultService {

@@ -16,7 +16,7 @@ import {
     IUserProfileService,
     IUserSkill,
     IUserWork
-} from 'services/userProfile/contracts';
+} from './contracts';
 
 @Injectable()
 export class UserProfileService {

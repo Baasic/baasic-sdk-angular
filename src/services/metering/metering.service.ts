@@ -11,7 +11,7 @@ import {
     IMeteringSettings,
     IMeteringSettingsService,
     IMeteringStatisticsService
-} from 'services/metering/contracts';
+} from './contracts';
 
 @Injectable()
 export class MeteringService {

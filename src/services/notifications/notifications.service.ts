@@ -13,7 +13,7 @@ import {
     INotificationsSubscriptionsService,
     IUserRegistration,
     IUserSubscription
-} from 'services/notifications/contracts';
+} from './contracts';
 
 @Injectable()
 export class NotificationsService {

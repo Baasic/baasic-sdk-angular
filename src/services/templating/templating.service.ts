@@ -3,7 +3,7 @@ import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
 import { BaasicApp } from '../../index';
 
 import { IBaasicResponse, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from '../../infrastructure/common/contracts';
-import { ITemplate, ITemplatingBatchService } from 'services/templating/contracts';
+import { ITemplate, ITemplatingBatchService } from './contracts';
 
 @Injectable()
 export class TemplatingService {

@@ -22,7 +22,7 @@ import {
     IArticleTagsService,
     INotificationConfiguration,
     IRating
-} from 'services/article/contracts';
+} from './contracts';
 
 @Injectable()
 export class ArticleService {

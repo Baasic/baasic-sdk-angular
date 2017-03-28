@@ -3,7 +3,7 @@ import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
 import { BaasicApp } from '../../index';
 
 import { IACLPolicy, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from '../../infrastructure/common/contracts';
-import { IDynamicACLOptions, IDynamicObject, IDynamicResourceACLService, IDynamicResourceSchemaService, IResourceSchema } from 'services/dynamicResource/contracts';
+import { IDynamicACLOptions, IDynamicObject, IDynamicResourceACLService, IDynamicResourceSchemaService, IResourceSchema } from './contracts';
 
 @Injectable()
 export class DynamicResourceService {

@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from '../../infrastructure/common/contracts';
-import { IValueSet, IValueSetItem, IValueSetItemService } from 'services/valueSet/contracts';
+import { IValueSet, IValueSetItem, IValueSetItemService } from './contracts';
 
 @Injectable()
 export class ValueSetService {

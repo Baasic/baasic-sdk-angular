@@ -25,7 +25,7 @@ import {
     IUserInfo,
     IUserService,
     IUserSocialLogin
-} from 'services/membership/contracts';
+} from './contracts';
 
 @Injectable()
 export class MembershipService {

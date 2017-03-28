@@ -9,7 +9,7 @@ import {
     IInvoiceService,
     IPaymentTransaction,
     IProductService
-} from 'services/commerce/contracts';
+} from './contracts';
 
 @Injectable()
 export class CommerceService {
