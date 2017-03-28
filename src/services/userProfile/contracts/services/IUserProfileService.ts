@@ -5,7 +5,7 @@ import {
     IUserProfileEducationService,
     IUserProfileSkillService,
     IUserProfileWorkService
-} from 'services/userProfile/contracts';
+} from '../';
 
 export interface IUserProfileService {
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IUserProfile>>>;

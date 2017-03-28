@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
-import { IOrganization, IOrganizationBatchService } from 'services/userProfile/contracts';
+import { IOrganization, IOrganizationBatchService } from '../';
 
 export interface IOrganizationService {
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IOrganization>>>;

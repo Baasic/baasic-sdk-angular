@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'infrastructure/common/contracts';
-import { IMeteringCategory } from 'services/metering/contracts';
+import { IMeteringCategory } from '../';
 
 export interface IMeteringCategoryBatchService {
     create(data: IMeteringCategory[]): PromiseLike<IHttpResponse<IMeteringCategory[]>>;

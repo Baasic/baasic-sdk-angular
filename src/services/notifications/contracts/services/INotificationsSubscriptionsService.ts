@@ -1,4 +1,4 @@
-import { INotificationsSubscriptionsAnonymousService, INotificationsSubscriptionsUsersService } from 'services/notifications/contracts';
+import { INotificationsSubscriptionsAnonymousService, INotificationsSubscriptionsUsersService } from '../';
 
 export interface INotificationsSubscriptionsService {
     anonymous: INotificationsSubscriptionsAnonymousService;

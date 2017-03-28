@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'infrastructure/common/contracts';
-import { IUserSubscription } from 'services/notifications/contracts';
+import { IUserSubscription } from '../';
 
 export interface INotificationsSubscriptionsUsersBatchService {
     create(data: IUserSubscription[]): PromiseLike<IHttpResponse<IUserSubscription[]>>;

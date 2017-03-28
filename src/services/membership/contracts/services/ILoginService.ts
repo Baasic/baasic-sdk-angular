@@ -1,4 +1,4 @@
-import { IUserInfo } from 'services/membership/contracts';
+import { IUserInfo } from '../';
 
 export interface ILoginService {
     login(data: any): PromiseLike<any>;

@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
-import { ICommerceLookupsCountryBatchService } from 'services/commerce/contracts';
+import { ICommerceLookupsCountryBatchService } from '../../';
 
 export interface ICommerceLookupsCountryService {
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<any>>>;

@@ -1,5 +1,5 @@
 import { IGetRequestOptions, IHttpResponse } from 'infrastructure/common/contracts';
-import { ILookup } from 'services/membership/contracts';
+import { ILookup } from '../';
 
 export interface ILookupService {
     get(options?: IGetRequestOptions): PromiseLike<IHttpResponse<ILookup>>;

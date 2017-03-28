@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
-import { ICommerceLookupsRecurringCyclePeriodTypeBatchService } from 'services/commerce/contracts';
+import { ICommerceLookupsRecurringCyclePeriodTypeBatchService } from '../../';
 
 export interface ICommerceLookupsRecurringCyclePeriodTypeService {
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<any>>>;

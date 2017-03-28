@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'infrastructure/common/contracts';
-import { IArticleFile } from 'services/article/contracts';
+import { IArticleFile } from '../';
 
 export interface IArticleFilesStreamsService {
     get(data: any): PromiseLike<IHttpResponse<any>>;

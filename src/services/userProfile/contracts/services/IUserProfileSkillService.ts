@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
-import { IUserSkill } from 'services/userProfile/contracts';
+import { IUserSkill } from '../';
 
 export interface IUserProfileSkillService {
     find(options: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IUserSkill>>>;

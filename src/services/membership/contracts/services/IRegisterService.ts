@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'infrastructure/common/contracts';
-import { IAppUser, IRegisterUser } from 'services/membership/contracts';
+import { IAppUser, IRegisterUser } from '../';
 
 export interface IRegisterService {
     create(data: IRegisterUser): PromiseLike<IHttpResponse<IAppUser>>;

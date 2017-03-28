@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'infrastructure/common/contracts';
-import { IMediaEntry } from 'services/mediaVault/contracts';
+import { IMediaEntry } from '../';
 
 export interface IMediaVaultBatchService {
     update(data: IMediaEntry[]): PromiseLike<IHttpResponse<void>>;

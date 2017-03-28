@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
-import { ICommerceLookupsPaymentMethodBatchService } from 'services/commerce/contracts';
+import { ICommerceLookupsPaymentMethodBatchService } from '../../';
 
 export interface ICommerceLookupsPaymentMethodService {
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<any>>>;

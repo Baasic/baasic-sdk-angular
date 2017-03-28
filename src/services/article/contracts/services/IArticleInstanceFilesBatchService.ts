@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
-import { IArticleFile } from 'services/article/contracts';
+import { IArticleFile } from '../';
 
 export interface IArticleInstanceFilesBatchService {
     unlink(articleId: string, data: IArticleFile[]): PromiseLike<IHttpResponse<void>>;

@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
-import { IArticleTag, IArticleTagsSubscriptionsService } from 'services/article/contracts';
+import { IArticleTag, IArticleTagsSubscriptionsService } from '../';
 
 export interface IArticleTagsService {
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleTag>>>;

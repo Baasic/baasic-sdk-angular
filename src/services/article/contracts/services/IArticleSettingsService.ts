@@ -1,5 +1,5 @@
 import { IGetRequestOptions, IHttpResponse } from 'infrastructure/common/contracts';
-import { IArticleSettings } from 'services/article/contracts';
+import { IArticleSettings } from '../';
 
 export interface IArticleSettingsService {
     get(options?: IGetRequestOptions): PromiseLike<IHttpResponse<any>>;

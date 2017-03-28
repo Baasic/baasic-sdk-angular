@@ -7,7 +7,7 @@ import {
     ICommerceLookupsRecurringCyclePeriodTypeService,
     ICommerceLookupsSubscriptionStatusService,
     ICommerceLookupsInvoiceStatusService
-} from 'services/commerce/contracts';
+} from '../../';
 
 export interface ICommerceLookups {
     addressTypes: ICommerceLookupsAddressTypeService;

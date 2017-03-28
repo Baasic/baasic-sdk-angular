@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'infrastructure/common/contracts';
-import { IMeteringData } from 'services/metering/contracts';
+import { IMeteringData } from '../';
 
 export interface IMeteringBatchService {
     create(data: IMeteringData[]): PromiseLike<IHttpResponse<IMeteringData[]>>;

@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'infrastructure/common/contracts';
-import { IArticle, IArticleSubscription } from 'services/article/contracts';
+import { IArticle, IArticleSubscription } from '../';
 
 export interface IArticleInstanceSubscriptionsArticleService {
     subscribe(article: IArticle, data: IArticleSubscription): PromiseLike<IHttpResponse<any>>;

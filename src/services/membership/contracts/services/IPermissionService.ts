@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'infrastructure/common/contracts';
-import { IAccessPolicy, IAccessAction } from 'services/membership/contracts';
+import { IAccessPolicy, IAccessAction } from '../';
 
 export interface IPermissionService {
     find(section: string, options?: any): PromiseLike<IHttpResponse<IAccessPolicy[]>>;

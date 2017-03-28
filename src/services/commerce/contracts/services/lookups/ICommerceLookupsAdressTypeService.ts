@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
-import { ICommerceLookupsAddressTypeBatchService } from 'services/commerce/contracts';
+import { ICommerceLookupsAddressTypeBatchService } from '../../';
 
 export interface ICommerceLookupsAddressTypeService {
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<any>>>;

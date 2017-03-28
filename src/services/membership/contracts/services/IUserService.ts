@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
-import { IAppUser, INewPassword, INewUser, IUserSocialLoginService } from 'services/membership/contracts';
+import { IAppUser, INewPassword, INewUser, IUserSocialLoginService } from '../';
 
 export interface IUserService {
     exists(username: string, options?: any): PromiseLike<IHttpResponse<any>>;

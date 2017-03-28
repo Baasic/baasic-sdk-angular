@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
-import { IAnonymousSubscription, INotificationsSubscriptionsAnonymousBatchService } from 'services/notifications/contracts';
+import { IAnonymousSubscription, INotificationsSubscriptionsAnonymousBatchService } from '../';
 
 export interface INotificationsSubscriptionsAnonymousService {
     create(data: IAnonymousSubscription): PromiseLike<IHttpResponse<IAnonymousSubscription>>;

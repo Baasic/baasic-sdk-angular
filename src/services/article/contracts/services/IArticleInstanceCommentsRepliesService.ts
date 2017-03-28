@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
-import { IArticle, IArticleCommentReply, INotificationConfiguration } from 'services/article/contracts';
+import { IArticle, IArticleCommentReply, INotificationConfiguration } from '../';
 
 export interface IArticleInstanceCommentsRepliesService {
     approve(data: IArticleCommentReply, options: IOptions): PromiseLike<IHttpResponse<void>>;

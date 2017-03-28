@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'infrastructure/common/contracts';
-import { ISkill } from 'services/userProfile/contracts';
+import { ISkill } from '../';
 
 export interface ISkillBatchService {
     create(data: ISkill[]): PromiseLike<IHttpResponse<any>>;

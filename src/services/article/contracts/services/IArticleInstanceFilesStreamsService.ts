@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
-import { IArticleFile } from 'services/article/contracts';
+import { IArticleFile } from '../';
 
 export interface IArticleInstanceFilesStreamsService {
     get(articleId: string, data: any): PromiseLike<IHttpResponse<any>>;

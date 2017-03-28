@@ -1,5 +1,5 @@
 import { IHttpResponse } from 'infrastructure/common/contracts';
-import { IFileEntry } from 'services/files/contracts';
+import { IFileEntry } from '../';
 
 export interface IFilesBatchService {
     update(data: IFileEntry[]): PromiseLike<IHttpResponse<void>>;

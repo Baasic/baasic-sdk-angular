@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
-import { IUserRegistration, INotificationsRegistrationsUsersBatchService } from 'services/notifications/contracts';
+import { IUserRegistration, INotificationsRegistrationsUsersBatchService } from '../';
 
 export interface INotificationsRegistrationsUsersService {
     create(data: IUserRegistration): PromiseLike<IHttpResponse<IUserRegistration>>;

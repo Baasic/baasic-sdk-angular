@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
-import { IUserSubscription, INotificationsSubscriptionsUsersBatchService } from 'services/notifications/contracts';
+import { IUserSubscription, INotificationsSubscriptionsUsersBatchService } from '../';
 
 export interface INotificationsSubscriptionsUsersService {
     create(data: IUserSubscription): PromiseLike<IHttpResponse<IUserSubscription>>;

@@ -1,5 +1,5 @@
 import { IGetRequestOptions, IHttpResponse } from 'infrastructure/common/contracts';
-import { IMeteringSettings } from 'services/metering/contracts';
+import { IMeteringSettings } from '../';
 
 export interface IMeteringSettingsService {
     get(options?: IGetRequestOptions): PromiseLike<IHttpResponse<IMeteringSettings>>;
