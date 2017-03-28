@@ -1,5 +1,5 @@
 import { IBaasicModel } from 'infrastructure/common/contracts';
-import { IArticle, IAuthor } from 'services/article/contracts';
+import { IArticle, IAuthor } from './';
 
 export interface IRating extends IBaasicModel {
     article?: IArticle,

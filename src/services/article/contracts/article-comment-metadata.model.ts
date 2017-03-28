@@ -1,4 +1,4 @@
-import { IAuthor } from 'services/article/contracts';
+import { IAuthor } from './';
 
 export interface IArticleCommentMetadata {
     approveDate?: string,

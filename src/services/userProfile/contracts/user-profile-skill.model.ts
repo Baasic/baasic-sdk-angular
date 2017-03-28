@@ -1,5 +1,5 @@
 import { IBaasicModel } from 'infrastructure/common/contracts';
-import { ISkill } from 'services/userProfile/contracts';
+import { ISkill } from './';
 
 export interface IUserProfileSkill extends IBaasicModel {
     skill?: ISkill,

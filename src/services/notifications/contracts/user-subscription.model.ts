@@ -1,5 +1,5 @@
 import { IBaasicModel } from 'infrastructure/common/contracts';
-import { IUser } from 'services/notifications/contracts';
+import { IUser } from './';
 
 export interface IUserSubscription extends IBaasicModel {
     channel: string,

@@ -1,5 +1,5 @@
 import { IBaasicModel } from 'infrastructure/common/contracts';
-import { IUserIdentity } from 'services/membership/contracts';
+import { IUserIdentity } from './';
 
 export interface IRegisterUser extends IBaasicModel, IUserIdentity {
     activationUrl?: string,

@@ -1,5 +1,5 @@
 import { IUserInfo } from 'infrastructure/common/contracts';
-import { IDerivedEntry } from 'services/files/contracts';
+import { IDerivedEntry } from './';
 
 
 export interface IFileEntryMetadata {

@@ -1,5 +1,5 @@
 import { IBaasicModel } from 'infrastructure/common/contracts';
-import { IOrganization, IUserProfile } from 'services/userProfile/contracts';
+import { IOrganization, IUserProfile } from './';
 
 export interface IUserEducation extends IBaasicModel {
     degree?: string,

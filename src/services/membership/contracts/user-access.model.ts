@@ -1,4 +1,4 @@
-import { IRole } from 'services/membership/contracts';
+import { IRole } from './';
 
 export interface IUserAccess {
     isApproved?: boolean,

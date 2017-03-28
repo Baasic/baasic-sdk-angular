@@ -1,5 +1,5 @@
 import { IBaasicModel } from 'infrastructure/common/contracts';
-import { IFileEntry } from 'services/userProfile/contracts';
+import { IFileEntry } from './';
 
 export interface IProfileAvatar extends IBaasicModel {
     avatarFileEntry?: IFileEntry,
