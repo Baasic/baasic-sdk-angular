@@ -1,11 +1,11 @@
 {
   "name": "baasic-sdk-angular",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "Angular (v2+) SDK provides core functionality for building web and mobile applications on [Baasic](http://www.baasic.com/).",
   "keywords": ["Baasic", "BaaS", "sdk", "JavaScript", "Angular", "Backend", "browser", "client-side"],
   "homepage": "http://www.baasic.com/",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "build/lib/index.js",
+  "types": "build/lib/index.d.ts",
   "scripts": {
     "ws:setup": "npm install npm-workspace && npm run link-dependencies && npm run build:dependencies && npm run install-peer-dependencies",
     "ws:clean": "npm-workspace clean",
@@ -47,8 +47,9 @@
   "peerDependencies": {
     "@angular/core": "^2.4.9",
     "@angular/http": "^2.4.9",
-    "rxjs": "^5.2.0",
-    "baasic-sdk-javascript": "^2.0.0-rc.10"
+    "rxjs": "^5.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "baasic-sdk-javascript": "^2.0.0-rc.11"
+  }
 }
