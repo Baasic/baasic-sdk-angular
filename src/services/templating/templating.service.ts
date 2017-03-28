@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
-import { BaasicApp } from 'index'
+import { BaasicApp } from '../../index';
 
-import { IBaasicResponse, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
+import { IBaasicResponse, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from '../../infrastructure/common/contracts';
 import { ITemplate, ITemplatingBatchService } from 'services/templating/contracts';
 
 @Injectable()

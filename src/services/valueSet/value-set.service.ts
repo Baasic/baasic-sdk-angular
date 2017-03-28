@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
-import { BaasicApp } from 'index'
+import { BaasicApp } from '../../index';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
+import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from '../../infrastructure/common/contracts';
 import { IValueSet, IValueSetItem, IValueSetItemService } from 'services/valueSet/contracts';
 
 @Injectable()
