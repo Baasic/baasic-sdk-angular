@@ -1,4 +1,4 @@
-import { IBaasicModel, IUserInfo } from 'infrastructure/common/contracts';
+import { IBaasicModel, IUserInfo } from '../../../infrastructure/common/contracts';
 import { IMediaVaultDerivedEntry } from './';
 
 export interface IMediaEntry extends IBaasicModel {

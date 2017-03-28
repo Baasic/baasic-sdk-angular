@@ -1,4 +1,4 @@
-import { IBaasicQueryModel, IHttpResponse } from 'infrastructure/common/contracts';
+import { IBaasicQueryModel, IHttpResponse } from '../../../../infrastructure/common/contracts';
 import { IUserSocialLogin } from '../';
 
 export interface IUserSocialLoginService {

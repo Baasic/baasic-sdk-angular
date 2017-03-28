@@ -1,4 +1,4 @@
-import { IHttpResponse } from 'infrastructure/common/contracts';
+import { IHttpResponse } from '../../../../infrastructure/common/contracts';
 
 export interface IMediaVaultStreamsService {
     get(data: any): PromiseLike<IHttpResponse<any>>;

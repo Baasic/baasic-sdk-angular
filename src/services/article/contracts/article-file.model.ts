@@ -1,4 +1,4 @@
-import { IBaasicModel } from 'infrastructure/common/contracts';
+import { IBaasicModel } from '../../../infrastructure/common/contracts';
 import { IArticleFileEntry } from './';
 
 export interface IArticleFile extends IBaasicModel {

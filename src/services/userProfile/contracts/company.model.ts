@@ -1,4 +1,4 @@
-import { IBaasicModel } from 'infrastructure/common/contracts';
+import { IBaasicModel } from '../../../infrastructure/common/contracts';
 
 export interface ICompany extends IBaasicModel {
     description?: string,

@@ -1,4 +1,4 @@
-import { IBaasicModel } from 'infrastructure/common/contracts';
+import { IBaasicModel } from '../../../infrastructure/common/contracts';
 import { IAnonymousRegistration } from './';
 
 export interface IAnonymousSubscription extends IBaasicModel {

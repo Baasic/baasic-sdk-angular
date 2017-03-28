@@ -1,4 +1,4 @@
-import { IBaasicModel } from 'infrastructure/common/contracts';
+import { IBaasicModel } from '../../../infrastructure/common/contracts';
 
 export interface IDerivedEntry extends IBaasicModel {
     fileSize?: number,

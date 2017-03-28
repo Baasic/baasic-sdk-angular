@@ -1,4 +1,4 @@
-import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
+import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from '../../../../infrastructure/common/contracts';
 import { IUserRegistration, INotificationsRegistrationsUsersBatchService } from '../';
 
 export interface INotificationsRegistrationsUsersService {

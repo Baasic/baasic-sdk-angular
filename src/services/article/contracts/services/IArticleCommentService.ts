@@ -1,4 +1,4 @@
-import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
+import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from '../../../../infrastructure/common/contracts';
 import { IArticleComment, IArticleCommentRepliesService, ICommentStatus, INotificationConfiguration } from '../';
 
 export interface IArticleCommentService {

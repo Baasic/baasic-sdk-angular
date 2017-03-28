@@ -1,4 +1,4 @@
-import { IBaasicResponse, IHttpResponse } from 'infrastructure/common/contracts';
+import { IBaasicResponse, IHttpResponse } from '../../../../infrastructure/common/contracts';
 import { ITemplate } from '../';
 
 export interface ITemplatingBatchService {

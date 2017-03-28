@@ -1,4 +1,4 @@
-import { IUserInfo } from 'infrastructure/common/contracts';
+import { IUserInfo } from '../../../infrastructure/common/contracts';
 
 export interface IArticleFileEntryMetadata {
     description?: string,

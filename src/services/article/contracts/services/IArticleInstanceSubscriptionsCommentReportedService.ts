@@ -1,4 +1,4 @@
-import { IHttpResponse } from 'infrastructure/common/contracts';
+import { IHttpResponse } from '../../../../infrastructure/common/contracts';
 import { IArticleSubscription } from '../';
 
 export interface IArticleInstanceSubscriptionsCommentReportedService {

@@ -1,4 +1,4 @@
-import { IGetRequestOptions, IHttpResponse } from 'infrastructure/common/contracts';
+import { IGetRequestOptions, IHttpResponse } from '../../../../infrastructure/common/contracts';
 import { IProfileAvatar, IUserProfileAvatarStreamsService } from '../';
 
 export interface IUserProfileAvatarService {

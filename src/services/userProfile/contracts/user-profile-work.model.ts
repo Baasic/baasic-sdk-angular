@@ -1,4 +1,4 @@
-import { IBaasicModel } from 'infrastructure/common/contracts';
+import { IBaasicModel } from '../../../infrastructure/common/contracts';
 import { ICompany } from './';
 
 export interface IUserProfileWork extends IBaasicModel {

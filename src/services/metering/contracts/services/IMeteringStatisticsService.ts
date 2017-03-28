@@ -1,4 +1,4 @@
-import { IBaasicQueryModel, IHttpResponse, IOptions } from 'infrastructure/common/contracts';
+import { IBaasicQueryModel, IHttpResponse, IOptions } from '../../../../infrastructure/common/contracts';
 import { IMeteringData } from '../';
 
 export interface IMeteringStatisticsService {

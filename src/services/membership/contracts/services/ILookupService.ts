@@ -1,4 +1,4 @@
-import { IGetRequestOptions, IHttpResponse } from 'infrastructure/common/contracts';
+import { IGetRequestOptions, IHttpResponse } from '../../../../infrastructure/common/contracts';
 import { ILookup } from '../';
 
 export interface ILookupService {
