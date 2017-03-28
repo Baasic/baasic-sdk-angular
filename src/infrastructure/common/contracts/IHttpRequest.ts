@@ -1,4 +1,4 @@
-import { IHttpHeaders } from 'infrastructure/common/contracts';
+import { IHttpHeaders } from './';
 
 export interface IHttpRequest {
     headers?: IHttpHeaders,

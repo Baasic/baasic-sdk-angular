@@ -1,4 +1,4 @@
-import { IBaasicModel } from 'infrastructure/common/contracts';
+import { IBaasicModel } from './';
 
 export interface IUserInfo extends IBaasicModel {
     displayName?: string

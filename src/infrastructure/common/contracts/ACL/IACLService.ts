@@ -1,4 +1,5 @@
-import { IACLOptions, IACLPolicy, IHttpResponse } from 'infrastructure/common/contracts';
+import { IACLOptions, IACLPolicy } from './';
+import { IHttpResponse } from '../';
 
 export interface IACLService {
     get(options?: IACLOptions): PromiseLike<IHttpResponse<IACLPolicy[]>>;
