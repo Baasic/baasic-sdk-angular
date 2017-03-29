@@ -1,5 +1,5 @@
 import { NgModule, Injectable, Inject, OpaqueToken, ModuleWithProviders } from '@angular/core';
-import { IBaasicAppOptions, BaasicApp as SDKBaasicApp } from 'baasic-sdk-javascript';
+import { IBaasicAppOptions } from 'baasic-sdk-javascript';
 import { HttpClientFactory } from './infrastructure/httpApi/http-client.factory';
 import {
     ApplicationSettingsService,
@@ -14,11 +14,9 @@ import {
     NotificationsService,
     TemplatingService,
     UserProfileService,
-    ValueSetService
+    ValueSetService,
+    TYPES
 } from './services';
-
-let apiKeyToken = new OpaqueToken('ApiKey');
-let optionToken = new OpaqueToken('IAppOptions');
 
 @NgModule({
     providers: [
@@ -38,30 +36,21 @@ let optionToken = new OpaqueToken('IAppOptions');
         ValueSetService
     ]
 })
-export class BaasicApp extends SDKBaasicApp {
+export class BaasicApp {
     static forRoot(apiKey: string, options?: Partial<IBaasicAppOptions>): ModuleWithProviders {
         return {
             ngModule: BaasicApp,
             providers: [{
-                provide: optionToken,
-                useValue: options
-            }, {
-                provide: apiKeyToken,
-                useValue: apiKey
+                provide: TYPES.Configuration,
+                useValue: {
+                    options: options,
+                    apiKey: apiKey
+                }
             }]
         };
     }
 
-    constructor( @Inject(apiKeyToken) apiKey: string, @Inject(optionToken) options: Partial<IBaasicAppOptions>, httpClientFactory: HttpClientFactory) {
-        super(apiKey, getOptions(options, httpClientFactory));
+    constructor() {
     }
 };
 
-function getOptions(options: Partial<IBaasicAppOptions>, httpClientFactory: HttpClientFactory): Partial<IBaasicAppOptions> {
-    options = options || {};
-    if (!options.httpClient) {
-        options.httpClient = httpClientFactory.get;
-    }
-
-    return options;
-}

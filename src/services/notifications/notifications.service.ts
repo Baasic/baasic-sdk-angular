@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
-import { BaasicApp } from '../../index';
+import { BaasicAppService } from '../index'
 
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from '../../infrastructure/common/contracts';
 import {
@@ -18,7 +18,7 @@ import {
 @Injectable()
 export class NotificationsService {
 
-    constructor(private baasicApp: BaasicApp) { }
+    constructor(private baasicApp: BaasicAppService) { }
 
     get publish(): INotificationsPublishService {
         let baasicApp = this.baasicApp;

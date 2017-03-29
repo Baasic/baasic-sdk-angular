@@ -1,3 +1,4 @@
+export * from './baasicApp.service';
 export * from './applicationSettings/application-settings.service';
 export * from './keyValue/key-value.service';
 export * from './valueSet/value-set.service';

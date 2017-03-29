@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
-import { BaasicApp } from '../../index';
+import { BaasicAppService } from '../index'
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
@@ -13,7 +13,7 @@ import { IValueSet, IValueSetItem, IValueSetItemService } from './contracts';
 @Injectable()
 export class ValueSetService {
 
-    constructor(private baasicApp: BaasicApp) { }
+    constructor(private baasicApp: BaasicAppService) { }
 
     /**
      * Returns a promise that is resolved once the find action has been performed. Success response returns a list of value set resources matching given criteria.

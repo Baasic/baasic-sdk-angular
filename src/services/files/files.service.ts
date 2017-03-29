@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
-import { BaasicApp } from '../../index';
+import { BaasicAppService } from '../index'
 
 import { IACLOptions, IACLPolicy, IACLService, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from '../../infrastructure/common/contracts';
 import { IFileEntry, IFilesBatchService, IFilesStreamsService } from './contracts';
@@ -8,7 +8,7 @@ import { IFileEntry, IFilesBatchService, IFilesStreamsService } from './contract
 @Injectable()
 export class FilesService {
 
-    constructor(private baasicApp: BaasicApp) { }
+    constructor(private baasicApp: BaasicAppService) { }
 
     /**                  
      * Returns a promise that is resolved once the find action has been performed. Success response returns a list of file resources matching the given criteria.                  

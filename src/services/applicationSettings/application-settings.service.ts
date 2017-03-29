@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
-import { BaasicApp } from '../../index'
+import { BaasicAppService } from '../index'
 
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from '../../infrastructure/common/contracts';
 import { IApplication } from './contracts';
@@ -8,7 +8,7 @@ import { IApplication } from './contracts';
 @Injectable()
 export class ApplicationSettingsService {
 
-    constructor(private baasicApp: BaasicApp) { }
+    constructor(private baasicApp: BaasicAppService) { }
 
     /**                 
      * Returns a promise that is resolved once the get action has been performed. Success response returns the application settings resource.                 

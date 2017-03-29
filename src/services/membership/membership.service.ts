@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
-import { BaasicApp } from '../../index';
+import { BaasicAppService } from '../index'
 
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from '../../infrastructure/common/contracts';
 import {
@@ -30,7 +30,7 @@ import {
 @Injectable()
 export class MembershipService {
 
-    constructor(private baasicApp: BaasicApp) { }
+    constructor(private baasicApp: BaasicAppService) { }
 
     get login(): ILoginService {
         let baasicApp = this.baasicApp;

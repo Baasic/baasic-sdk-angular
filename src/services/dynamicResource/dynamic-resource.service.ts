@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
-import { BaasicApp } from '../../index';
+import { BaasicAppService } from '../index'
 
 import { IACLPolicy, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from '../../infrastructure/common/contracts';
 import { IDynamicACLOptions, IDynamicObject, IDynamicResourceACLService, IDynamicResourceSchemaService, IResourceSchema } from './contracts';
@@ -8,7 +8,7 @@ import { IDynamicACLOptions, IDynamicObject, IDynamicResourceACLService, IDynami
 @Injectable()
 export class DynamicResourceService {
 
-    constructor(private baasicApp: BaasicApp) { }
+    constructor(private baasicApp: BaasicAppService) { }
 
     /**                  
      * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resources matching the given criteria.                  
