@@ -8,6 +8,7 @@ const TYPES = {
 }
 export { TYPES };
 
+@Injectable()
 export class BaasicAppService extends SDKBaasicApp {
     constructor( @Inject(TYPES.Configuration) configuration: IConfiguration, httpClientFactory: HttpClientFactory) {
         super(configuration.apiKey, getOptions(configuration.options, httpClientFactory));
