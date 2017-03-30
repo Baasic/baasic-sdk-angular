@@ -1,6 +1,6 @@
 {
   "name": "baasic-sdk-angular",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.8",
   "description": "Angular (v2+) SDK provides core functionality for building web and mobile applications on [Baasic](http://www.baasic.com/).",
   "keywords": ["Baasic", "BaaS", "sdk", "JavaScript", "Angular", "Backend", "browser", "client-side"],
   "homepage": "http://www.baasic.com/",
@@ -32,17 +32,17 @@
     "build/lib/*"
   ],
   "devDependencies": {
-    "@types/node": "^7.0.5",
-    "@types/webpack": "^2.2.5",
-    "npm-run-all": "^4.0.2",
-    "npm-workspace": "^0.7.1",
-    "rimraf": "^2.5.4",
+    "@types/node": "7.0.5",
+    "@types/webpack": "2.2.5",
+    "npm-run-all": "4.0.2",
+    "npm-workspace": "0.7.1",
+    "rimraf": "2.5.4",
     "tslib": "1.6.0",
-    "ts-loader": "^2.0.0",
-    "typescript": "^2.1.6",
-    "webpack": "^2.2.1",
-    "webpack-merge": "^2.6.1",
-    "webpack-uglify-js-plugin": "^1.1.9"
+    "ts-loader": "2.0.0",
+    "typescript": "2.1.6",
+    "webpack": "2.2.1",
+    "webpack-merge": "2.6.1",
+    "webpack-uglify-js-plugin": "1.1.9"
   },
   "peerDependencies": {
     "@angular/core": "2.4.9",
@@ -50,6 +50,6 @@
     "rxjs": "5.2.0"
   },
   "dependencies": {
-    "baasic-sdk-javascript": "^2.0.0-rc.11"
+    "baasic-sdk-javascript": "2.0.0-rc.12"
   }
 }
