@@ -54,7 +54,7 @@ module.exports = {
      * Specify output as an UMD library.
      */
     output: {
-        path: rootDir + 'build/dist',
+        path: 'build/dist',
         filename: 'baasic-sdk-angular.js',
         library: 'baasicSdkAngular',
         libraryTarget: 'umd'
