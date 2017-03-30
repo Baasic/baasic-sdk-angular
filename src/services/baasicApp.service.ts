@@ -18,8 +18,9 @@ export class BaasicAppService extends SDKBaasicApp {
 function getOptions(options: Partial<IBaasicAppOptions>, httpClientFactory: HttpClientFactory): Partial<IBaasicAppOptions> {
     options = options || {};
     if (!options.httpClient) {
-        options.httpClient = httpClientFactory.get;
+        options.httpClient = () => httpClientFactory;
     }
 
     return options;
-}
+};
+

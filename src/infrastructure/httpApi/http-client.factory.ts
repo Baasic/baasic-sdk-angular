@@ -8,21 +8,14 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class HttpClientFactory {
+export class HttpClientFactory implements IHttpClient {
     constructor(private http: Http) { }
 
-    get(): IHttpClient {
-        return {
-            createPromise: this.createPromise,
-            request: this.httpClient
-        };
-    }
-
-    private createPromise<TData>(deferFn: (resolve: (TData) => void, reject: (any) => void) => void): PromiseLike<TData> {
+    createPromise<TData>(deferFn: (resolve: (TData) => void, reject: (any) => void) => void): PromiseLike<TData> {
         return new Promise<TData>(deferFn);
     }
 
-    private httpClient<ResponseType>(request: IHttpRequest) {
+    request<ResponseType>(request: IHttpRequest) {
         let httpRequest: RequestOptionsArgs = {
             method: request.method,
         };

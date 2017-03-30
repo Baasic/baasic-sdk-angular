@@ -1,5 +1,6 @@
 import { NgModule, Injectable, Inject, OpaqueToken, ModuleWithProviders } from '@angular/core';
 import { IBaasicAppOptions } from 'baasic-sdk-javascript';
+import { HttpClientFactory } from './infrastructure/httpApi/http-client.factory';
 
 import {
     ApplicationSettingsService,
@@ -15,11 +16,14 @@ import {
     TemplatingService,
     UserProfileService,
     ValueSetService,
+    BaasicAppService,
     TYPES
 } from './services';
 
 @NgModule({
     providers: [
+        HttpClientFactory,
+        BaasicAppService,
         ApplicationSettingsService,
         ArticleService,
         CommerceService,
