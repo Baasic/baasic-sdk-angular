@@ -1,5 +1,5 @@
 import { NgModule, Injectable, Inject, OpaqueToken, ModuleWithProviders } from '@angular/core';
-import { IBaasicAppOptions } from 'baasic-sdk-javascript';
+import { IBaasicOptions } from 'baasic-sdk-javascript';
 import { HttpClientFactory } from './infrastructure/httpApi/http-client.factory';
 
 import {
@@ -40,7 +40,7 @@ import {
     ]
 })
 export class BaasicApp {
-    static forRoot(apiKey: string, options?: Partial<IBaasicAppOptions>): ModuleWithProviders {
+    static forRoot(apiKey: string, options?: Partial<IBaasicOptions>): ModuleWithProviders {
         return {
             ngModule: BaasicApp,
             providers: [{

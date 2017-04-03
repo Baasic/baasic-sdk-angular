@@ -1,5 +1,5 @@
 import { Injectable, Inject, OpaqueToken } from '@angular/core';
-import { IBaasicAppOptions, BaasicApp as SDKBaasicApp } from 'baasic-sdk-javascript';
+import { IBaasicOptions, BaasicApp as SDKBaasicApp } from 'baasic-sdk-javascript';
 import { HttpClientFactory } from '../infrastructure/httpApi/http-client.factory';
 import { IConfiguration } from '../infrastructure/common/contracts';
 
@@ -15,7 +15,7 @@ export class BaasicAppService extends SDKBaasicApp {
     }
 };
 
-function getOptions(options: Partial<IBaasicAppOptions>, httpClientFactory: HttpClientFactory): Partial<IBaasicAppOptions> {
+function getOptions(options: Partial<IBaasicOptions>, httpClientFactory: HttpClientFactory): Partial<IBaasicOptions> {
     options = options || {};
     if (!options.httpClient) {
         options.httpClient = () => httpClientFactory;
