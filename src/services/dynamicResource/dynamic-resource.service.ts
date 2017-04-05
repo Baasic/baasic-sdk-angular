@@ -90,8 +90,8 @@ export class DynamicResourceService {
                          // perform error handling here 
                     }); 				
      **/
-    update(schemaName: string, data: any, options?: any): PromiseLike<IHttpResponse<void>> {
-        return this.baasicApp.dynamicResourceModule.update(schemaName, data, options);
+    update(data: any, options?: any): PromiseLike<IHttpResponse<void>> {
+        return this.baasicApp.dynamicResourceModule.update(data, options);
     }
 
     /**                  
@@ -117,8 +117,8 @@ export class DynamicResourceService {
                         
                     }); 				
      **/
-    patch(schemaName: string, data: any, options?: any): PromiseLike<IHttpResponse<void>> {
-        return this.baasicApp.dynamicResourceModule.patch(schemaName, data, options);
+    patch(data: any, options?: any): PromiseLike<IHttpResponse<void>> {
+        return this.baasicApp.dynamicResourceModule.patch(data, options);
     }
 
     /**                  
@@ -140,8 +140,8 @@ export class DynamicResourceService {
                          // perform error handling here 
                     });						
      **/
-    remove(schemaName: string, data: any, options?: any): PromiseLike<IHttpResponse<void>> {
-        return this.baasicApp.dynamicResourceModule.remove(schemaName, data, options);
+    remove(data: any, options?: any): PromiseLike<IHttpResponse<void>> {
+        return this.baasicApp.dynamicResourceModule.remove(data, options);
     }
 
     get schema(): IDynamicResourceSchemaService {
