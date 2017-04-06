@@ -1,9 +1,9 @@
 import { IBaasicModel } from '../../../infrastructure/common/contracts';
-import { IUser } from './';
+import { INotificationUser } from './';
 
 export interface IUserRegistration {
     provider: string,
     providerData: string,
-    user?: IUser,
+    user?: INotificationUser,
     userId: string
 }

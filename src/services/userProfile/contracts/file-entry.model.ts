@@ -1,6 +1,6 @@
 import { IBaasicModel } from '../../../infrastructure/common/contracts';
 
-export interface IFileEntry extends IBaasicModel {
+export interface IAvatarFileEntry extends IBaasicModel {
     derivedEntries?: Object[],
     description?: string,
     fileExtension?: string,

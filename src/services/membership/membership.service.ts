@@ -22,7 +22,7 @@ import {
     IRole,
     IRoleService,
     ISocialLogin,
-    IUserInfo,
+    IUser,
     IUserService,
     IUserSocialLogin
 } from './contracts';
@@ -67,7 +67,7 @@ export class MembershipService {
                             })
                             .finally (function () {});							
             */
-            loadUserData(data: any): PromiseLike<IUserInfo> {
+            loadUserData(data: any): PromiseLike<IUser> {
                 return baasicApp.membershipModule.login.loadUserData(data);
             },
 

@@ -1,8 +1,8 @@
 import { IBaasicModel } from '../../../infrastructure/common/contracts';
-import { IUser } from './';
+import { INotificationUser } from './';
 
 export interface IUserSubscription extends IBaasicModel {
     channel: string,
-    user?: IUser,
+    user?: INotificationUser,
     userId: string
 }

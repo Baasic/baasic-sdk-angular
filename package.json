@@ -1,6 +1,6 @@
 {
   "name": "baasic-sdk-angular",
-  "version": "1.0.0-alpha.11",
+  "version": "1.0.0-alpha.12",
   "description": "Angular (v2+) SDK provides core functionality for building web and mobile applications on [Baasic](http://www.baasic.com/).",
   "keywords": ["Baasic", "BaaS", "sdk", "JavaScript", "Angular", "Backend", "browser", "client-side"],
   "homepage": "http://www.baasic.com/",

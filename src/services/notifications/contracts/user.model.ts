@@ -1,5 +1,5 @@
 import { IBaasicModel } from '../../../infrastructure/common/contracts';
 
-export interface IUser extends IBaasicModel {
+export interface INotificationUser extends IBaasicModel {
     username?: string
 }

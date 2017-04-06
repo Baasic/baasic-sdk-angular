@@ -1,6 +1,6 @@
 import { IBaasicModel } from '../../../infrastructure/common/contracts';
 
-export interface IUserInfo extends IBaasicModel {
+export interface IUser extends IBaasicModel {
     apiKey?: string,
     applicationName?: string,
     isApplicationUser?: boolean,
