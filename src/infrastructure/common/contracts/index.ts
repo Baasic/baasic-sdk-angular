@@ -10,6 +10,8 @@ export {
     IHttpHeaders,
     IHttpResponse
 } from 'baasic-sdk-javascript';
+
 export * from './ACL';
-export * from './IUserInfo';
+import { Membership } from 'baasic-sdk-javascript';
+export import IUserInfo = Membership.IUserInfo;
 export * from './IConfiguration';

@@ -50,6 +50,6 @@
     "rxjs": "5.2.0"
   },
   "dependencies": {
-    "baasic-sdk-javascript": "2.0.0-rc.16"
+    "baasic-sdk-javascript": "2.0.0-rc.18"
   }
 }
