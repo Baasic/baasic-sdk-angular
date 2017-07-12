@@ -44,10 +44,10 @@
     "@types/node": "7.0.5",
     "@types/webpack": "2.2.5",
     "npm-run-all": "4.0.2",
-    "npm-workspace": "0.7.1",
+    "npm-workspace": "^0.7.1",
     "rimraf": "2.5.4",
-    "tslib": "1.6.0",
     "ts-loader": "2.0.0",
+    "tslib": "1.6.0",
     "typescript": "2.2.2",
     "webpack": "2.2.1",
     "webpack-merge": "2.6.1",
@@ -59,6 +59,9 @@
     "rxjs": "5.2.0"
   },
   "dependencies": {
-    "baasic-sdk-javascript": "2.0.0-rc.26"
+    "@angular/core": "^4.2.6",
+    "@angular/http": "^4.2.6",
+    "baasic-sdk-javascript": "2.0.0-rc.26",
+    "rxjs": "^5.4.2"
   }
 }
