@@ -59,9 +59,6 @@
     "rxjs": "5.2.0"
   },
   "dependencies": {
-    "@angular/core": "4.2.6",
-    "@angular/http": "4.2.6",
-    "baasic-sdk-javascript": "2.0.0-rc.26",
-    "rxjs": "5.4.2"
+    "baasic-sdk-javascript": "^2.0.0-rc.26"
   }
 }
