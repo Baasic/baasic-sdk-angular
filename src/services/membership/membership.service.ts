@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
 import { BaasicAppService } from '../index'
-
+import { ILoginData } from '../';
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from '../../infrastructure/common/contracts';
 import {
     IAccessAction,
@@ -20,6 +20,7 @@ import {
     IResetPassword,
     IRequestPasswordReset,
     IRole,
+    IRoleBatchService,
     IRoleService,
     ISocialLogin,
     IUserInfo,
@@ -51,7 +52,7 @@ export class MembershipService {
                         })
                         .finally (function () {});                        
             **/
-            login(data: any): PromiseLike<any> {
+            login(data: ILoginData): PromiseLike<any> {
                 return baasicApp.membershipModule.login.login(data);
             },
 
@@ -67,7 +68,7 @@ export class MembershipService {
                             })
                             .finally (function () {});							
             */
-            loadUserData(data: any): PromiseLike<IUserInfo> {
+            loadUserData(data: any): PromiseLike<IHttpResponse<IUserInfo>> {
                 return baasicApp.membershipModule.login.loadUserData(data);
             },
 
@@ -797,6 +798,62 @@ export class MembershipService {
                 return baasicApp.membershipModule.permissions.hasPermission(authorization);
             }
         };
+    }
+
+    get batch(): IRoleBatchService {
+        let baasicApp = this.baasicApp;
+        return {
+            /**                   
+             * Returns a promise that is resolved once the create action has been performed; this action creates specified role resources.                   
+             * @method
+             * @param data A collection of role objects that needs to be created.
+             * @returns A promise that is resolved once the create action has been performed.                          
+             * @example RoleService.batch.create(files)
+                         .then(function (data) {   
+                             // perform success action here 
+                         },
+                            function (response, status, headers, config) {   
+                                // perform error handling here 
+                        });                   
+            **/
+            create(data: IRole[]): PromiseLike<IHttpResponse<IRole[]>> {
+                return baasicApp.membershipModule.role.batch.create(data);
+            },
+
+            /**                   
+             * Returns a promise that is resolved once the update action has been performed; this action updates specified role resources.                   
+             * @method
+             * @param data A collection of role objects used to update specified role resources.
+             * @returns A promise that is resolved once the update action has been performed.                          
+             * @example RoleService.batch.update(files)
+                         .then(function (data) {   
+                             // perform success action here 
+                         },
+                            function (response, status, headers, config) {   
+                                // perform error handling here 
+                        });                   
+            **/
+            update(data: IRole[]): PromiseLike<IHttpResponse<void>> {
+                return baasicApp.membershipModule.role.batch.update(data);
+            },
+
+            /**                   
+             * Returns a promise that is resolved once the remove action has been performed; this action removes specified role resources.                   
+             * @method
+             * @param data A collection of role objects that needs to be removed.
+             * @returns A promise that is resolved once the remove action has been performed.                          
+             * @example RoleService.batch.remove(files)
+                         .then(function (data) {   
+                             // perform success action here 
+                         },
+                            function (response, status, headers, config) {   
+                                // perform error handling here 
+                        });                   
+            **/
+            remove(data: IRole[]): PromiseLike<IHttpResponse<void>> {
+                return baasicApp.membershipModule.role.batch.remove(data);
+            }
+        }
     }
 
     get lookups(): ILookupService {
