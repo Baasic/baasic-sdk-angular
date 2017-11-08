@@ -1,5 +1,5 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from '../../../../infrastructure/common/contracts';
-import { IRole } from '../';
+import { IRole, IRoleBatchService } from '../';
 
 export interface IRoleService {
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IRole>>>;
@@ -7,4 +7,5 @@ export interface IRoleService {
     create(data: IRole): PromiseLike<IHttpResponse<IRole>>;
     update(data: IRole): PromiseLike<IHttpResponse<IRole>>;
     remove(data: IRole): PromiseLike<IHttpResponse<any>>;
+    batch: IRoleBatchService;
 }
