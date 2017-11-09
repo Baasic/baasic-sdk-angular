@@ -10,10 +10,10 @@ Since Angular SDK depends on [Baasic JavaScript SDK](https://github.com/Baasic/b
 
 ## Setup
 
-To properly configure your solution for using Angular SDK, you will need to add the following line to your `package.config` file:
+To properly configure your solution for using Angular SDK, you will need to add the following line to your `package.config` file by executing:
 
 ```javascript
-"baasic-sdk-angular": "1.0.0-RC.1",
+npm install baasic-sdk-angular --save
 ```
 
 ## Initialization
