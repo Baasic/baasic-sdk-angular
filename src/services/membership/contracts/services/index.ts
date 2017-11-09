@@ -4,6 +4,7 @@ export * from './ILookupService';
 export * from './IPasswordRecoveryService';
 export * from './IPermissionService';
 export * from './IRegisterService';
+export * from './IRoleBatchService';
 export * from './IRoleService';
 export * from './IUserSocialLoginService';
 export * from './IUserService';
