@@ -4,4 +4,6 @@ export * from './invoice-streams.service';
 export * from './invoice.service';
 export * from './product.service';
 export * from './payment-transaction.service';
+export * from './coupon.service';
+export * from './coupon-use.service';
 export * from './lookups';

@@ -15,4 +15,6 @@ export * from './ICommerceLookupsSubscriptionStatusBatchService';
 export * from './ICommerceLookupsSubscriptionStatusService';
 export * from './ICommerceLookupsInvoiceStatusBatchService';
 export * from './ICommerceLookupsInvoiceStatusService';
+export * from './ICommerceLookupsCouponTypeBatchService';
+export * from './ICommerceLookupsCouponTypeService';
 export * from './ICommerceLookupsService';

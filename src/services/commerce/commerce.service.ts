@@ -8,7 +8,9 @@ import {
     ICustomerService,
     IInvoiceService,
     IPaymentTransaction,
-    IProductService
+    IProductService,
+    ICouponService,
+    ICouponUseService,
 } from './contracts';
 
 @Injectable()
@@ -309,6 +311,212 @@ export class CommerceService {
                     return baasicApp.commerceModule.customers.paymentMethods.remove(data);
                 }
             }
+        };
+    }
+
+    get coupons(): ICouponService {
+        let baasicApp = this.baasicApp;
+        return {
+            /**                  
+             * Returns a promise that is resolved once the find action has been performed. Success response returns a list of commerce resources matching the given criteria.                  
+             * @method                         
+             * @example CommerceModule.coupons.find({   
+                            pageNumber : 1,   
+                            pageSize : 10,   
+                            orderBy : '<field>',   
+                            orderDirection : '<asc|desc>',   
+                            search : '<search-phrase>' 
+                        })
+                        .then(function (collection) {   
+                            // perform success action here 
+                        },
+                        function (response, status, headers, config) {   
+                            // perform error handling here 
+                        });                     
+            **/
+            find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<any>>> {
+                return baasicApp.commerceModule.coupons.find(options);
+            },
+
+            /**                 
+             * Returns a promise that is resolved once the get action has been performed. Success response returns the commerce resource.                 
+             * @method                        
+             * @example CommerceModule.coupons.get(id)
+                            .then(function (data) {   
+                                // perform success action here 
+                            },
+                            function (response, status, headers, config) {   
+                                // perform error handling here 
+                            });                 
+            **/
+            get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<any>> {
+                return baasicApp.commerceModule.coupons.get(id, options);
+            },
+
+            /**                  
+             * Returns a promise that is resolved once the update commerce action has been performed; this action updates a commerce resource. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicCommerceCustomerRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = baasicApiClient.create(commerceCoupon); 
+             * let uri = params['model'].links('put').href; 
+             * ```                  
+             * @method                         
+             * @example // commerceCoupon is a resource previously fetched using get action. 
+                            commerceCoupon.isDefault : true; 
+                            CommerceModule.coupons.update(commerceCoupon)
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                }); 				
+            **/
+            create(data: any): PromiseLike<IHttpResponse<void>> {
+                return baasicApp.commerceModule.coupons.update(data);
+            },
+
+            /**                  
+             * Returns a promise that is resolved once the update commerce action has been performed; this action updates a commerce resource. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicCommerceCustomerRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = baasicApiClient.update(commerceCoupon); 
+             * let uri = params['model'].links('put').href; 
+             * ```                  
+             * @method                         
+             * @example // commerceCoupon is a resource previously fetched using get action. 
+                            commerceCoupon.isDefault : true; 
+                            CommerceModule.coupons.update(commerceCoupon)
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                }); 				
+            **/
+            update(data: any): PromiseLike<IHttpResponse<void>> {
+                return baasicApp.commerceModule.coupons.update(data);
+            },
+
+            /**                  
+             * Returns a promise that is resolved once the remove action has been performed. This action will remove a commerce resource from the system if successfully completed. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicCommerceCustomerRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = baasicApiClient.remove(commerceCoupon); 
+             * let uri = params['model'].links('delete').href; 
+             * ```                  
+             * @method                         
+             * @example // commerceCoupon is a resource previously fetched using get action.				 
+                            CommerceModule.coupons.remove(commerceCoupon)
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                });						
+            **/
+            remove(data: any): PromiseLike<IHttpResponse<void>> {
+                return baasicApp.commerceModule.coupons.remove(data);
+            },
+        };
+    }
+
+    get couponUses(): ICouponUseService {
+        let baasicApp = this.baasicApp;
+        return {
+            /**                  
+             * Returns a promise that is resolved once the find action has been performed. Success response returns a list of commerce resources matching the given criteria.                  
+             * @method                         
+             * @example CommerceModule.couponUses.find({   
+                            pageNumber : 1,   
+                            pageSize : 10,   
+                            orderBy : '<field>',   
+                            orderDirection : '<asc|desc>',   
+                            search : '<search-phrase>' 
+                        })
+                        .then(function (collection) {   
+                            // perform success action here 
+                        },
+                        function (response, status, headers, config) {   
+                            // perform error handling here 
+                        });                     
+            **/
+            find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<any>>> {
+                return baasicApp.commerceModule.couponUses.find(options);
+            },
+
+            /**                 
+             * Returns a promise that is resolved once the get action has been performed. Success response returns the commerce resource.                 
+             * @method                        
+             * @example CommerceModule.couponUses.get(id)
+                            .then(function (data) {   
+                                // perform success action here 
+                            },
+                            function (response, status, headers, config) {   
+                                // perform error handling here 
+                            });                 
+            **/
+            get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<any>> {
+                return baasicApp.commerceModule.couponUses.get(id, options);
+            },
+
+            /**                  
+             * Returns a promise that is resolved once the update commerce action has been performed; this action updates a commerce resource. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicCommerceCustomerRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = baasicApiClient.create(commerceCouponUse); 
+             * let uri = params['model'].links('put').href; 
+             * ```                  
+             * @method                         
+             * @example // commerceCouponUse is a resource previously fetched using get action. 
+                            commerceCouponUse.isDefault : true; 
+                            CommerceModule.couponUses.update(commerceCouponUse)
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                }); 				
+            **/
+            create(data: any): PromiseLike<IHttpResponse<void>> {
+                return baasicApp.commerceModule.couponUses.update(data);
+            },
+
+            /**                  
+             * Returns a promise that is resolved once the update commerce action has been performed; this action updates a commerce resource. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicCommerceCustomerRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = baasicApiClient.update(commerceCouponUse); 
+             * let uri = params['model'].links('put').href; 
+             * ```                  
+             * @method                         
+             * @example // commerceCouponUse is a resource previously fetched using get action. 
+                            commerceCouponUse.isDefault : true; 
+                            CommerceModule.couponUses.update(commerceCouponUse)
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                }); 				
+            **/
+            update(data: any): PromiseLike<IHttpResponse<void>> {
+                return baasicApp.commerceModule.couponUses.update(data);
+            },
+
+            /**                  
+             * Returns a promise that is resolved once the remove action has been performed. This action will remove a commerce resource from the system if successfully completed. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicCommerceCustomerRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+             * ``` 
+             * let params = baasicApiClient.remove(commerceCouponUse); 
+             * let uri = params['model'].links('delete').href; 
+             * ```                  
+             * @method                         
+             * @example // commerceCouponUse is a resource previously fetched using get action.				 
+                            CommerceModule.couponUses.remove(commerceCouponUse)
+                                .then(function (data) {   
+                                    // perform success action here 
+                                },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                                });						
+            **/
+            remove(data: any): PromiseLike<IHttpResponse<void>> {
+                return baasicApp.commerceModule.couponUses.remove(data);
+            },
         };
     }
 
@@ -1829,7 +2037,156 @@ export class CommerceService {
                         return baasicApp.commerceModule.lookups.invoiceStatuses.batch.remove(ids);
                     }
                 }
-            }
+            },
+
+            couponTypes: {
+                /**                  
+                 * Returns a promise that is resolved once the find action has been performed. Success response returns a list of commerce resources matching the given criteria.                  
+                 * @method                         
+                 * @example CommerceService.lookups.couponTypes.find({   
+                                pageNumber : 1,   
+                                pageSize : 10,   
+                                orderBy : '<field>',   
+                                orderDirection : '<asc|desc>',  
+                                search : '<search-phrase>' 
+                            })
+                            .then(function (collection) {   
+                                // perform success action here 
+                            },
+                            function (response, status, headers, config) {   
+                                // perform error handling here 
+                            });                     
+                **/
+                find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<any>>> {
+                    return baasicApp.commerceModule.lookups.couponTypes.find(options);
+                },
+
+                /**                 
+                 * Returns a promise that is resolved once the get action has been performed. Success response returns the commerce resource.                 
+                 * @method                        
+                 * @example CommerceService.lookups.couponTypes.get()
+                             .then(function (data) {   
+                                 // perform success action here 
+                             },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                            });                 
+                **/
+                get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<any>> {
+                    return baasicApp.commerceModule.lookups.couponTypes.get(id, options);
+                },
+
+                /**                  
+                 * Returns a promise that is resolved once the create commerce action has been performed; this action creates a new commerce resource.                  
+                 * @method                         
+                 * @example CommerceService.lookups.couponTypes.create({    
+                                 name : '<name>',   
+                                 abrv: '<abbreviation>',   
+                                 description: '<description>' 
+                             }) 
+                             .then(function (data) {   
+                                 // perform success action here 
+                             },
+                                function (response, status, headers, config) {   
+                                    // perform error handling here 
+                            });                  
+                **/
+                create(data: any): PromiseLike<IHttpResponse<any>> {
+                    return baasicApp.commerceModule.lookups.couponTypes.create(data);
+                },
+
+                /**                  
+                 * Returns a promise that is resolved once the update commerce action has been performed; this action updates a commerce resource. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicCommerceLookupsAddressTypeRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+                 * ``` 
+                 * let params = modelMapper.removeParams(commerceCouponType); 
+                 * let uri = params['model'].links('put').href; 
+                 * ```                  
+                 * @method                         
+                 * @example // commerceCouponType is a resource previously fetched using get action. 
+                                commerceCouponType.description = '<description>'; 
+                                CommerceService.lookups.couponTypes.update(commerceCouponType) 
+                                    .then(function (data) {   
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) {   
+                                        // perform error handling here 
+                                    }); 				
+                **/
+                update(data: any): PromiseLike<IHttpResponse<void>> {
+                    return baasicApp.commerceModule.lookups.couponTypes.update(data);
+                },
+
+                /**                  
+                 * Returns a promise that is resolved once the remove action has been performed. This action will remove a commerce resource from the system if successfully completed. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicCommerceLookupsAddressTypeRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+                 * ``` 
+                 * let params = modelMapper.removeParams(commerceCouponType); 
+                 * let uri = params['model'].links('delete').href; 
+                 * ```                  
+                 * @method                         
+                 * @example // commerceCouponType is a resource previously fetched using get action.				 
+                                CommerceService.lookups.couponTypes.remove(commerceCouponType) 
+                                    .then(function (data) {   
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) {   
+                                        // perform error handling here 
+                                    });						
+                **/
+                remove(data: any): PromiseLike<IHttpResponse<void>> {
+                    return baasicApp.commerceModule.lookups.couponTypes.remove(data);
+                },
+
+                batch: {
+                    /**                     
+                     * Returns a promise that is resolved once the create commerce action has been performed; this action creates a new commerce resources.                     
+                     * @method                            
+                     * @example CommerceService.lookups.couponTypes.batch.create([{   
+                                     name : '<name>',   
+                                     abrv: '<abbreviation>',   
+                                     description: '<description>' 
+                                    }]) 
+                                    .then(function (data) {   
+                                        // perform success action here 
+                                    },
+                                    function (response, status, headers, config) {   
+                                        // perform error handling here 
+                                    });                     
+                    **/
+                    create(data: any): PromiseLike<IHttpResponse<any>> {
+                        return baasicApp.commerceModule.lookups.couponTypes.batch.create(data);
+                    },
+
+                    /**                     
+                     * Returns a promise that is resolved once the update commerce action has been performed; this action updates specified commerce resources.                     
+                     * @method                           
+                     * @example   CommerceService.lookups.couponTypes.batch.update(commerceCouponTypes)   
+                                     .then(function (data) {     
+                                         // perform success action here   
+                                     },
+                                        function (response, status, headers, config) {     
+                                            // perform error handling here   
+                                    });                     
+                    **/
+                    update(data: any): PromiseLike<IHttpResponse<void>> {
+                        return baasicApp.commerceModule.lookups.couponTypes.batch.update(data);
+                    },
+
+                    /**                     
+                     * Returns a promise that is resolved once the remove commerce action has been performed. This action will remove commerce resources from the system if successfully completed.                     
+                     * @method                          
+                     * @example CommerceService.lookups.couponTypes.batch.remove(commerceCouponTypeIds)   
+                                    .then(function (data) {     
+                                        // perform success action here   
+                                    },
+                                    function (response, status, headers, config) {     
+                                        // perform error handling here   
+                                    });		                    
+                    **/
+                    remove(ids: string[]): PromiseLike<IHttpResponse<void>> {
+                        return baasicApp.commerceModule.lookups.couponTypes.batch.remove(ids);
+                    }
+                }
+            },            
         };
     }
 }

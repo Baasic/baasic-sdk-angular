@@ -6,7 +6,8 @@ import {
     ICommerceLookupsPaymentTransactionStatusService,
     ICommerceLookupsRecurringCyclePeriodTypeService,
     ICommerceLookupsSubscriptionStatusService,
-    ICommerceLookupsInvoiceStatusService
+    ICommerceLookupsInvoiceStatusService,
+    ICommerceLookupsCouponTypeService
 } from '../../';
 
 export interface ICommerceLookups {
@@ -18,4 +19,5 @@ export interface ICommerceLookups {
     recurringCyclePeriodTypes: ICommerceLookupsRecurringCyclePeriodTypeService;
     subscriptionStatuses: ICommerceLookupsSubscriptionStatusService;
     invoiceStatuses: ICommerceLookupsInvoiceStatusService;
+    couponTypes: ICommerceLookupsCouponTypeService;
 }
