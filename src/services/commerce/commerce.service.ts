@@ -13,6 +13,8 @@ import {
     ICouponUseService,
 } from './contracts';
 
+import { Commerce } from 'baasic-sdk-javascript';
+
 @Injectable()
 export class CommerceService {
 
@@ -334,7 +336,7 @@ export class CommerceService {
                             // perform error handling here 
                         });                     
             **/
-            find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<any>>> {
+            find(options?: Commerce.ICouponOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<any>>> {
                 return baasicApp.commerceModule.coupons.find(options);
             },
 
@@ -437,7 +439,7 @@ export class CommerceService {
                             // perform error handling here 
                         });                     
             **/
-            find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<any>>> {
+            find(options?: Commerce.ICouponUseOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<any>>> {
                 return baasicApp.commerceModule.couponUses.find(options);
             },
 
@@ -656,7 +658,7 @@ export class CommerceService {
                             // perform error handling here 
                     });                     
             **/
-            find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<any>>> {
+            find(options?: Commerce.IProductOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<any>>> {
                 return baasicApp.commerceModule.products.find(options);
             },
 
