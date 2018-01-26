@@ -31,7 +31,7 @@ export class HttpClientFactory implements IHttpClient {
                     statusCode: response.status,
                     statusText: response.statusText,
                     headers: response.headers.toJSON(),
-                    data: <ResponseType>response.json()
+                    data: safelyConvertToJSON<ResponseType>(response)
                 };
             })
             .catch((response: Response | any) => {
@@ -41,12 +41,22 @@ export class HttpClientFactory implements IHttpClient {
                         statusCode: response.status,
                         statusText: response.statusText,
                         headers: response.headers.toJSON(),
-                        data: response.json()
+                        data: safelyConvertToJSON<ResponseType>(response)
                     });
                 } else {
                     Observable.throw(response);
                 }
             })
             .toPromise();
+
+        function safelyConvertToJSON<T>(response: Response): T {
+            // json() function call fails when trying to convert empty string ''
+            // In that case catch exception and return null.
+            try {                
+                return <T>response.json();
+            } catch (err) {
+                 return null;
+            }
+        }
     };
 };
