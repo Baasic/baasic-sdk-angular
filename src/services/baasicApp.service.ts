@@ -1,10 +1,10 @@
-import { Injectable, Inject, OpaqueToken } from '@angular/core';
+import { Injectable, Inject, InjectionToken } from '@angular/core';
 import { IBaasicOptions, BaasicApp as SDKBaasicApp } from 'baasic-sdk-javascript';
 import { HttpClientFactory } from '../infrastructure/httpApi/http-client.factory';
 import { IConfiguration } from '../infrastructure/common/contracts';
 
 const TYPES = {
-    Configuration: new OpaqueToken('Configuration')
+    Configuration: new InjectionToken<BaasicAppService>('Configuration')
 }
 export { TYPES };
 

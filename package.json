@@ -41,24 +41,24 @@
     "build/lib/*"
   ],
   "devDependencies": {
-    "@types/node": "7.0.5",
-    "@types/webpack": "2.2.5",
-    "npm-run-all": "4.0.2",
+    "@types/node": "9.4.1",
+    "@types/webpack": "3.8.5",
+    "npm-run-all": "4.1.2",
     "npm-workspace": "0.7.1",
-    "rimraf": "2.5.4",
-    "ts-loader": "2.0.0",
-    "tslib": "1.6.0",
-    "typescript": "2.2.2",
-    "webpack": "2.2.1",
-    "webpack-merge": "2.6.1",
+    "rimraf": "2.6.2",
+    "ts-loader": "3.4.0",
+    "tslib": "1.9.0",
+    "typescript": "2.7.1",
+    "webpack": "3.10.0",
+    "webpack-merge": "4.1.1",
     "webpack-uglify-js-plugin": "1.1.9"
   },
   "peerDependencies": {
-    "@angular/core": "2.4.9",
-    "@angular/http": "2.4.9",
-    "rxjs": "5.2.0"
+    "@angular/core": "5.2.3",
+    "@angular/http": "5.2.3",
+    "rxjs": "5.5.6"
   },
   "dependencies": {
-    "baasic-sdk-javascript": "^2.0.6-beta2"
+    "baasic-sdk-javascript": "^2.0.1"
   }
 }

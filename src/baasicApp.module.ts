@@ -1,4 +1,4 @@
-import { NgModule, Injectable, Inject, OpaqueToken, ModuleWithProviders } from '@angular/core';
+import { NgModule, Injectable, Inject, ModuleWithProviders } from '@angular/core';
 import { IBaasicOptions } from 'baasic-sdk-javascript';
 import { HttpClientFactory } from './infrastructure/httpApi/http-client.factory';
 
