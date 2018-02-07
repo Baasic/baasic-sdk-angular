@@ -315,7 +315,7 @@ export class FilesService {
                                 // perform error handling here
                             }); 				    
             **/
-            update(options: IACLOptions[]): PromiseLike<IHttpResponse<IACLPolicy[]>> {
+            update(options: IACLOptions): PromiseLike<IHttpResponse<IACLPolicy[]>> {
                 return baasicApp.fileModule.acl.update(options);
             },
 

@@ -166,7 +166,7 @@ export class UserProfileService {
                                     // perform error handling here 
                                 }); 				    
                 **/
-                update(options: IACLOptions[]): PromiseLike<IHttpResponse<IACLPolicy[]>> {
+                update(options: IACLOptions): PromiseLike<IHttpResponse<IACLPolicy[]>> {
                     return baasicApp.userProfileModule.profile.acl.update(options);
                 },
 
