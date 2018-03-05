@@ -1,7 +1,7 @@
 {
   "name": "baasic-sdk-angular",
-  "version": "1.0.1",
-  "description": "Angular (v2+) SDK provides core functionality for building web and mobile applications on [Baasic](http://www.baasic.com/).",
+  "version": "2.0.0-beta01",
+  "description": "Angular (v5+) SDK provides core functionality for building web and mobile applications on [Baasic](http://www.baasic.com/).",
   "keywords": [
     "Baasic",
     "BaaS",
@@ -59,6 +59,6 @@
     "rxjs": "5.5.6"
   },
   "dependencies": {
-    "baasic-sdk-javascript": "^2.0.1"
+    "baasic-sdk-javascript": "^2.0.5-beta05"
   }
 }

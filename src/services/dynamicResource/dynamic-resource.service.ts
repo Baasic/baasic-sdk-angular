@@ -3,7 +3,14 @@ import { HttpModule, Http, RequestOptionsArgs, Response } from '@angular/http';
 import { BaasicAppService } from '../index'
 
 import { IACLPolicy, IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from '../../infrastructure/common/contracts';
-import { IDynamicACLOptions, IDynamicObject, IDynamicResourceACLService, IDynamicResourceSchemaService, IResourceSchema } from './contracts';
+import { 
+    IDynamicACLOptions,
+    IDynamicObject, 
+    IDynamicResourceACLService, 
+    IDynamicResourceSchemaService, 
+    IDynamicResourceBatchService,
+    IResourceSchema 
+} from './contracts';
 
 @Injectable()
 export class DynamicResourceService {
@@ -71,10 +78,6 @@ export class DynamicResourceService {
 
     /**                  
      * Returns a promise that is resolved once the update action has been performed; this action updates a dynamic resource item. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicDynamicResourceRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
-     * ``` 
-     * let params = modelMapper.removeParams(dynamicResource); 
-     * let uri = params['model'].links('put').href; 
-     * ```                  
      * @method
      * @param data A JSON object used to update specified dynamic resource. JSON object is an unordered collection of zero or more key/value pairs structured using the standard JSON syntax rules.
      * @param options Options object.                        
@@ -96,10 +99,6 @@ export class DynamicResourceService {
 
     /**                  
      * Returns a promise that is resolved once the patch action has been performed; this action patches an existing dynamic resource. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicDynamicResourceRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
-     * ``` 
-     * let params = modelMapper.updateParams(dynamicResource); 
-     * let uri = params['model'].links('patch').href; 
-     * ```                  
      * @method
      * @param data JSON object used for partial update of specified dynamic resource. JSON object is an unordered collection of zero or more key/value pairs structured using the standard JSON syntax rules.
      * @param options Options object.                         
@@ -123,10 +122,6 @@ export class DynamicResourceService {
 
     /**                  
      * Returns a promise that is resolved once the remove action has been performed. This action will remove a dynamic resource from the system if successfully completed. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicDynamicResourceRouteDefinition` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
-     * ``` 
-     * let params = modelMapper.removeParams(dynamicResource); 
-     * let uri = params['model'].links('delete').href; 
-     * ```                  
      * @method
      * @param data JSON object used to delete specified dynamic resource. JSON object is an unordered collection of zero or more key/value pairs structured using the standard JSON syntax rules.                         
      * @example // dynamicResource is a resource previously fetched using get action.				 
@@ -142,6 +137,107 @@ export class DynamicResourceService {
      **/
     remove(schemaName: string, data: any, options?: any): PromiseLike<IHttpResponse<void>> {
         return this.baasicApp.dynamicResourceModule.remove(schemaName, data, options);
+    }
+
+    /**                  
+     * Returns a promise that is resolved once the purge action has been performed. This action will remove all dynamic resources from the system if successfully completed. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `dynamicResourceRoute` route template. Here is an example of how a route can be obtained from HAL enabled objects: 
+     * @method
+     * @param data JSON object used to purge dynamic resources.                          
+     * @example // dynamicResource is a resource previously fetched using get action.				 
+                    DynamicResourceService.purge('<schema-name>')
+                    .then(function (data) {   
+                        // perform success action here 
+                    },
+                     function (response, status, headers, config) {   
+                         // perform error handling here 
+                    });						
+     **/
+    purge(schemaName: string): PromiseLike<IHttpResponse<void>> {
+        return this.baasicApp.dynamicResourceModule.purge(schemaName);
+    }
+
+    get batch(): IDynamicResourceBatchService {
+        let baasicApp = this.baasicApp;
+        return {
+            /**
+             * Returns a promise that is resolved once the create JSON object action has been performed; this action creates new JSON object resources.
+             * @method
+             * @param data JSON object objects that need to be inserted into the system.
+             * @returns A promise that is resolved once the create JSON object action has been performed.
+             * @example dynamicResourceBatchClient.create([{                    
+                            name: '<name>'
+                        }])
+                        .then(function (data) {
+                            // perform success action here
+                        },
+                        function (response, status, headers, config) {
+                            // perform error handling here
+                        });
+            */
+            create(data: any[]): PromiseLike<IHttpResponse<IDynamicObject[]>> {
+                return baasicApp.dynamicResourceModule.batch.create(data);
+            },
+
+            /**
+             * Returns a promise that is resolved once the update JSON object action has been performed; this action updates JSON object resources. 
+             * @method
+             * @param data JSON object objects used to update specified JSON object resources.
+             * @returns A promise that is resolved once the update JSON object action has been performed.
+             * @example JSON object are resources previously fetched using get action.
+                        dynamicResourceBatchClient.update([{                    
+                            id: '<id>',
+                            name: '<name>'
+                        }])
+                        .then(function (data) {
+                            // perform success action here
+                        },
+                        function (response, status, headers, config) {
+                            // perform error handling here
+                        });
+            */
+            update(data: any[]): PromiseLike<IHttpResponse<void>> {
+                return baasicApp.dynamicResourceModule.batch.update(data);
+            },
+
+            /**
+             * Returns a promise that is resolved once the patch JSON object action has been performed; this action patches JSON object resources. 
+             * @method
+             * @param data JSON object objects used to patch specified JSON object resources.
+             * @returns A promise that is resolved once the patch JSON object action has been performed.
+             * @example JSON object are resources previously fetched using get action.
+                        dynamicResourceBatchClient.patch([{                    
+                            id: '<id>',
+                            name: '<name>'
+                        }])
+                        .then(function (data) {
+                            // perform success action here
+                        },
+                        function (response, status, headers, config) {
+                            // perform error handling here
+                        });
+            */
+            patch(data: any[]): PromiseLike<IHttpResponse<void>> {
+                return baasicApp.dynamicResourceModule.batch.patch(data);
+            },
+
+            /**
+             * Returns a promise that is resolved once the remove action has been performed. This action will remove JSON object resources from the system if successfully completed.
+             * @method
+             * @param data JSON object Ids which uniquely identify JSON object resources to be deleted.
+             * @returns A promise that is resolved once the remove action has been performed.
+             * @example JSON object Ids are identifiers which uniquely identify JSON object resources.
+                        dynamicResourceBatchClient.remove(['<id1>', '<id2>']])
+                        .then(function (data) {
+                            // perform success action here
+                        },
+                        function (response, status, headers, config) {
+                            // perform error handling here
+                        });
+            */
+            remove(data: string[]): PromiseLike<IHttpResponse<void>> {
+                return baasicApp.dynamicResourceModule.batch.remove(data);
+            }
+        }
     }
 
     get schema(): IDynamicResourceSchemaService {
@@ -368,4 +464,6 @@ export class DynamicResourceService {
             }
         };
     }
+
+   
 }
