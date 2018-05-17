@@ -1,4 +1,5 @@
 export * from './IException';
+export * from './IBaseRoute';
 export {
     IModel as IBaasicModel,
     IHttpRequest,
@@ -8,7 +9,8 @@ export {
     IResponse as IBaasicResponse,
     IGetRequestOptions,
     IHttpHeaders,
-    IHttpResponse
+    IHttpResponse,
+    IToken
 } from 'baasic-sdk-javascript';
 
 export * from './ACL';

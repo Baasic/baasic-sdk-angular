@@ -1,7 +1,9 @@
 import { IBaasicQueryModel, IGetRequestOptions, IHttpResponse, IOptions } from '../../../../infrastructure/common/contracts';
 import { IAppUser, INewPassword, INewUser, IUserSocialLoginService } from '../';
+import { IUserRoute } from '../routeDefinitions';
 
 export interface IUserService {
+    routeDefinition: IUserRoute;
     exists(username: string, options?: any): PromiseLike<IHttpResponse<any>>;
     find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IAppUser>>>;
     get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IAppUser>>;
