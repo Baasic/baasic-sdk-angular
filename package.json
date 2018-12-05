@@ -54,11 +54,11 @@
     "webpack-uglify-js-plugin": "1.1.9"
   },
   "peerDependencies": {
-    "@angular/core": "5.2.3",
-    "@angular/http": "5.2.3",
+    "@angular/core": "5.2.5",
+    "@angular/http": "5.2.5",
     "rxjs": "5.5.6"
   },
   "dependencies": {
-    "baasic-sdk-javascript": "^2.0.5-beta05"
+    "baasic-sdk-javascript": "2.0.11-beta05"
   }
 }
