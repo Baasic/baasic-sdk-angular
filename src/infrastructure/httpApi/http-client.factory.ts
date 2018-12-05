@@ -18,6 +18,7 @@ export class HttpClientFactory implements IHttpClient {
 
     request<ResponseType>(request: IHttpRequest) {
         let httpRequest: RequestOptionsArgs = {
+            withCredentials: true,
             method: request.method,
         };
 
