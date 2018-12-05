@@ -1,7 +1,9 @@
 import { IHttpResponse } from '../../../../infrastructure/common/contracts';
 import { IAccessPolicy, IAccessAction } from '../';
+import { IPermissionRoute } from '../routeDefinitions'; 
 
 export interface IPermissionService {
+    routeDefinition: IPermissionRoute;
     find(section: string, options?: any): PromiseLike<IHttpResponse<IAccessPolicy[]>>;
     getActions(options?: any): PromiseLike<IHttpResponse<IAccessAction[]>>;
     getPermissionSubjects(options: any): PromiseLike<any>;

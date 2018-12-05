@@ -36,6 +36,7 @@ export class MembershipService {
     get login(): ILoginService {
         let baasicApp = this.baasicApp;
         return {
+            routeDefinition: baasicApp.membershipModule.login.routeDefinition,
             /**                  
              * Returns a promise that is resolved once the login action has been performed. This action logs user into the application and success response returns the token resource.                  
              * @method                         
@@ -96,6 +97,7 @@ export class MembershipService {
     get loginSocial(): ILoginSocialService {
         let baasicApp = this.baasicApp;
         return {
+            routeDefinition: baasicApp.membershipModule.loginSocial.routeDefinition,
             /**                     
              * Returns a promise that is resolved once the get action has been performed. Success response returns a resolved social login provider Url.                     
              * @method
@@ -150,6 +152,7 @@ export class MembershipService {
     get passwordRecovery(): IPasswordRecoveryService {
         let baasicApp = this.baasicApp;
         return {
+            routeDefinition: baasicApp.membershipModule.passwordRecovery.routeDefinition,
             /** 				
              * Returns a promise that is resolved once the password recovery requestReset action is completed. This action initiates the password recovery process for the user.			
              * @method
@@ -246,6 +249,7 @@ export class MembershipService {
     get role(): IRoleService {
         let baasicApp = this.baasicApp;
         return {
+            routeDefinition: baasicApp.membershipModule.role.routeDefinition,
             /**                  
              * Returns a promise that is resolved once the find action has been performed. Success response returns a list of role resources matching the given criteria.              
              * @method
@@ -352,6 +356,7 @@ export class MembershipService {
             },
 
             batch: {
+                    routeDefinition: baasicApp.membershipModule.role.batch.routeDefinition,
                     /**                   
                      * Returns a promise that is resolved once the create action has been performed; this action creates specified role resources.                   
                      * @method
@@ -409,6 +414,7 @@ export class MembershipService {
     get user(): IUserService {
         let baasicApp = this.baasicApp;
         return {
+            routeDefinition: baasicApp.membershipModule.user.routeDefinition,
             /**                  
              * Returns a promise that is resolved once the exists action has been performed. This action checks if user exists in the application.            
              * @method
@@ -647,6 +653,7 @@ export class MembershipService {
             },
 
             socialLogin: {
+                routeDefinition: baasicApp.membershipModule.user.socialLogin.routeDefinition,
                 /**                     
                  * Returns a promise that is resolved once the get action has been performed. Success response returns a list user resource connected social login providers.
                  * @param username A username or id which uniquely identifies user resource whose social login connections need to be retrieved.
@@ -688,6 +695,7 @@ export class MembershipService {
     get permissions(): IPermissionService {
         let baasicApp = this.baasicApp;
         return {
+            routeDefinition: baasicApp.membershipModule.permissions.routeDefinition,
             /**                  
              * Returns a promise that is resolved once the find action has been performed. Success response returns a list of role resources matching the given criteria.              
              * @method
@@ -856,6 +864,7 @@ export class MembershipService {
     get lookups(): ILookupService {
         let baasicApp = this.baasicApp;
         return {
+            routeDefinition: baasicApp.membershipModule.lookups.routeDefinition,
             /**                  
             * Returns a promise that is resolved once the get action has been performed. Success response returns the lookup resources.                  
             * @method
