@@ -51,7 +51,7 @@ export class ArticleService {
                            // perform error handling here 
                        });                   
            **/
-            find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticle>>> {
+            find(options?: IArticleOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticle>>> {
                 return baasicApp.articleModule.articles.find(options);
             },
 
@@ -969,7 +969,7 @@ export class ArticleService {
                                 // perform error handling here 
                             });
                 **/
-                find(articleId: string, options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleFile>>> {
+                find(articleId: string, options?: IArticleOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleFile>>> {
                     return baasicApp.articleModule.articles.files.find(articleId, options);
                 },
 
@@ -2248,7 +2248,7 @@ export class ArticleService {
                            // perform error handling here 
                        });
            **/
-            find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleFile>>> {
+            find(options?: IArticleOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticleFile>>> {
                 return baasicApp.articleModule.files.find(options);
             },
 

@@ -10,7 +10,7 @@ import {
 } from '../';
 
 export interface IArticleInstanceService {
-    find(options?: IOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticle>>>;
+    find(options?: IArticleOptions): PromiseLike<IHttpResponse<IBaasicQueryModel<IArticle>>>;
     get(id: string, options?: IGetRequestOptions): PromiseLike<IHttpResponse<IArticle>>;
     create(data: IArticle): PromiseLike<IHttpResponse<IArticle>>;
     update(data: IArticle): PromiseLike<IHttpResponse<void>>;
